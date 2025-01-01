@@ -30,7 +30,7 @@
 				<div class="offcanvas-body bg-main-color-light">
 					@if(\Auth::check())
 					<ul class="navbar-nav justify-content-{{$is_RTL?'start':'end'}} flex-grow-1 pe-3">
-
+                        @if(false)
 						@can('viewAny', \App\Models\User::class)
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -42,14 +42,9 @@
 								@can('create', \App\Models\User::class)
 								<li><a class="dropdown-item" href="{{route('user.create')}}">{{__('caption.cms.menu-item.user-menu.add')}}</a></li>
 								@endcan
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="{{route('user.report')}}">{{__('caption.cms.menu-item.user-menu.report')}}</a></li>
 							</ul>
 						</li>
 						@endcan
-
 						@can('viewAny', \App\Models\Freelancer::class)
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -61,10 +56,6 @@
 								@can('create', \App\Models\Freelancer::class)
 								<li><a class="dropdown-item" href="{{route('freelancer.create')}}">{{__('caption.cms.menu-item.freelancer-menu.add')}}</a></li>
 								@endcan
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="{{route('freelancer.report')}}">{{__('caption.cms.menu-item.freelancer-menu.report')}}</a></li>
 							</ul>
 						</li>
 						@endcan
@@ -80,146 +71,84 @@
 								@can('create', \App\Models\Manger::class)
 								<li><a class="dropdown-item" href="{{route('manger.create')}}">{{__('caption.cms.menu-item.manger-menu.add')}}</a></li>
 								@endcan
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="{{route('manger.report')}}">{{__('caption.cms.menu-item.manger-menu.report')}}</a></li>
 							</ul>
 						</li>
 						@endcan
-
-						@can('viewAny', \App\Models\Skill::class)
+                        @endif
+                        @if(\Auth::user()->isFreelancer())
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
 								aria-expanded="false">
-								{{__('caption.cms.menu-item.skill-menu.title')}}
+								{{__('caption.cms.menu-item.freelancer-menu.profile')}}
 							</a>
 							<ul class="dropdown-menu dropdown-menu-{{$isDarkMode?'white':'dark'}}">
-								<li><a class="dropdown-item" href="{{route('skill.index')}}">{{__('caption.cms.menu-item.skill-menu.index')}}</a></li>
-								@can('create', \App\Models\Skill::class)
-								<li><a class="dropdown-item" href="{{route('skill.create')}}">{{__('caption.cms.menu-item.skill-menu.add')}}</a></li>
-								@endcan
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="{{route('skill.report')}}">{{__('caption.cms.menu-item.skill-menu.report')}}</a></li>
+                                @can('viewAny', \App\Models\Skill::class)
+                                    <li><a class="dropdown-item" href="{{route('skill.index')}}">{{__('caption.cms.menu-item.skill-menu.index')}}</a></li>
+                                    @can('create', \App\Models\Skill::class)
+                                    <li><a class="dropdown-item" href="{{route('skill.create')}}">{{__('caption.cms.menu-item.skill-menu.add')}}</a></li>
+                                    @endcan
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                @endcan
+                                @can('viewAny', \App\Models\Certificate::class)
+                                    <li><a class="dropdown-item" href="{{route('certificate.index')}}">{{__('caption.cms.menu-item.certificate-menu.index')}}</a></li>
+                                    @can('create', \App\Models\Certificate::class)
+                                    <li><a class="dropdown-item" href="{{route('certificate.create')}}">{{__('caption.cms.menu-item.certificate-menu.add')}}</a></li>
+                                    @endcan
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                @endcan
+                                @can('viewAny', \App\Models\Education::class)
+                                    <li><a class="dropdown-item" href="{{route('education.index')}}">{{__('caption.cms.menu-item.education-menu.index')}}</a></li>
+                                    @can('create', \App\Models\Education::class)
+                                    <li><a class="dropdown-item" href="{{route('education.create')}}">{{__('caption.cms.menu-item.education-menu.add')}}</a></li>
+                                    @endcan
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                @endcan
+                                @can('viewAny', \App\Models\Language::class)
+                                    <li><a class="dropdown-item" href="{{route('language.index')}}">{{__('caption.cms.menu-item.language-menu.index')}}</a></li>
+                                    @can('create', \App\Models\Language::class)
+                                    <li><a class="dropdown-item" href="{{route('language.create')}}">{{__('caption.cms.menu-item.language-menu.add')}}</a></li>
+                                    @endcan
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                @endcan
+                                @can('viewAny', \App\Models\Experience::class)
+                                    <li><a class="dropdown-item" href="{{route('experience.index')}}">{{__('caption.cms.menu-item.experience-menu.index')}}</a></li>
+                                    @can('create', \App\Models\Experience::class)
+                                    <li><a class="dropdown-item" href="{{route('experience.create')}}">{{__('caption.cms.menu-item.experience-menu.add')}}</a></li>
+                                    @endcan
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                @endcan
+                                @can('viewAny', \App\Models\Portfolio::class)
+                                    <li><a class="dropdown-item" href="{{route('portfolio.index')}}">{{__('caption.cms.menu-item.portfolio-menu.index')}}</a></li>
+                                    @can('create', \App\Models\Portfolio::class)
+                                    <li><a class="dropdown-item" href="{{route('portfolio.create')}}">{{__('caption.cms.menu-item.portfolio-menu.add')}}</a></li>
+                                    @endcan
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                @endcan
+                                @can('viewAny', \App\Models\Reference::class)
+                                    <li><a class="dropdown-item" href="{{route('reference.index')}}">{{__('caption.cms.menu-item.reference-menu.index')}}</a></li>
+                                    @can('create', \App\Models\Reference::class)
+                                    <li><a class="dropdown-item" href="{{route('reference.create')}}">{{__('caption.cms.menu-item.reference-menu.add')}}</a></li>
+                                    @endcan
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                @endcan
+                                <li><a class="dropdown-item" href="{{route('freelancer.show',\Auth::user()->roleable_id)}}">{{__('caption.cms.menu-item.freelancer-menu.view-mine')}}</a></li>
 							</ul>
 						</li>
-						@endcan
-
-						@can('viewAny', \App\Models\Certificate::class)
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-								aria-expanded="false">
-								{{__('caption.cms.menu-item.certificate-menu.title')}}
-							</a>
-							<ul class="dropdown-menu dropdown-menu-{{$isDarkMode?'white':'dark'}}">
-								<li><a class="dropdown-item" href="{{route('certificate.index')}}">{{__('caption.cms.menu-item.certificate-menu.index')}}</a></li>
-								@can('create', \App\Models\Certificate::class)
-								<li><a class="dropdown-item" href="{{route('certificate.create')}}">{{__('caption.cms.menu-item.certificate-menu.add')}}</a></li>
-								@endcan
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="{{route('certificate.report')}}">{{__('caption.cms.menu-item.certificate-menu.report')}}</a></li>
-							</ul>
-						</li>
-						@endcan
-
-						@can('viewAny', \App\Models\Education::class)
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-								aria-expanded="false">
-								{{__('caption.cms.menu-item.education-menu.title')}}
-							</a>
-							<ul class="dropdown-menu dropdown-menu-{{$isDarkMode?'white':'dark'}}">
-								<li><a class="dropdown-item" href="{{route('education.index')}}">{{__('caption.cms.menu-item.education-menu.index')}}</a></li>
-								@can('create', \App\Models\Education::class)
-								<li><a class="dropdown-item" href="{{route('education.create')}}">{{__('caption.cms.menu-item.education-menu.add')}}</a></li>
-								@endcan
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="{{route('education.report')}}">{{__('caption.cms.menu-item.education-menu.report')}}</a></li>
-							</ul>
-						</li>
-						@endcan
-
-						@can('viewAny', \App\Models\Language::class)
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-								aria-expanded="false">
-								{{__('caption.cms.menu-item.language-menu.title')}}
-							</a>
-							<ul class="dropdown-menu dropdown-menu-{{$isDarkMode?'white':'dark'}}">
-								<li><a class="dropdown-item" href="{{route('language.index')}}">{{__('caption.cms.menu-item.language-menu.index')}}</a></li>
-								@can('create', \App\Models\Language::class)
-								<li><a class="dropdown-item" href="{{route('language.create')}}">{{__('caption.cms.menu-item.language-menu.add')}}</a></li>
-								@endcan
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="{{route('language.report')}}">{{__('caption.cms.menu-item.language-menu.report')}}</a></li>
-							</ul>
-						</li>
-						@endcan
-
-						@can('viewAny', \App\Models\Experience::class)
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-								aria-expanded="false">
-								{{__('caption.cms.menu-item.experience-menu.title')}}
-							</a>
-							<ul class="dropdown-menu dropdown-menu-{{$isDarkMode?'white':'dark'}}">
-								<li><a class="dropdown-item" href="{{route('experience.index')}}">{{__('caption.cms.menu-item.experience-menu.index')}}</a></li>
-								@can('create', \App\Models\Experience::class)
-								<li><a class="dropdown-item" href="{{route('experience.create')}}">{{__('caption.cms.menu-item.experience-menu.add')}}</a></li>
-								@endcan
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="{{route('experience.report')}}">{{__('caption.cms.menu-item.experience-menu.report')}}</a></li>
-							</ul>
-						</li>
-						@endcan
-
-						@can('viewAny', \App\Models\Portfolio::class)
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-								aria-expanded="false">
-								{{__('caption.cms.menu-item.portfolio-menu.title')}}
-							</a>
-							<ul class="dropdown-menu dropdown-menu-{{$isDarkMode?'white':'dark'}}">
-								<li><a class="dropdown-item" href="{{route('portfolio.index')}}">{{__('caption.cms.menu-item.portfolio-menu.index')}}</a></li>
-								@can('create', \App\Models\Portfolio::class)
-								<li><a class="dropdown-item" href="{{route('portfolio.create')}}">{{__('caption.cms.menu-item.portfolio-menu.add')}}</a></li>
-								@endcan
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="{{route('portfolio.report')}}">{{__('caption.cms.menu-item.portfolio-menu.report')}}</a></li>
-							</ul>
-						</li>
-						@endcan
-
-						@can('viewAny', \App\Models\Reference::class)
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-								aria-expanded="false">
-								{{__('caption.cms.menu-item.reference-menu.title')}}
-							</a>
-							<ul class="dropdown-menu dropdown-menu-{{$isDarkMode?'white':'dark'}}">
-								<li><a class="dropdown-item" href="{{route('reference.index')}}">{{__('caption.cms.menu-item.reference-menu.index')}}</a></li>
-								@can('create', \App\Models\Reference::class)
-								<li><a class="dropdown-item" href="{{route('reference.create')}}">{{__('caption.cms.menu-item.reference-menu.add')}}</a></li>
-								@endcan
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="{{route('reference.report')}}">{{__('caption.cms.menu-item.reference-menu.report')}}</a></li>
-							</ul>
-						</li>
-						@endcan
+                        @endif
 
 						@can('viewAny', \App\Models\Post::class)
 						<li class="nav-item dropdown">
@@ -232,10 +161,6 @@
 								@can('create', \App\Models\Post::class)
 								<li><a class="dropdown-item" href="{{route('post.create')}}">{{__('caption.cms.menu-item.post-menu.add')}}</a></li>
 								@endcan
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="{{route('post.report')}}">{{__('caption.cms.menu-item.post-menu.report')}}</a></li>
 							</ul>
 						</li>
 						@endcan
@@ -251,112 +176,9 @@
 								@can('create', \App\Models\Job::class)
 								<li><a class="dropdown-item" href="{{route('job.create')}}">{{__('caption.cms.menu-item.job-menu.add')}}</a></li>
 								@endcan
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="{{route('job.report')}}">{{__('caption.cms.menu-item.job-menu.report')}}</a></li>
 							</ul>
 						</li>
 						@endcan
-
-						@can('viewAny', \App\Models\Comment::class)
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-								aria-expanded="false">
-								{{__('caption.cms.menu-item.comment-menu.title')}}
-							</a>
-							<ul class="dropdown-menu dropdown-menu-{{$isDarkMode?'white':'dark'}}">
-								<li><a class="dropdown-item" href="{{route('comment.index')}}">{{__('caption.cms.menu-item.comment-menu.index')}}</a></li>
-								@can('create', \App\Models\Comment::class)
-								<li><a class="dropdown-item" href="{{route('comment.create')}}">{{__('caption.cms.menu-item.comment-menu.add')}}</a></li>
-								@endcan
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="{{route('comment.report')}}">{{__('caption.cms.menu-item.comment-menu.report')}}</a></li>
-							</ul>
-						</li>
-						@endcan
-
-						@can('viewAny', \App\Models\Offer::class)
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-								aria-expanded="false">
-								{{__('caption.cms.menu-item.offer-menu.title')}}
-							</a>
-							<ul class="dropdown-menu dropdown-menu-{{$isDarkMode?'white':'dark'}}">
-								<li><a class="dropdown-item" href="{{route('offer.index')}}">{{__('caption.cms.menu-item.offer-menu.index')}}</a></li>
-								@can('create', \App\Models\Offer::class)
-								<li><a class="dropdown-item" href="{{route('offer.create')}}">{{__('caption.cms.menu-item.offer-menu.add')}}</a></li>
-								@endcan
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="{{route('offer.report')}}">{{__('caption.cms.menu-item.offer-menu.report')}}</a></li>
-							</ul>
-						</li>
-						@endcan
-
-						@can('viewAny', \App\Models\Reaction::class)
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-								aria-expanded="false">
-								{{__('caption.cms.menu-item.reaction-menu.title')}}
-							</a>
-							<ul class="dropdown-menu dropdown-menu-{{$isDarkMode?'white':'dark'}}">
-								<li><a class="dropdown-item" href="{{route('reaction.index')}}">{{__('caption.cms.menu-item.reaction-menu.index')}}</a></li>
-								@can('create', \App\Models\Reaction::class)
-								<li><a class="dropdown-item" href="{{route('reaction.create')}}">{{__('caption.cms.menu-item.reaction-menu.add')}}</a></li>
-								@endcan
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="{{route('reaction.report')}}">{{__('caption.cms.menu-item.reaction-menu.report')}}</a></li>
-							</ul>
-						</li>
-						@endcan
-
-						@can('viewAny', \App\Models\Chat::class)
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-								aria-expanded="false">
-								{{__('caption.cms.menu-item.chat-menu.title')}}
-							</a>
-							<ul class="dropdown-menu dropdown-menu-{{$isDarkMode?'white':'dark'}}">
-								<li><a class="dropdown-item" href="{{route('chat.index')}}">{{__('caption.cms.menu-item.chat-menu.index')}}</a></li>
-								@can('create', \App\Models\Chat::class)
-								<li><a class="dropdown-item" href="{{route('chat.create')}}">{{__('caption.cms.menu-item.chat-menu.add')}}</a></li>
-								@endcan
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="{{route('chat.report')}}">{{__('caption.cms.menu-item.chat-menu.report')}}</a></li>
-							</ul>
-						</li>
-						@endcan
-
-						@can('viewAny', \App\Models\Message::class)
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-								aria-expanded="false">
-								{{__('caption.cms.menu-item.message-menu.title')}}
-							</a>
-							<ul class="dropdown-menu dropdown-menu-{{$isDarkMode?'white':'dark'}}">
-								<li><a class="dropdown-item" href="{{route('message.index')}}">{{__('caption.cms.menu-item.message-menu.index')}}</a></li>
-								@can('create', \App\Models\Message::class)
-								<li><a class="dropdown-item" href="{{route('message.create')}}">{{__('caption.cms.menu-item.message-menu.add')}}</a></li>
-								@endcan
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="{{route('message.report')}}">{{__('caption.cms.menu-item.message-menu.report')}}</a></li>
-							</ul>
-						</li>
-						@endcan
-
-						<li class="nav-item">
-							<a class="nav-link" href="{{route('cms')}}">{{__('caption.cms.menu-item.test')}}</a>
-						</li>
 
 						@if(\Auth::check())
 						<li class="nav-item dropdown">
@@ -370,6 +192,14 @@
 								<li>
 									<hr class="dropdown-divider">
 								</li>
+
+                                @can('viewAny', \App\Models\Chat::class)
+                                    <li><a class="dropdown-item" href="{{route('chat.index')}}">{{__('caption.cms.menu-item.chat-menu.index')}}</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                @endcan
+
 								<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
 									{{ __('caption.labels.logout') }}
 									<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

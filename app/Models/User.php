@@ -14,11 +14,26 @@ class User extends Authenticatable
 	protected $table ='users';
 	public $incrementing = true;
 	public $timestamps = true;
+
+    public const GENDER_MALE ='m';
+    public const GENDER_FEMALE ='f';
+    public const GENDER_OTHER ='o';
+
+    public const MARITAL_STATUS_WIDOWED = 'w';
+    public const MARITAL_STATUS_SINGLE = 's';
+    public const MARITAL_STATUS_MARRIED = 'm';
+    public const MARITAL_STATUS_DIVORCED = 'd';
+    public const MARITAL_STATUS_OTHER = 'o';
+
+    public const NATIONALITY_PAL = 'p';
+    public const NATIONALITY_OTHER = 'o';
+
 	protected $fillable =[
 		'name',
 		'image',
 		'cover',
 		'email',
+		'password',
 		'contact_number',
 		'birth_date',
 		'gender',
@@ -30,6 +45,17 @@ class User extends Authenticatable
 		'roleable_type',
 		'roleable_id',
 	];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
 	protected $attributes = [
 		'name'=>null,
 		'image'=>null,
@@ -131,6 +157,14 @@ class User extends Authenticatable
 	public function roleable(): MorphTo
 	{
         return $this->morphTo();
+	}
+
+    public function isFreelancer(){
+		return $this->roleable_type == Freelancer::class;
+	}
+
+    public function isManger(){
+		return $this->roleable_type == Manger::class;
 	}
 
     public function getRoleTextAttribute(){

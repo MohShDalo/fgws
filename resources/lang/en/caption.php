@@ -15,9 +15,11 @@ return [
 			],
 			'freelancer-menu'=>[
 				'title'=>'Freelancers Managment',
+				'profile'=>'Profile Managment',
 				'index'=>'View Freelancers',
 				'add'=>'Add Freelancer',
 				'view'=>'View Freelancer \':name\'',
+				'view-mine'=>'View My profile',
 				'edit'=>'Edit Freelancer \':name\'',
 				'report'=>'Freelancers Reports',
 			],
@@ -291,15 +293,13 @@ return [
 		],
 		'pages'=>[
 			'login'=>[
-				'password'=>'كلمة المرور',
-				'password_confirm'=>'تأكيد كلمة المرور',
-				'login'=>'تسجيل الدخول',
-				'remember_me'=>'تذكر تسجيل الدخول',
-				'forgot_password'=>'هل نسيت كلمة المرور؟',
-				'password_token'=>'أدخل كود إعادة تعيين كلمة المرور',
-				'reset'=>'إعادة تعيين كلمة المرور',
-				'change_password'=>'تغيير كلمة المرور',
-				'manage_account'=>'إدارة الحساب',
+				'password'=>'Password',
+				'password_confirm'=>'Password confirm',
+				'login'=>'Login',
+				'remember_me'=>'Remember me',
+				'forgot_password'=>'Do you forget password?',
+				'change_password'=>'Change password',
+				'manage_account'=>'Account Manage',
 				''=>''
 			],
 			'user'=>[

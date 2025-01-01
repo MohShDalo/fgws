@@ -2,7 +2,7 @@
 
 @section('content')
 <?php
-$username = app()->environment('local')?'admin@fgws.ps':'';
+$username = app()->environment('local')?'freelancer@fgws.ps':'';
 $password = $username?'password':'';
 ?>
 <div class="container">

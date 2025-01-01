@@ -15,9 +15,9 @@ class CreateMangerTable extends Migration
 	{
 		Schema::create('mangers', function (Blueprint $table) {
 			$table->id();
-			$table->string("company_name")->nullable();
-			$table->string("company_objectives")->nullable();
-			$table->string("company_employees")->nullable();
+			$table->string("company_name",1000)->nullable();
+			$table->string("company_objectives",1000)->nullable();
+			$table->string("company_employees",1000)->nullable();
 			$table->softDeletes();
 			$table->timestamps();
 		});

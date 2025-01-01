@@ -1,28 +1,33 @@
 <?php
 
 return [
-	
+
 	'user'=>[
 		'gender'=> array(
-					/*values here*/
-					''=>'',
-				),
-		'marital_status'=> array(
-					/*values here*/
-					''=>'',
-				),
+            \App\Models\User::GENDER_MALE => 'Male',
+            \App\Models\User::GENDER_FEMALE => 'Female',
+            \App\Models\User::GENDER_OTHER => 'Other',
+        ),
+        'marital_status'=> array(
+            \App\Models\User::MARITAL_STATUS_SINGLE => 'Single',
+            \App\Models\User::MARITAL_STATUS_MARRIED => 'Married',
+            \App\Models\User::MARITAL_STATUS_WIDOWED => 'Widowed',
+            \App\Models\User::MARITAL_STATUS_DIVORCED => 'Divorced',
+            \App\Models\User::MARITAL_STATUS_OTHER => 'Other',
+        ),
 		'nationality'=> array(
-					/*values here*/
-					''=>'',
-				),
+            \App\Models\User::NATIONALITY_PAL => 'Palestinian',
+            \App\Models\User::NATIONALITY_OTHER => 'Other',
+        ),
 		'city'=> array(
-					/*values here*/
-					''=>'',
-				),
+            'ps'=>'Palestine',
+            'other'=>'Other',
+        ),
 		'country'=> array(
-					/*values here*/
-					''=>'',
-				),
+            'ps-gz'=>'Gaza',
+            'ps-rf'=>'Rafah',
+            'other'=>'Other',
+        ),
 	],
 	'freelancer'=>[
 	],
