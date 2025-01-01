@@ -41,7 +41,7 @@ class ReactionController extends Controller
 	 */
 	public function create()
 	{
-		
+
 		$users = User::pluck('name','id')->toArray();
 		$posts = Post::pluck('content','id')->toArray();
 		return view('cms.reaction.create',array('users'=>$users,'posts'=>$posts,));
@@ -81,7 +81,7 @@ class ReactionController extends Controller
 	 */
 	public function edit(Reaction $reaction)
 	{
-		
+
 		$users = User::pluck('name','id')->toArray();
 		$posts = Post::pluck('content','id')->toArray();
 		return view('cms.reaction.edit',array('users'=>$users,'posts'=>$posts,'reaction'=>$reaction));
@@ -128,9 +128,9 @@ class ReactionController extends Controller
 				return redirect(route('cms'))->withErrors(['download'=>__('messages.other.no-data')]);
 		$filters = $request->has('filter')?collect($request->get('filter'))->first():[];
 			$excel = new ReactionExcelHelper('files/xlsx/'.now()->format('Y-m-d').'/reaction '.now()->format('h-i').'.xlsx');
-			return \Storage::download($excel->storeDataFromModel($filters));	
+			return \Storage::download($excel->storeDataFromModel($filters));
 		}catch(\Exception $e){
-			\Log::error('Error of excel export - reaction',[$e->getMessage()])
+			\Log::error('Error of excel export - reaction',[$e->getMessage()]);
 			return redirect(route('cms'))->withErrors(['error'=>$e->getMessage()]);
 		}
 	}

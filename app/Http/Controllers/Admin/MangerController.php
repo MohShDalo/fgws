@@ -39,7 +39,7 @@ class MangerController extends Controller
 	 */
 	public function create()
 	{
-		
+
 		return view('cms.manger.create');
 	}
 
@@ -77,7 +77,7 @@ class MangerController extends Controller
 	 */
 	public function edit(Manger $manger)
 	{
-		
+
 		return view('cms.manger.edit',array('manger'=>$manger));
 	}
 
@@ -122,9 +122,9 @@ class MangerController extends Controller
 				return redirect(route('cms'))->withErrors(['download'=>__('messages.other.no-data')]);
 		$filters = $request->has('filter')?collect($request->get('filter'))->first():[];
 			$excel = new MangerExcelHelper('files/xlsx/'.now()->format('Y-m-d').'/manger '.now()->format('h-i').'.xlsx');
-			return \Storage::download($excel->storeDataFromModel($filters));	
+			return \Storage::download($excel->storeDataFromModel($filters));
 		}catch(\Exception $e){
-			\Log::error('Error of excel export - manger',[$e->getMessage()])
+			\Log::error('Error of excel export - manger',[$e->getMessage()]);
 			return redirect(route('cms'))->withErrors(['error'=>$e->getMessage()]);
 		}
 	}

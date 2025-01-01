@@ -2,26 +2,13 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<title>
-		@yield('title')
-	</title>
-	<script src="{{ asset('js/app.js') }}" defer></script>
-	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="stylesheet" href="{{asset('/css/bootstrap-icons.css')}}">
-	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-	<style>
-		.rtl .dropdown-item{
-			text-align:right
-		}
-	</style>
+    @include('layouts.meta')
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 	@stack('css')
 </head>
-<?php 
+<?php
 	$isDarkMode = true;
-	$is_RTL = \Config::get('app.locale') == 'ar'; 
+	$is_RTL = \Config::get('app.locale') == 'ar';
 ?>
 <body dir="{{$is_RTL?'rtl':'ltr'}}" class="{{$is_RTL?'rtl':'ltr'}}">
 	<nav class="navbar navbar-{{$isDarkMode?'dark':'light'}} bg-{{$isDarkMode?'dark':'light'}} fixed-top">
@@ -43,7 +30,7 @@
 				<div class="offcanvas-body bg-main-color-light">
 					@if(\Auth::check())
 					<ul class="navbar-nav justify-content-{{$is_RTL?'start':'end'}} flex-grow-1 pe-3">
-						
+
 						@can('viewAny', \App\Models\User::class)
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -62,7 +49,7 @@
 							</ul>
 						</li>
 						@endcan
-						
+
 						@can('viewAny', \App\Models\Freelancer::class)
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -81,7 +68,7 @@
 							</ul>
 						</li>
 						@endcan
-						
+
 						@can('viewAny', \App\Models\Manger::class)
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -100,7 +87,7 @@
 							</ul>
 						</li>
 						@endcan
-						
+
 						@can('viewAny', \App\Models\Skill::class)
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -119,7 +106,7 @@
 							</ul>
 						</li>
 						@endcan
-						
+
 						@can('viewAny', \App\Models\Certificate::class)
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -138,7 +125,7 @@
 							</ul>
 						</li>
 						@endcan
-						
+
 						@can('viewAny', \App\Models\Education::class)
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -157,7 +144,7 @@
 							</ul>
 						</li>
 						@endcan
-						
+
 						@can('viewAny', \App\Models\Language::class)
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -176,7 +163,7 @@
 							</ul>
 						</li>
 						@endcan
-						
+
 						@can('viewAny', \App\Models\Experience::class)
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -195,7 +182,7 @@
 							</ul>
 						</li>
 						@endcan
-						
+
 						@can('viewAny', \App\Models\Portfolio::class)
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -214,7 +201,7 @@
 							</ul>
 						</li>
 						@endcan
-						
+
 						@can('viewAny', \App\Models\Reference::class)
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -233,7 +220,7 @@
 							</ul>
 						</li>
 						@endcan
-						
+
 						@can('viewAny', \App\Models\Post::class)
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -252,7 +239,7 @@
 							</ul>
 						</li>
 						@endcan
-						
+
 						@can('viewAny', \App\Models\Job::class)
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -271,7 +258,7 @@
 							</ul>
 						</li>
 						@endcan
-						
+
 						@can('viewAny', \App\Models\Comment::class)
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -290,7 +277,7 @@
 							</ul>
 						</li>
 						@endcan
-						
+
 						@can('viewAny', \App\Models\Offer::class)
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -309,7 +296,7 @@
 							</ul>
 						</li>
 						@endcan
-						
+
 						@can('viewAny', \App\Models\Reaction::class)
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -328,7 +315,7 @@
 							</ul>
 						</li>
 						@endcan
-						
+
 						@can('viewAny', \App\Models\Chat::class)
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -347,7 +334,7 @@
 							</ul>
 						</li>
 						@endcan
-						
+
 						@can('viewAny', \App\Models\Message::class)
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -366,7 +353,7 @@
 							</ul>
 						</li>
 						@endcan
-						
+
 						<li class="nav-item">
 							<a class="nav-link" href="{{route('cms')}}">{{__('caption.cms.menu-item.test')}}</a>
 						</li>
@@ -407,17 +394,17 @@
 					@foreach($errors->all() as $error)
 					<li>{{$error}}</li>
 					@endforeach
-				</ul> 
+				</ul>
 			</div>
-			@endif 
+			@endif
 			@if(session('extra_message'))
 				<div class="alert alert-warning">
-					{!!session()->pull('extra_message')!!} 
+					{!!session()->pull('extra_message')!!}
 				</div>
 			@endif
 			@if(session('type') && session('message'))
 				<div class="alert alert-{{session()->pull('type')}}">
-					{!!session()->pull('message')!!} 
+					{!!session()->pull('message')!!}
 				</div>
 			@endif
 		</div>

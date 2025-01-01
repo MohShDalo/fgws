@@ -12,7 +12,7 @@ class HomeController extends Controller
 	 */
 	public function __construct()
 	{
-		// $this->middleware('auth');
+		$this->middleware('auth');
 	}
 
 	/**
@@ -25,7 +25,17 @@ class HomeController extends Controller
 		return view('cms.home');
 	}
 
-	
+	/**
+	 * Show the application dashboard.
+	 *
+	 * @return \Illuminate\Contracts\Support\Renderable
+	 */
+	public function cms()
+	{
+		return view('cms.home');
+	}
+
+
 	public function test()
 	{
 		dd("Test function");

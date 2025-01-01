@@ -40,7 +40,7 @@ class LanguageController extends Controller
 	 */
 	public function create()
 	{
-		
+
 		$freelancers = Freelancer::pluck('id','id')->toArray();
 		return view('cms.language.create',array('freelancers'=>$freelancers,));
 	}
@@ -79,7 +79,7 @@ class LanguageController extends Controller
 	 */
 	public function edit(Language $language)
 	{
-		
+
 		$freelancers = Freelancer::pluck('id','id')->toArray();
 		return view('cms.language.edit',array('freelancers'=>$freelancers,'language'=>$language));
 	}
@@ -125,9 +125,9 @@ class LanguageController extends Controller
 				return redirect(route('cms'))->withErrors(['download'=>__('messages.other.no-data')]);
 		$filters = $request->has('filter')?collect($request->get('filter'))->first():[];
 			$excel = new LanguageExcelHelper('files/xlsx/'.now()->format('Y-m-d').'/language '.now()->format('h-i').'.xlsx');
-			return \Storage::download($excel->storeDataFromModel($filters));	
+			return \Storage::download($excel->storeDataFromModel($filters));
 		}catch(\Exception $e){
-			\Log::error('Error of excel export - language',[$e->getMessage()])
+			\Log::error('Error of excel export - language',[$e->getMessage()]);
 			return redirect(route('cms'))->withErrors(['error'=>$e->getMessage()]);
 		}
 	}

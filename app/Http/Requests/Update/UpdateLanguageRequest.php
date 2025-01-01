@@ -28,7 +28,7 @@ class UpdateLanguageRequest extends FormRequest
 	{
 		return [
 			"language" => "required|nullable|string|min:0|max:255",
-			"category" => "required|nullable|string|min:0|max:255|in:value1,value2",
+			"category" => "required|nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.language.category')))."",
 			"general_score" => "required|nullable|integer|min:0|max:100000",
 			"speaking_score" => "required|nullable|integer|min:0|max:100000",
 			"writing_score" => "required|nullable|integer|min:0|max:100000",

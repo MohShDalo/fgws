@@ -28,7 +28,7 @@ class UpdateSkillRequest extends FormRequest
 	{
 		return [
 			"title" => "required|nullable|string|min:0|max:255",
-			"category" => "required|nullable|string|min:0|max:255|in:value1,value2",
+			"category" => "required|nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.skill.category')))."",
 			"show" => "nullable|string|min:0|max:255",
 			"freelancer_id" => "nullable|exists:freelancers,id",
 		];

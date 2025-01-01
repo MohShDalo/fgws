@@ -41,7 +41,7 @@ class CommentController extends Controller
 	 */
 	public function create()
 	{
-		
+
 		$users = User::pluck('name','id')->toArray();
 		$posts = Post::pluck('content','id')->toArray();
 		return view('cms.comment.create',array('users'=>$users,'posts'=>$posts,));
@@ -81,7 +81,7 @@ class CommentController extends Controller
 	 */
 	public function edit(Comment $comment)
 	{
-		
+
 		$users = User::pluck('name','id')->toArray();
 		$posts = Post::pluck('content','id')->toArray();
 		return view('cms.comment.edit',array('users'=>$users,'posts'=>$posts,'comment'=>$comment));
@@ -128,9 +128,9 @@ class CommentController extends Controller
 				return redirect(route('cms'))->withErrors(['download'=>__('messages.other.no-data')]);
 		$filters = $request->has('filter')?collect($request->get('filter'))->first():[];
 			$excel = new CommentExcelHelper('files/xlsx/'.now()->format('Y-m-d').'/comment '.now()->format('h-i').'.xlsx');
-			return \Storage::download($excel->storeDataFromModel($filters));	
+			return \Storage::download($excel->storeDataFromModel($filters));
 		}catch(\Exception $e){
-			\Log::error('Error of excel export - comment',[$e->getMessage()])
+			\Log::error('Error of excel export - comment',[$e->getMessage()]);
 			return redirect(route('cms'))->withErrors(['error'=>$e->getMessage()]);
 		}
 	}

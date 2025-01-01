@@ -30,7 +30,7 @@ class StorePortfolioRequest extends FormRequest
 			"title" => "required|nullable|string|min:0|max:255",
 			"release_date" => "required|nullable|date",
 			"link" => "required|nullable|string|min:0|max:255",
-			"categry" => "required|nullable|string|min:0|max:255|in:value1,value2",
+			"categry" => "required|nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.portfolio.categry')))."",
 			"mockup_image" => "required|nullable|string|min:0|max:255",
 			"file" => "required|nullable|string|min:0|max:255",
 			"note" => "required|nullable|string|min:0|max:255",

@@ -41,7 +41,7 @@ class JobController extends Controller
 	 */
 	public function create()
 	{
-		
+
 		$freelancers = Freelancer::pluck('id','id')->toArray();
 		$mangers = Manger::pluck('id','id')->toArray();
 		return view('cms.job.create',array('freelancers'=>$freelancers,'mangers'=>$mangers,));
@@ -81,7 +81,7 @@ class JobController extends Controller
 	 */
 	public function edit(Job $job)
 	{
-		
+
 		$freelancers = Freelancer::pluck('id','id')->toArray();
 		$mangers = Manger::pluck('id','id')->toArray();
 		return view('cms.job.edit',array('freelancers'=>$freelancers,'mangers'=>$mangers,'job'=>$job));
@@ -128,9 +128,9 @@ class JobController extends Controller
 				return redirect(route('cms'))->withErrors(['download'=>__('messages.other.no-data')]);
 		$filters = $request->has('filter')?collect($request->get('filter'))->first():[];
 			$excel = new JobExcelHelper('files/xlsx/'.now()->format('Y-m-d').'/job '.now()->format('h-i').'.xlsx');
-			return \Storage::download($excel->storeDataFromModel($filters));	
+			return \Storage::download($excel->storeDataFromModel($filters));
 		}catch(\Exception $e){
-			\Log::error('Error of excel export - job',[$e->getMessage()])
+			\Log::error('Error of excel export - job',[$e->getMessage()]);
 			return redirect(route('cms'))->withErrors(['error'=>$e->getMessage()]);
 		}
 	}

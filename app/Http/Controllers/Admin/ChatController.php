@@ -10,8 +10,6 @@ use App\Http\Requests\Store\StoreChatRequest;
 use App\Http\Requests\Update\UpdateChatRequest;
 use App\Models\Chat;
 use App\Models\User;
-use App\Models\User;
-use App\Models\User;
 class ChatController extends Controller
 {
 
@@ -42,7 +40,7 @@ class ChatController extends Controller
 	 */
 	public function create()
 	{
-		
+
 		$users = User::pluck('name','id')->toArray();
 		$users = User::pluck('name','id')->toArray();
 		$users = User::pluck('name','id')->toArray();
@@ -83,7 +81,7 @@ class ChatController extends Controller
 	 */
 	public function edit(Chat $chat)
 	{
-		
+
 		$users = User::pluck('name','id')->toArray();
 		$users = User::pluck('name','id')->toArray();
 		$users = User::pluck('name','id')->toArray();
@@ -131,9 +129,9 @@ class ChatController extends Controller
 				return redirect(route('cms'))->withErrors(['download'=>__('messages.other.no-data')]);
 		$filters = $request->has('filter')?collect($request->get('filter'))->first():[];
 			$excel = new ChatExcelHelper('files/xlsx/'.now()->format('Y-m-d').'/chat '.now()->format('h-i').'.xlsx');
-			return \Storage::download($excel->storeDataFromModel($filters));	
+			return \Storage::download($excel->storeDataFromModel($filters));
 		}catch(\Exception $e){
-			\Log::error('Error of excel export - chat',[$e->getMessage()])
+			\Log::error('Error of excel export - chat',[$e->getMessage()]);
 			return redirect(route('cms'))->withErrors(['error'=>$e->getMessage()]);
 		}
 	}

@@ -3,7 +3,6 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UserPolicy
@@ -16,7 +15,7 @@ class UserPolicy
 	 * @param  \App\Models\User  $user
 	 * @return \Illuminate\Auth\Access\Response|bool
 	 */
-	public function viewAny(User $user)
+	public function viewAny(User $auth)
 	{
 		return true;
 	}
@@ -28,7 +27,7 @@ class UserPolicy
 	 * @param  \App\Models\User  $user
 	 * @return \Illuminate\Auth\Access\Response|bool
 	 */
-	public function view(User $user, User $user)
+	public function view(User $auth, User $user)
 	{
 		return true;
 	}
@@ -39,7 +38,7 @@ class UserPolicy
 	 * @param  \App\Models\User  $user
 	 * @return \Illuminate\Auth\Access\Response|bool
 	 */
-	public function create(User $user)
+	public function create(User $auth)
 	{
 		return true;
 	}
@@ -51,7 +50,7 @@ class UserPolicy
 	 * @param  \App\Models\User  $user
 	 * @return \Illuminate\Auth\Access\Response|bool
 	 */
-	public function update(User $user, User $user)
+	public function update(User $auth, User $user)
 	{
 		return true;
 	}
@@ -63,7 +62,7 @@ class UserPolicy
 	 * @param  \App\Models\User  $user
 	 * @return \Illuminate\Auth\Access\Response|bool
 	 */
-	public function delete(User $user, User $user)
+	public function delete(User $auth, User $user)
 	{
 		return true;
 	}
@@ -75,7 +74,7 @@ class UserPolicy
 	 * @param  \App\Models\User  $user
 	 * @return \Illuminate\Auth\Access\Response|bool
 	 */
-	public function restore(User $user, User $user)
+	public function restore(User $auth, User $user)
 	{
 		return true;
 	}
@@ -87,7 +86,7 @@ class UserPolicy
 	 * @param  \App\Models\User  $user
 	 * @return \Illuminate\Auth\Access\Response|bool
 	 */
-	public function forceDelete(User $user, User $user)
+	public function forceDelete(User $auth, User $user)
 	{
 		return true;
 	}

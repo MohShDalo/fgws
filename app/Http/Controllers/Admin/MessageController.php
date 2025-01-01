@@ -41,7 +41,7 @@ class MessageController extends Controller
 	 */
 	public function create()
 	{
-		
+
 		$users = User::pluck('name','id')->toArray();
 		$chats = Chat::pluck('title','id')->toArray();
 		return view('cms.message.create',array('users'=>$users,'chats'=>$chats,));
@@ -81,7 +81,7 @@ class MessageController extends Controller
 	 */
 	public function edit(Message $message)
 	{
-		
+
 		$users = User::pluck('name','id')->toArray();
 		$chats = Chat::pluck('title','id')->toArray();
 		return view('cms.message.edit',array('users'=>$users,'chats'=>$chats,'message'=>$message));
@@ -128,9 +128,9 @@ class MessageController extends Controller
 				return redirect(route('cms'))->withErrors(['download'=>__('messages.other.no-data')]);
 		$filters = $request->has('filter')?collect($request->get('filter'))->first():[];
 			$excel = new MessageExcelHelper('files/xlsx/'.now()->format('Y-m-d').'/message '.now()->format('h-i').'.xlsx');
-			return \Storage::download($excel->storeDataFromModel($filters));	
+			return \Storage::download($excel->storeDataFromModel($filters));
 		}catch(\Exception $e){
-			\Log::error('Error of excel export - message',[$e->getMessage()])
+			\Log::error('Error of excel export - message',[$e->getMessage()]);
 			return redirect(route('cms'))->withErrors(['error'=>$e->getMessage()]);
 		}
 	}

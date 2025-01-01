@@ -40,7 +40,7 @@ class PostController extends Controller
 	 */
 	public function create()
 	{
-		
+
 		$freelancers = Freelancer::pluck('id','id')->toArray();
 		return view('cms.post.create',array('freelancers'=>$freelancers,));
 	}
@@ -79,7 +79,7 @@ class PostController extends Controller
 	 */
 	public function edit(Post $post)
 	{
-		
+
 		$freelancers = Freelancer::pluck('id','id')->toArray();
 		return view('cms.post.edit',array('freelancers'=>$freelancers,'post'=>$post));
 	}
@@ -125,9 +125,9 @@ class PostController extends Controller
 				return redirect(route('cms'))->withErrors(['download'=>__('messages.other.no-data')]);
 		$filters = $request->has('filter')?collect($request->get('filter'))->first():[];
 			$excel = new PostExcelHelper('files/xlsx/'.now()->format('Y-m-d').'/post '.now()->format('h-i').'.xlsx');
-			return \Storage::download($excel->storeDataFromModel($filters));	
+			return \Storage::download($excel->storeDataFromModel($filters));
 		}catch(\Exception $e){
-			\Log::error('Error of excel export - post',[$e->getMessage()])
+			\Log::error('Error of excel export - post',[$e->getMessage()]);
 			return redirect(route('cms'))->withErrors(['error'=>$e->getMessage()]);
 		}
 	}

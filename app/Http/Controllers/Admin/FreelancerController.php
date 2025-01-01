@@ -40,7 +40,7 @@ class FreelancerController extends Controller
 	 */
 	public function create()
 	{
-		
+
 		$users = User::pluck('name','id')->toArray();
 		return view('cms.freelancer.create',array('users'=>$users,));
 	}
@@ -79,7 +79,7 @@ class FreelancerController extends Controller
 	 */
 	public function edit(Freelancer $freelancer)
 	{
-		
+
 		$users = User::pluck('name','id')->toArray();
 		return view('cms.freelancer.edit',array('users'=>$users,'freelancer'=>$freelancer));
 	}
@@ -125,9 +125,9 @@ class FreelancerController extends Controller
 				return redirect(route('cms'))->withErrors(['download'=>__('messages.other.no-data')]);
 		$filters = $request->has('filter')?collect($request->get('filter'))->first():[];
 			$excel = new FreelancerExcelHelper('files/xlsx/'.now()->format('Y-m-d').'/freelancer '.now()->format('h-i').'.xlsx');
-			return \Storage::download($excel->storeDataFromModel($filters));	
+			return \Storage::download($excel->storeDataFromModel($filters));
 		}catch(\Exception $e){
-			\Log::error('Error of excel export - freelancer',[$e->getMessage()])
+			\Log::error('Error of excel export - freelancer',[$e->getMessage()]);
 			return redirect(route('cms'))->withErrors(['error'=>$e->getMessage()]);
 		}
 	}

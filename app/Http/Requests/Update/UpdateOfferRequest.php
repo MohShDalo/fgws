@@ -30,7 +30,7 @@ class UpdateOfferRequest extends FormRequest
 			"content" => "required|nullable|string|min:0|max:1000",
 			"price" => "required|nullable|integer|min:0|max:100000",
 			"time" => "required|nullable|integer|min:0|max:100000",
-			"status" => "required|nullable|string|min:0|max:255|in:value1,value2",
+			"status" => "required|nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.offer.status')))."",
 			"status_reason" => "required|nullable|string|min:0|max:255",
 			"owner_id" => "nullable|exists:freelancers,id",
 			"job_id" => "nullable|exists:jobs,id",

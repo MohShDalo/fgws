@@ -40,7 +40,7 @@ class PortfolioController extends Controller
 	 */
 	public function create()
 	{
-		
+
 		$freelancers = Freelancer::pluck('id','id')->toArray();
 		return view('cms.portfolio.create',array('freelancers'=>$freelancers,));
 	}
@@ -79,7 +79,7 @@ class PortfolioController extends Controller
 	 */
 	public function edit(Portfolio $portfolio)
 	{
-		
+
 		$freelancers = Freelancer::pluck('id','id')->toArray();
 		return view('cms.portfolio.edit',array('freelancers'=>$freelancers,'portfolio'=>$portfolio));
 	}
@@ -125,9 +125,9 @@ class PortfolioController extends Controller
 				return redirect(route('cms'))->withErrors(['download'=>__('messages.other.no-data')]);
 		$filters = $request->has('filter')?collect($request->get('filter'))->first():[];
 			$excel = new PortfolioExcelHelper('files/xlsx/'.now()->format('Y-m-d').'/portfolio '.now()->format('h-i').'.xlsx');
-			return \Storage::download($excel->storeDataFromModel($filters));	
+			return \Storage::download($excel->storeDataFromModel($filters));
 		}catch(\Exception $e){
-			\Log::error('Error of excel export - portfolio',[$e->getMessage()])
+			\Log::error('Error of excel export - portfolio',[$e->getMessage()]);
 			return redirect(route('cms'))->withErrors(['error'=>$e->getMessage()]);
 		}
 	}

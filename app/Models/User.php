@@ -4,8 +4,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class User extends Model
+class User extends Authenticatable
 {
 
 	use HasFactory, SoftDeletes;
@@ -99,13 +101,13 @@ class User extends Model
 	}
 	//No Readable Get method for relation [User - created_by | reactions - Reaction]
 
-	public function chats()
+	public function chats_1()
 	{
 		return $this->hasMany(Chat::class,'first_member_id','id');
 	}
 	//No Readable Get method for relation [User - first_member | chats - Chat]
 
-	public function chats()
+	public function chats_2()
 	{
 		return $this->hasMany(Chat::class,'second_member_id','id');
 	}
@@ -129,8 +131,8 @@ class User extends Model
 	public function delete(){
 		$this->comments()->delete();
 		$this->reactions()->delete();
-		$this->chats()->delete();
-		$this->chats()->delete();
+		$this->chats_1()->delete();
+		$this->chats_2()->delete();
 		$this->chats()->delete();
 		$this->messages()->delete();
 		parent::delete();

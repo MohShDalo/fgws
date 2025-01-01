@@ -40,7 +40,7 @@ class EducationController extends Controller
 	 */
 	public function create()
 	{
-		
+
 		$freelancers = Freelancer::pluck('id','id')->toArray();
 		return view('cms.education.create',array('freelancers'=>$freelancers,));
 	}
@@ -79,7 +79,7 @@ class EducationController extends Controller
 	 */
 	public function edit(Education $education)
 	{
-		
+
 		$freelancers = Freelancer::pluck('id','id')->toArray();
 		return view('cms.education.edit',array('freelancers'=>$freelancers,'education'=>$education));
 	}
@@ -125,9 +125,9 @@ class EducationController extends Controller
 				return redirect(route('cms'))->withErrors(['download'=>__('messages.other.no-data')]);
 		$filters = $request->has('filter')?collect($request->get('filter'))->first():[];
 			$excel = new EducationExcelHelper('files/xlsx/'.now()->format('Y-m-d').'/education '.now()->format('h-i').'.xlsx');
-			return \Storage::download($excel->storeDataFromModel($filters));	
+			return \Storage::download($excel->storeDataFromModel($filters));
 		}catch(\Exception $e){
-			\Log::error('Error of excel export - education',[$e->getMessage()])
+			\Log::error('Error of excel export - education',[$e->getMessage()]);
 			return redirect(route('cms'))->withErrors(['error'=>$e->getMessage()]);
 		}
 	}

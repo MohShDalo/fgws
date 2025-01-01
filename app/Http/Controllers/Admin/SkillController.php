@@ -40,7 +40,7 @@ class SkillController extends Controller
 	 */
 	public function create()
 	{
-		
+
 		$freelancers = Freelancer::pluck('id','id')->toArray();
 		return view('cms.skill.create',array('freelancers'=>$freelancers,));
 	}
@@ -79,7 +79,7 @@ class SkillController extends Controller
 	 */
 	public function edit(Skill $skill)
 	{
-		
+
 		$freelancers = Freelancer::pluck('id','id')->toArray();
 		return view('cms.skill.edit',array('freelancers'=>$freelancers,'skill'=>$skill));
 	}
@@ -125,9 +125,9 @@ class SkillController extends Controller
 				return redirect(route('cms'))->withErrors(['download'=>__('messages.other.no-data')]);
 		$filters = $request->has('filter')?collect($request->get('filter'))->first():[];
 			$excel = new SkillExcelHelper('files/xlsx/'.now()->format('Y-m-d').'/skill '.now()->format('h-i').'.xlsx');
-			return \Storage::download($excel->storeDataFromModel($filters));	
+			return \Storage::download($excel->storeDataFromModel($filters));
 		}catch(\Exception $e){
-			\Log::error('Error of excel export - skill',[$e->getMessage()])
+			\Log::error('Error of excel export - skill',[$e->getMessage()]);
 			return redirect(route('cms'))->withErrors(['error'=>$e->getMessage()]);
 		}
 	}

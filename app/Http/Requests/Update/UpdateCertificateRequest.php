@@ -32,7 +32,7 @@ class UpdateCertificateRequest extends FormRequest
 			"start_date" => "required|nullable|date",
 			"end_date" => "required|nullable|date",
 			"organizer" => "required|nullable|string|min:0|max:255",
-			"category" => "required|nullable|string|min:0|max:255|in:value1,value2",
+			"category" => "required|nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.certificate.category')))."",
 			"file" => "required|nullable|string|min:0|max:255",
 			"show" => "nullable|string|min:0|max:255",
 			"note" => "required|nullable|string|min:0|max:255",

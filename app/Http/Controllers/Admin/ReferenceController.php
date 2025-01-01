@@ -40,7 +40,7 @@ class ReferenceController extends Controller
 	 */
 	public function create()
 	{
-		
+
 		$freelancers = Freelancer::pluck('id','id')->toArray();
 		return view('cms.reference.create',array('freelancers'=>$freelancers,));
 	}
@@ -79,7 +79,7 @@ class ReferenceController extends Controller
 	 */
 	public function edit(Reference $reference)
 	{
-		
+
 		$freelancers = Freelancer::pluck('id','id')->toArray();
 		return view('cms.reference.edit',array('freelancers'=>$freelancers,'reference'=>$reference));
 	}
@@ -125,9 +125,9 @@ class ReferenceController extends Controller
 				return redirect(route('cms'))->withErrors(['download'=>__('messages.other.no-data')]);
 		$filters = $request->has('filter')?collect($request->get('filter'))->first():[];
 			$excel = new ReferenceExcelHelper('files/xlsx/'.now()->format('Y-m-d').'/reference '.now()->format('h-i').'.xlsx');
-			return \Storage::download($excel->storeDataFromModel($filters));	
+			return \Storage::download($excel->storeDataFromModel($filters));
 		}catch(\Exception $e){
-			\Log::error('Error of excel export - reference',[$e->getMessage()])
+			\Log::error('Error of excel export - reference',[$e->getMessage()]);
 			return redirect(route('cms'))->withErrors(['error'=>$e->getMessage()]);
 		}
 	}

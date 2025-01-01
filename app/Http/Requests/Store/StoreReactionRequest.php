@@ -27,7 +27,7 @@ class StoreReactionRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			"type" => "required|nullable|string|min:0|max:255|in:value1,value2",
+			"type" => "required|nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.reaction.type')))."",
 			"created_by_id" => "nullable|exists:users,id",
 			"post_id" => "nullable|exists:posts,id",
 		];
