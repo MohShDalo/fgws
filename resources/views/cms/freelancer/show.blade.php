@@ -1,18 +1,59 @@
 @extends('layouts.cms')
 
 @section('title')
-{{__('caption.cms.menu-item.freelancer-menu.view',['name'=>$freelancer->id??''] )}}
+{{__('caption.cms.menu-item.freelancer-menu.view',['name'=>$freelancer->name??''] )}}
 @endsection
 
 @section('content')
 <div class="row">
-	<div class="col-12">
-		<h1>{{__('caption.cms.menu-item.freelancer-menu.view',["name"=>$freelancer->id??''])}}</h1>
-	</div>
-	<div class="col-12">
+    <?php $user = $freelancer->user;?>
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+        <img src="{{$user->image}}" alt="profile-image" width="100%">
+    </div>
+    <div class="col-xl-9 col-lg-8 col-md-6 col-sm-12">
 		<div class="card">
-			<div class="card-body">
-				<div class="row">
+			<div class="card-body" style="background-image: url({{$user->cover}})">
+				<div class="row py-3" style="background-color: rgb(255,255,255,48%);border-radius: 20px;">
+                    <div class="mb-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+						<label for="">{{__('caption.cms.fields.user.name')}}</label>
+						<div class="form-control">{!!$user->name??'-'!!}</div>
+					</div>
+					<div class="mb-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+						<label for="">{{__('caption.cms.fields.user.email')}}</label>
+						<div class="form-control">{!!$user->email??'-'!!}</div>
+					</div>
+					<div class="mb-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+						<label for="">{{__('caption.cms.fields.user.contact_number')}}</label>
+						<div class="form-control">{!!$user->contact_number??'-'!!}</div>
+					</div>
+					<div class="mb-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+						<label for="">{{__('caption.cms.fields.user.birth_date')}}</label>
+						<div class="form-control">{!!$user->birth_date_formated??'-'!!}</div>
+					</div>
+					<div class="mb-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+						<label for="">{{__('caption.cms.fields.user.gender')}}</label>
+						<div class="form-control">{!!$user->gender_text??'-'!!}</div>
+					</div>
+					<div class="mb-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+						<label for="">{{__('caption.cms.fields.user.marital_status')}}</label>
+						<div class="form-control">{!!$user->marital_status_text??'-'!!}</div>
+					</div>
+					<div class="mb-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+						<label for="">{{__('caption.cms.fields.user.nationality')}}</label>
+						<div class="form-control">{!!$user->nationality_text??'-'!!}</div>
+					</div>
+					<div class="mb-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+						<label for="">{{__('caption.cms.fields.user.city')}}</label>
+						<div class="form-control">{!!$user->city_text??'-'!!}</div>
+					</div>
+					<div class="mb-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+						<label for="">{{__('caption.cms.fields.user.country')}}</label>
+						<div class="form-control">{!!$user->country_text??'-'!!}</div>
+					</div>
+					<div class="mb-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+						<label for="">{{__('caption.cms.fields.user.address_details')}}</label>
+						<div class="form-control">{!!$user->address_details??'-'!!}</div>
+					</div>
 					<div class="mb-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
 						<label for="">{{__('caption.cms.fields.freelancer.main_career')}}</label>
 						<div class="form-control">{!!$freelancer->main_career??'-'!!}</div>
@@ -23,23 +64,22 @@
 					</div>
 				</div>
 			</div>
-			<div class="card-footer">
-				<!-- Note -->
-			</div>
 		</div>
 	</div>
 	<div class="col-12 mt-3">
 		<div class="row justify-content-center">
+            @can('update',$freelancer)
 			<div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
 				<a href="{{route('freelancer.edit',$freelancer->id)}}" class="btn btn-outline-primary form-control">{{__('caption.labels.edit')}}</a>
 			</div>
-			<div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
+            @endcan
+			{{-- <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
 				<form action="{{route('freelancer.destroy',$freelancer->id)}}" method="POST">
 					@csrf
 					@method('DELETE')
 					<input type="submit" class="form-control btn btn-outline-{{$freelancer->deleted_at?'success':'danger'}}" value="{{__('caption.labels.'.($freelancer->deleted_at?'restore':'delete'))}}">
 				</form>
-			</div>
+			</div> --}}
 		</div>
 	</div>
 </div>
@@ -75,8 +115,13 @@
 	:filtersValues="[]"
 	:filtersBootstrap="[]"
 	:filtersLabels="[]"
-	:resetUrl="route('freelancer.show',$freelancer->id)"
+	{{-- :resetUrl="route('freelancer.show',$freelancer->id)" --}}
 ></x-table>
+<div class="row justify-content-center mt-3 mb-3">
+	<div class="col-lg-3">
+		<a href="{{route('skill.create')}}" target="_blank" class="form-control btn btn-outline-info">{{__('caption.cms.menu-item.skill-menu.add')}}</a>
+	</div>
+</div>
 <hr>
 <br>
 <div class="row">
@@ -114,8 +159,13 @@
 	:filtersValues="[]"
 	:filtersBootstrap="[]"
 	:filtersLabels="[]"
-	:resetUrl="route('freelancer.show',$freelancer->id)"
+	{{-- :resetUrl="route('freelancer.show',$freelancer->id)" --}}
 ></x-table>
+<div class="row justify-content-center mt-3 mb-3">
+	<div class="col-lg-3">
+		<a href="{{route('certificate.create')}}" target="_blank" class="form-control btn btn-outline-info">{{__('caption.cms.menu-item.certificate-menu.add')}}</a>
+	</div>
+</div>
 <hr>
 <br>
 <div class="row">
@@ -153,8 +203,13 @@
 	:filtersValues="[]"
 	:filtersBootstrap="[]"
 	:filtersLabels="[]"
-	:resetUrl="route('freelancer.show',$freelancer->id)"
+	{{-- :resetUrl="route('freelancer.show',$freelancer->id)" --}}
 ></x-table>
+<div class="row justify-content-center mt-3 mb-3">
+	<div class="col-lg-3">
+		<a href="{{route('education.create')}}" target="_blank" class="form-control btn btn-outline-info">{{__('caption.cms.menu-item.education-menu.add')}}</a>
+	</div>
+</div>
 <hr>
 <br>
 <div class="row">
@@ -191,8 +246,13 @@
 	:filtersValues="[]"
 	:filtersBootstrap="[]"
 	:filtersLabels="[]"
-	:resetUrl="route('freelancer.show',$freelancer->id)"
+	{{-- :resetUrl="route('freelancer.show',$freelancer->id)" --}}
 ></x-table>
+<div class="row justify-content-center mt-3 mb-3">
+	<div class="col-lg-3">
+		<a href="{{route('language.create')}}" target="_blank" class="form-control btn btn-outline-info">{{__('caption.cms.menu-item.language-menu.add')}}</a>
+	</div>
+</div>
 <hr>
 <br>
 <div class="row">
@@ -228,8 +288,13 @@
 	:filtersValues="[]"
 	:filtersBootstrap="[]"
 	:filtersLabels="[]"
-	:resetUrl="route('freelancer.show',$freelancer->id)"
+	{{-- :resetUrl="route('freelancer.show',$freelancer->id)" --}}
 ></x-table>
+<div class="row justify-content-center mt-3 mb-3">
+	<div class="col-lg-3">
+		<a href="{{route('experience.create')}}" target="_blank" class="form-control btn btn-outline-info">{{__('caption.cms.menu-item.experience-menu.add')}}</a>
+	</div>
+</div>
 <hr>
 <br>
 <div class="row">
@@ -265,8 +330,13 @@
 	:filtersValues="[]"
 	:filtersBootstrap="[]"
 	:filtersLabels="[]"
-	:resetUrl="route('freelancer.show',$freelancer->id)"
+	{{-- :resetUrl="route('freelancer.show',$freelancer->id)" --}}
 ></x-table>
+<div class="row justify-content-center mt-3 mb-3">
+	<div class="col-lg-3">
+		<a href="{{route('portfolio.create')}}" target="_blank" class="form-control btn btn-outline-info">{{__('caption.cms.menu-item.portfolio-menu.add')}}</a>
+	</div>
+</div>
 <hr>
 <br>
 <div class="row">
@@ -300,8 +370,13 @@
 	:filtersValues="[]"
 	:filtersBootstrap="[]"
 	:filtersLabels="[]"
-	:resetUrl="route('freelancer.show',$freelancer->id)"
+	{{-- :resetUrl="route('freelancer.show',$freelancer->id)" --}}
 ></x-table>
+<div class="row justify-content-center mt-3 mb-3">
+	<div class="col-lg-3">
+		<a href="{{route('reference.create')}}" target="_blank" class="form-control btn btn-outline-info">{{__('caption.cms.menu-item.reference-menu.add')}}</a>
+	</div>
+</div>
 <hr>
 <br>
 <div class="row">
@@ -332,8 +407,13 @@
 	:filtersValues="[]"
 	:filtersBootstrap="[]"
 	:filtersLabels="[]"
-	:resetUrl="route('freelancer.show',$freelancer->id)"
+	{{-- :resetUrl="route('freelancer.show',$freelancer->id)" --}}
 ></x-table>
+<div class="row justify-content-center mt-3 mb-3">
+	<div class="col-lg-3">
+		<a href="{{route('post.create')}}" target="_blank" class="form-control btn btn-outline-info">{{__('caption.cms.menu-item.post-menu.add')}}</a>
+	</div>
+</div>
 <hr>
 <br>
 <div class="row">
@@ -368,7 +448,7 @@
 	:filtersValues="[]"
 	:filtersBootstrap="[]"
 	:filtersLabels="[]"
-	:resetUrl="route('freelancer.show',$freelancer->id)"
+	{{-- :resetUrl="route('freelancer.show',$freelancer->id)" --}}
 ></x-table>
 <hr>
 <br>
@@ -404,6 +484,6 @@
 	:filtersValues="[]"
 	:filtersBootstrap="[]"
 	:filtersLabels="[]"
-	:resetUrl="route('freelancer.show',$freelancer->id)"
+	{{-- :resetUrl="route('freelancer.show',$freelancer->id)" --}}
 ></x-table>
 @endsection

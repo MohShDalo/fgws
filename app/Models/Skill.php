@@ -12,6 +12,10 @@ class Skill extends Model
 	protected $table ='skills';
 	public $incrementing = true;
 	public $timestamps = true;
+
+    public const CATEGORY_LIFESTYLE = 'life-style';
+    public const CATEGORY_TECHNICAL = 'technical';
+
 	protected $fillable =[
 		'title',
 		'category',

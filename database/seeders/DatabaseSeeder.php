@@ -30,8 +30,8 @@ class DatabaseSeeder extends Seeder
 
         $temp = User::create([
             'name'              =>"Freelancer Test",
-            'image'             =>'\img\profile-no-image.jpg',
-            'cover'             =>'\img\no-image.jpeg',
+            'image'             =>'/img/profile-no-image.jpg',
+            'cover'             =>'/img/no-image.jpeg',
             'email'             =>'freelancer@fgws.ps',
             'password'          =>Hash::make('password'),
             'contact_number'    =>"0590000000",
@@ -54,8 +54,8 @@ class DatabaseSeeder extends Seeder
 
         $temp = User::create([
             'name'              =>"Manager Test",
-            'image'             =>'\img\profile-no-image.jpg',
-            'cover'             =>'\img\no-image.jpeg',
+            'image'             =>'/img/profile-no-image.jpg',
+            'cover'             =>'/img/no-image.jpeg',
             'email'             =>'manager@fgws.ps',
             'password'          =>Hash::make('password'),
             'contact_number'    =>"0591111111",

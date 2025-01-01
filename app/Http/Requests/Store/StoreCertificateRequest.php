@@ -15,7 +15,7 @@ class StoreCertificateRequest extends FormRequest
 	 */
 	public function authorize()
 	{
-		
+
 		return Gate::allows('create', Certificate::class);
 	}
 
@@ -36,7 +36,7 @@ class StoreCertificateRequest extends FormRequest
 			"file" => "required|nullable|string|min:0|max:255",
 			"show" => "nullable|string|min:0|max:255",
 			"note" => "required|nullable|string|min:0|max:255",
-			"freelancer_id" => "nullable|exists:freelancers,id",
+			// "freelancer_id" => "nullable|exists:freelancers,id",
 		];
 	}
 	public function attributes(): array
@@ -53,10 +53,12 @@ class StoreCertificateRequest extends FormRequest
 		$temp['category'] = htmlspecialchars($temp['category']??null);
 		$temp['file'] = htmlspecialchars($temp['file']??null);
 		$temp['note'] = htmlspecialchars($temp['note']??null);
+        $temp['freelancer_id'] = \Auth::check()?\Auth::user()->roleable_id:null;
+
 		// some extra information
 		return $temp;
-	} 
-	
+	}
+
 	public function messages()
 	{
 		return [

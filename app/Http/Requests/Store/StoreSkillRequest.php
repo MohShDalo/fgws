@@ -15,7 +15,7 @@ class StoreSkillRequest extends FormRequest
 	 */
 	public function authorize()
 	{
-		
+
 		return Gate::allows('create', Skill::class);
 	}
 
@@ -30,7 +30,7 @@ class StoreSkillRequest extends FormRequest
 			"title" => "required|nullable|string|min:0|max:255",
 			"category" => "required|nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.skill.category')))."",
 			"show" => "nullable|string|min:0|max:255",
-			"freelancer_id" => "nullable|exists:freelancers,id",
+			// "freelancer_id" => "nullable|exists:freelancers,id",
 		];
 	}
 	public function attributes(): array
@@ -43,10 +43,11 @@ class StoreSkillRequest extends FormRequest
 		$temp['show'] = isset($temp['show']);
 		$temp['title'] = htmlspecialchars($temp['title']??null);
 		$temp['category'] = htmlspecialchars($temp['category']??null);
+        $temp['freelancer_id'] = \Auth::check()?\Auth::user()->roleable_id:null;
 		// some extra information
 		return $temp;
-	} 
-	
+	}
+
 	public function messages()
 	{
 		return [

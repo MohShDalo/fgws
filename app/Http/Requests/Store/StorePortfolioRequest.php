@@ -15,7 +15,7 @@ class StorePortfolioRequest extends FormRequest
 	 */
 	public function authorize()
 	{
-		
+
 		return Gate::allows('create', Portfolio::class);
 	}
 
@@ -34,7 +34,7 @@ class StorePortfolioRequest extends FormRequest
 			"mockup_image" => "required|nullable|string|min:0|max:255",
 			"file" => "required|nullable|string|min:0|max:255",
 			"note" => "required|nullable|string|min:0|max:255",
-			"freelancer_id" => "nullable|exists:freelancers,id",
+			// "freelancer_id" => "nullable|exists:freelancers,id",
 		];
 	}
 	public function attributes(): array
@@ -50,10 +50,11 @@ class StorePortfolioRequest extends FormRequest
 		$temp['mockup_image'] = htmlspecialchars($temp['mockup_image']??null);
 		$temp['file'] = htmlspecialchars($temp['file']??null);
 		$temp['note'] = htmlspecialchars($temp['note']??null);
+        $temp['freelancer_id'] = \Auth::check()?\Auth::user()->roleable_id:null;
 		// some extra information
 		return $temp;
-	} 
-	
+	}
+
 	public function messages()
 	{
 		return [

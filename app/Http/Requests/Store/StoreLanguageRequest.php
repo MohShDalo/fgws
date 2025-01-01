@@ -15,7 +15,7 @@ class StoreLanguageRequest extends FormRequest
 	 */
 	public function authorize()
 	{
-		
+
 		return Gate::allows('create', Language::class);
 	}
 
@@ -35,7 +35,7 @@ class StoreLanguageRequest extends FormRequest
 			"listening_score" => "required|nullable|integer|min:0|max:100000",
 			"show_details" => "nullable|string|min:0|max:255",
 			"note" => "required|nullable|string|min:0|max:255",
-			"freelancer_id" => "nullable|exists:freelancers,id",
+			// "freelancer_id" => "nullable|exists:freelancers,id",
 		];
 	}
 	public function attributes(): array
@@ -49,10 +49,11 @@ class StoreLanguageRequest extends FormRequest
 		$temp['language'] = htmlspecialchars($temp['language']??null);
 		$temp['category'] = htmlspecialchars($temp['category']??null);
 		$temp['note'] = htmlspecialchars($temp['note']??null);
+        $temp['freelancer_id'] = \Auth::check()?\Auth::user()->roleable_id:null;
 		// some extra information
 		return $temp;
-	} 
-	
+	}
+
 	public function messages()
 	{
 		return [

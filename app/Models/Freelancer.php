@@ -43,7 +43,7 @@ class Freelancer extends Model
     {
         return $this->morphOne(User::class, 'roleable');
     }
-	public function getUserNameAttribute()
+	public function getNameAttribute()
 	{
 		return $this->user?->name??null;
 	}

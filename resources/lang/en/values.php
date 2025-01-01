@@ -35,9 +35,9 @@ return [
 	],
 	'skill'=>[
 		'category'=> array(
-					/*values here*/
-					''=>'',
-				),
+            \App\Models\Skill::CATEGORY_LIFESTYLE => 'Life Style',
+            \App\Models\Skill::CATEGORY_TECHNICAL => 'Technical',
+        ),
 		'show'=> array(
 					0=>'No',
 					1=>'Yes'

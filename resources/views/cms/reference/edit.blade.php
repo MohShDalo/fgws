@@ -14,8 +14,8 @@
 <form action="{{route('reference.update',$reference->id)}}" method="POST">
 	@csrf
 	@method("PUT")
-	<div class="row">  
-		
+	<div class="row">
+
 		<x-textfield
 			:xl="3" :lg="4" :md="4" :sm="6" parentClass="mb-3"
 			idName="full_name"
@@ -70,17 +70,6 @@
 			placeholder=""
 			extraAttribute="required"
 		></x-textfield>
-
-		<x-dropdown-list
-			idName="freelancer_id"
-			:initValue="(old('freelancer_id')??$reference->freelancer_id)??null"
-			:caption="__('caption.cms.fields.reference.freelancer_id')"
-			:values="$freelancers"
-			:xl="3"	:lg="4"	:md="4"	:sm="6"	parentClass="mb-3"
-			:placeholder="__('caption.labels.select-label')"
-			extraAttribute="required"
-		>
-		</x-dropdown-list>
 
 	</div>
 	<div class="row justify-content-center">

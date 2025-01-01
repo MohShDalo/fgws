@@ -15,7 +15,7 @@ class StoreEducationRequest extends FormRequest
 	 */
 	public function authorize()
 	{
-		
+
 		return Gate::allows('create', Education::class);
 	}
 
@@ -36,7 +36,7 @@ class StoreEducationRequest extends FormRequest
 			"category" => "required|nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.education.category')))."",
 			"special_rank" => "required|nullable|string|min:0|max:255",
 			"note" => "required|nullable|string|min:0|max:255",
-			"freelancer_id" => "nullable|exists:freelancers,id",
+			// "freelancer_id" => "nullable|exists:freelancers,id",
 		];
 	}
 	public function attributes(): array
@@ -53,10 +53,11 @@ class StoreEducationRequest extends FormRequest
 		$temp['category'] = htmlspecialchars($temp['category']??null);
 		$temp['special_rank'] = htmlspecialchars($temp['special_rank']??null);
 		$temp['note'] = htmlspecialchars($temp['note']??null);
+        $temp['freelancer_id'] = \Auth::check()?\Auth::user()->roleable_id:null;
 		// some extra information
 		return $temp;
-	} 
-	
+	}
+
 	public function messages()
 	{
 		return [

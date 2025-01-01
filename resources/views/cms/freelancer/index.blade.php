@@ -20,7 +20,7 @@
 	showRoute="freelancer.show"
 	editRoute="freelancer.edit"
 	deleteRoute="freelancer.destroy"
-	:fieldsNames="['main_career','place_of_birth','user_name' /**Relation*/, ]"
+	:fieldsNames="['main_career','place_of_birth','name' /**Relation*/, ]"
 	:colLabels="[
 			__('caption.cms.fields.freelancer.main_career'),
 			__('caption.cms.fields.freelancer.place_of_birth'),

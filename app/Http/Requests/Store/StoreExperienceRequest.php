@@ -15,7 +15,7 @@ class StoreExperienceRequest extends FormRequest
 	 */
 	public function authorize()
 	{
-		
+
 		return Gate::allows('create', Experience::class);
 	}
 
@@ -34,7 +34,7 @@ class StoreExperienceRequest extends FormRequest
 			"end_date" => "required|nullable|date",
 			"category" => "required|nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.experience.category')))."",
 			"note" => "required|nullable|string|min:0|max:255",
-			"freelancer_id" => "nullable|exists:freelancers,id",
+			// "freelancer_id" => "nullable|exists:freelancers,id",
 		];
 	}
 	public function attributes(): array
@@ -49,10 +49,11 @@ class StoreExperienceRequest extends FormRequest
 		$temp['company_address'] = htmlspecialchars($temp['company_address']??null);
 		$temp['category'] = htmlspecialchars($temp['category']??null);
 		$temp['note'] = htmlspecialchars($temp['note']??null);
+        $temp['freelancer_id'] = \Auth::check()?\Auth::user()->roleable_id:null;
 		// some extra information
 		return $temp;
-	} 
-	
+	}
+
 	public function messages()
 	{
 		return [

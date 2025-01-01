@@ -15,7 +15,7 @@ class StoreReferenceRequest extends FormRequest
 	 */
 	public function authorize()
 	{
-		
+
 		return Gate::allows('create', Reference::class);
 	}
 
@@ -32,7 +32,7 @@ class StoreReferenceRequest extends FormRequest
 			"email" => "required|nullable|string|min:0|max:255",
 			"postion" => "required|nullable|string|min:0|max:255",
 			"note" => "required|nullable|string|min:0|max:255",
-			"freelancer_id" => "nullable|exists:freelancers,id",
+			// "freelancer_id" => "nullable|exists:freelancers,id",
 		];
 	}
 	public function attributes(): array
@@ -47,10 +47,11 @@ class StoreReferenceRequest extends FormRequest
 		$temp['email'] = htmlspecialchars($temp['email']??null);
 		$temp['postion'] = htmlspecialchars($temp['postion']??null);
 		$temp['note'] = htmlspecialchars($temp['note']??null);
+        $temp['freelancer_id'] = \Auth::check()?\Auth::user()->roleable_id:null;
 		// some extra information
 		return $temp;
-	} 
-	
+	}
+
 	public function messages()
 	{
 		return [
