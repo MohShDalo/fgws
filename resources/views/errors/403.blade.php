@@ -1,0 +1,1 @@
+@extends('layouts.error',['code'=>403,'message'=>"Ooops, Something happens error"])

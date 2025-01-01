@@ -1,0 +1,74 @@
+<?php
+
+namespace App\Http\Requests\Store;
+
+use App\Models\User;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
+
+class StoreUserRequest extends FormRequest
+{
+	/**
+	 * Determine if the user is authorized to make this request.
+	 *
+	 * @return bool
+	 */
+	public function authorize()
+	{
+		
+		return Gate::allows('create', User::class);
+	}
+
+	/**
+	 * Get the validation rules that apply to the request.
+	 *
+	 * @return array
+	 */
+	public function rules()
+	{
+		return [
+			"name" => "required|nullable|string|min:0|max:255",
+			"image" => "required|nullable|string|min:0|max:255",
+			"cover" => "required|nullable|string|min:0|max:255",
+			"email" => "required|nullable|string|min:0|max:255",
+			"contact_number" => "required|nullable|string|min:0|max:255",
+			"birth_date" => "required|nullable|date",
+			"gender" => "required|nullable|string|min:0|max:255|in:value1,value2",
+			"marital_status" => "required|nullable|string|min:0|max:255|in:value1,value2",
+			"nationality" => "required|nullable|string|min:0|max:255|in:value1,value2",
+			"city" => "required|nullable|string|min:0|max:255|in:value1,value2",
+			"country" => "required|nullable|string|min:0|max:255|in:value1,value2",
+			"address_details" => "required|nullable|string|min:0|max:255",
+			"roleable_type" => "required|nullable|string|min:0|max:255",
+		];
+	}
+	public function attributes(): array
+	{
+		return  __('caption.cms.fields.user');
+	}
+
+	public function validated($key=null, $default=null){
+		$temp = parent::validated();
+		$temp['name'] = htmlspecialchars($temp['name']??null);
+		$temp['image'] = htmlspecialchars($temp['image']??null);
+		$temp['cover'] = htmlspecialchars($temp['cover']??null);
+		$temp['email'] = htmlspecialchars($temp['email']??null);
+		$temp['contact_number'] = htmlspecialchars($temp['contact_number']??null);
+		$temp['gender'] = htmlspecialchars($temp['gender']??null);
+		$temp['marital_status'] = htmlspecialchars($temp['marital_status']??null);
+		$temp['nationality'] = htmlspecialchars($temp['nationality']??null);
+		$temp['city'] = htmlspecialchars($temp['city']??null);
+		$temp['country'] = htmlspecialchars($temp['country']??null);
+		$temp['address_details'] = htmlspecialchars($temp['address_details']??null);
+		$temp['roleable_type'] = htmlspecialchars($temp['roleable_type']??null);
+		// some extra information
+		return $temp;
+	} 
+	
+	public function messages()
+	{
+		return [
+			//"attribute.validation" => "Custom Message",
+		];
+	}
+}
