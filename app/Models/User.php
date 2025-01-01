@@ -28,6 +28,7 @@ class User extends Authenticatable
 		'country',
 		'address_details',
 		'roleable_type',
+		'roleable_id',
 	];
 	protected $attributes = [
 		'name'=>null,
@@ -43,6 +44,7 @@ class User extends Authenticatable
 		'country'=>null,
 		'address_details'=>null,
 		'roleable_type'=>null,
+		'roleable_id'=>null,
 	];
 	protected $casts = [
 		'deleted_at'=>'datetime',
@@ -125,6 +127,32 @@ class User extends Authenticatable
 	}
 	//No Readable Get method for relation [User - created_by | messages - Message]
 
+
+	public function roleable(): MorphTo
+	{
+        return $this->morphTo();
+	}
+
+    public function getRoleTextAttribute(){
+		return __('values.user.role')[$this->role_name]??'';
+	}
+
+	public function getRoleNameAttribute()
+	{
+        switch ($this->roleable_type){
+            case Freelancer::class:
+                return "agent";
+            case Manger::class:
+                return "kitchen";
+            default:
+                if($this->postion == 'Monitor'){
+                    return "review";
+                }else{
+                    return "admin";
+                }
+        }
+		return "admin";
+	}
 	//No Get method for relation [Freelancer - roleable | user - User]
 	//No Readable Get method for relation [Freelancer - roleable | user - User]
 

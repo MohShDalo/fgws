@@ -15,12 +15,10 @@ class Freelancer extends Model
 	protected $fillable =[
 		'main_career',
 		'place_of_birth',
-		'user_id', /* relation 1-M */
 	];
 	protected $attributes = [
 		'main_career'=>null,
 		'place_of_birth'=>null,
-		'user_id' => null, /* relation 1-M */
 	];
 	protected $casts = [
 		'deleted_at'=>'datetime',
@@ -41,11 +39,10 @@ class Freelancer extends Model
 		// });
 	}
 
-
-	public function user()
-	{
-		return $this->hasOne(User::class,'roleable_id','id');
-	}
+    public function user()
+    {
+        return $this->morphOne(User::class, 'roleable');
+    }
 	public function getUserNameAttribute()
 	{
 		return $this->user?->name??null;

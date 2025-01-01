@@ -58,9 +58,9 @@ class Post extends Model
 	{
 		return $this->belongsTo(Freelancer::class,'owner_id','id');
 	}
-	public function getOwnerIdAttribute()
+	public function getOwnerNameAttribute()
 	{
-		return $this->owner?->id??null;
+		return $this->owner?->name??null;
 	}
 
 	public function delete(){

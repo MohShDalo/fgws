@@ -161,7 +161,6 @@ return [
 			'freelancer'=>[
 				'main_career'=>'Main Career',
 				'place_of_birth'=>'Place Of Birth',
-				'user_id'=>'User',
 			],
 			'manger'=>[
 				'company_name'=>'Company Name',

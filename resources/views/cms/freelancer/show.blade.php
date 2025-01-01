@@ -21,10 +21,6 @@
 						<label for="">{{__('caption.cms.fields.freelancer.place_of_birth')}}</label>
 						<div class="form-control">{!!$freelancer->place_of_birth??'-'!!}</div>
 					</div>
-					<div class="mb-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-						<label for="">{{__('caption.cms.fields.freelancer.user_id')}}</label>
-						<div class="form-control">{!!$freelancer->user_name??'-'!!}</div>
-					</div>
 				</div>
 			</div>
 			<div class="card-footer">
@@ -41,7 +37,7 @@
 				<form action="{{route('freelancer.destroy',$freelancer->id)}}" method="POST">
 					@csrf
 					@method('DELETE')
-					<input type="submit" class="form-control btn btn-outline-{{$freelancer->deleted_at?'success':'danger'}}" value="{{__('caption.labels.'.($freelancer->deleted_at?'restore':'delete'))}}"> 
+					<input type="submit" class="form-control btn btn-outline-{{$freelancer->deleted_at?'success':'danger'}}" value="{{__('caption.labels.'.($freelancer->deleted_at?'restore':'delete'))}}">
 				</form>
 			</div>
 		</div>

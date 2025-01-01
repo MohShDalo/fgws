@@ -14,8 +14,8 @@
 <form action="{{route('freelancer.update',$freelancer->id)}}" method="POST">
 	@csrf
 	@method("PUT")
-	<div class="row">  
-		
+	<div class="row">
+
 		<x-textfield
 			:xl="3" :lg="4" :md="4" :sm="6" parentClass="mb-3"
 			idName="main_career"
@@ -37,17 +37,6 @@
 			placeholder=""
 			extraAttribute="required"
 		></x-textfield>
-
-		<x-dropdown-list
-			idName="user_id"
-			:initValue="(old('user_id')??$freelancer->user_id)??null"
-			:caption="__('caption.cms.fields.freelancer.user_id')"
-			:values="$users"
-			:xl="3"	:lg="4"	:md="4"	:sm="6"	parentClass="mb-3"
-			:placeholder="__('caption.labels.select-label')"
-			extraAttribute="required"
-		>
-		</x-dropdown-list>
 
 	</div>
 	<div class="row justify-content-center">

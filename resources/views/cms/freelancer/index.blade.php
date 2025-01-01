@@ -24,7 +24,6 @@
 	:colLabels="[
 			__('caption.cms.fields.freelancer.main_career'),
 			__('caption.cms.fields.freelancer.place_of_birth'),
-			__('caption.cms.fields.freelancer.user_id') /**Relation*/,
 			]"
 	:filters="[]"
 	:filtersType="[]"

@@ -15,7 +15,7 @@ class StoreFreelancerRequest extends FormRequest
 	 */
 	public function authorize()
 	{
-		
+
 		return Gate::allows('create', Freelancer::class);
 	}
 
@@ -29,7 +29,6 @@ class StoreFreelancerRequest extends FormRequest
 		return [
 			"main_career" => "required|nullable|string|min:0|max:255",
 			"place_of_birth" => "required|nullable|string|min:0|max:255",
-			"user_id" => "nullable|exists:users,id",
 		];
 	}
 	public function attributes(): array
@@ -43,8 +42,8 @@ class StoreFreelancerRequest extends FormRequest
 		$temp['place_of_birth'] = htmlspecialchars($temp['place_of_birth']??null);
 		// some extra information
 		return $temp;
-	} 
-	
+	}
+
 	public function messages()
 	{
 		return [

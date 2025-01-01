@@ -23,7 +23,6 @@ class FreelancerFactory extends Factory
 		return [
 			'main_career'=>Str::random(15),
 			'place_of_birth'=>Str::random(15),
-			// $freelancer->user_id = null,
 		];
 	}
 }

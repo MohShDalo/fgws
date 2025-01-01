@@ -24,6 +24,7 @@ return new class extends Migration
 			$table->string("city")->nullable();
 			$table->string("country")->nullable();
 			$table->string("address_details")->nullable();
+			$table->bigInteger("roleable_id")->nullable();
 			$table->string("roleable_type")->nullable();
 			$table->softDeletes();
             $table->string('email')->unique();

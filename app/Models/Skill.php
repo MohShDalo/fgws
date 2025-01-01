@@ -56,9 +56,9 @@ class Skill extends Model
 	{
 		return $this->belongsTo(Freelancer::class,'freelancer_id','id');
 	}
-	public function getFreelancerIdAttribute()
+	public function getFreelancerNameAttribute()
 	{
-		return $this->freelancer?->id??null;
+		return $this->freelancer?->name??null;
 	}
 
 	public function delete(){

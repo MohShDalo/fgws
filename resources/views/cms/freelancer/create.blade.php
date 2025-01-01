@@ -35,18 +35,7 @@
 			extraAttribute="required"
 		></x-textfield>
 
-		<x-dropdown-list
-			idName="user_id"
-			:initValue="old('user_id')??null"
-			:caption="__('caption.cms.fields.freelancer.user_id')"
-			:values="$users"
-			:xl="3"	:lg="4"	:md="4"	:sm="6"	parentClass="mb-3"
-			:placeholder="__('caption.labels.select-label')"
-			extraAttribute="required"
-		>
-		</x-dropdown-list>
 
-		 
 	</div>
 	<div class="row justify-content-center">
 		<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mb-3">

@@ -65,18 +65,18 @@ class Job extends Model
 	{
 		return $this->belongsTo(Freelancer::class,'worker_id','id');
 	}
-	public function getWorkerIdAttribute()
+	public function getWorkerNameAttribute()
 	{
-		return $this->worker?->id??null;
+		return $this->worker?->name??null;
 	}
 
 	public function owner()
 	{
 		return $this->belongsTo(Manger::class,'owner_id','id');
 	}
-	public function getOwnerIdAttribute()
+	public function getOwnerNameAttribute()
 	{
-		return $this->owner?->id??null;
+		return $this->owner?->name??null;
 	}
 
 	public function delete(){

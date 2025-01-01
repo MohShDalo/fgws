@@ -19,8 +19,6 @@ class CreateFreelancerTable extends Migration
 			$table->string("place_of_birth")->nullable();
 			$table->softDeletes();
 			$table->timestamps();
-			$table->unsignedBigInteger("user_id")->index();
-			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 		});
 	}
 
