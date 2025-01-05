@@ -15,7 +15,7 @@ class StoreCommentRequest extends FormRequest
 	 */
 	public function authorize()
 	{
-		
+
 		return Gate::allows('create', Comment::class);
 	}
 
@@ -27,9 +27,9 @@ class StoreCommentRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			"content" => "required|nullable|string|min:0|max:255",
-			"created_by_id" => "nullable|exists:users,id",
-			"post_id" => "nullable|exists:posts,id",
+			"content" => "required|string|min:0|max:255",
+			// "created_by_id" => "nullable|exists:users,id",
+			"post_id" => "required|exists:posts,id",
 		];
 	}
 	public function attributes(): array
@@ -40,10 +40,11 @@ class StoreCommentRequest extends FormRequest
 	public function validated($key=null, $default=null){
 		$temp = parent::validated();
 		$temp['content'] = htmlspecialchars($temp['content']??null);
+        $temp['created_by_id'] = \Auth::check()?\Auth::user()->id:null;
 		// some extra information
 		return $temp;
-	} 
-	
+	}
+
 	public function messages()
 	{
 		return [

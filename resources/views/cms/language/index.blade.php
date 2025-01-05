@@ -15,12 +15,12 @@
 	recordPk="id"
 	:extraValues="[]"
 	:extraValuesColsNames="[]"
-	:dataRecord="[]"
+	:dataRecord="\Auth::user()->roleable->languages()"
 	:otherRoutes="[]"
 	showRoute="language.show"
 	editRoute="language.edit"
 	deleteRoute="language.destroy"
-	:fieldsNames="['language','category_text','general_score','speaking_score','writing_score','listening_score','show_details_text','note','freelancer_id' /**Relation*/, ]"
+	:fieldsNames="['language','category_text','general_score','speaking_score','writing_score','listening_score','show_details_text','note', ]"
 	:colLabels="[
 			__('caption.cms.fields.language.language'),
 			__('caption.cms.fields.language.category'),
@@ -30,7 +30,6 @@
 			__('caption.cms.fields.language.listening_score'),
 			__('caption.cms.fields.language.show_details'),
 			__('caption.cms.fields.language.note'),
-			__('caption.cms.fields.language.freelancer_id') /**Relation*/,
 			]"
 	:filters="[]"
 	:filtersType="[]"

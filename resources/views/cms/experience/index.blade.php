@@ -15,12 +15,12 @@
 	recordPk="id"
 	:extraValues="[]"
 	:extraValuesColsNames="[]"
-	:dataRecord="[]"
+	:dataRecord="\Auth::user()->roleable->experiences()"
 	:otherRoutes="[]"
 	showRoute="experience.show"
 	editRoute="experience.edit"
 	deleteRoute="experience.destroy"
-	:fieldsNames="['postion','company_name','company_address','start_date_formated','end_date_formated','category_text','note','freelancer_id' /**Relation*/, ]"
+	:fieldsNames="['postion','company_name','company_address','start_date_formated','end_date_formated','category_text','note', ]"
 	:colLabels="[
 			__('caption.cms.fields.experience.postion'),
 			__('caption.cms.fields.experience.company_name'),
@@ -29,7 +29,6 @@
 			__('caption.cms.fields.experience.end_date'),
 			__('caption.cms.fields.experience.category'),
 			__('caption.cms.fields.experience.note'),
-			__('caption.cms.fields.experience.freelancer_id') /**Relation*/,
 			]"
 	:filters="[]"
 	:filtersType="[]"

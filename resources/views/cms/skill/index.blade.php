@@ -15,17 +15,16 @@
 	recordPk="id"
 	:extraValues="[]"
 	:extraValuesColsNames="[]"
-	:dataRecord="[]"
+	:dataRecord="\Auth::user()->roleable->skills()"
 	:otherRoutes="[]"
 	showRoute="skill.show"
 	editRoute="skill.edit"
 	deleteRoute="skill.destroy"
-	:fieldsNames="['title','category_text','show_text','freelancer_id' /**Relation*/, ]"
+	:fieldsNames="['title','category_text','show_text',  ]"
 	:colLabels="[
 			__('caption.cms.fields.skill.title'),
 			__('caption.cms.fields.skill.category'),
 			__('caption.cms.fields.skill.show'),
-			__('caption.cms.fields.skill.freelancer_id') /**Relation*/,
 			]"
 	:filters="[]"
 	:filtersType="[]"

@@ -12,6 +12,9 @@ class Reaction extends Model
 	protected $table ='reactions';
 	public $incrementing = true;
 	public $timestamps = true;
+    public const TYPE_LIKE = 1;
+    public const TYPE_HEART = 2;
+    public const TYPE_LOVE = 3;
 	protected $fillable =[
 		'type',
 		'created_by_id', /* relation 1-M */

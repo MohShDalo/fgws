@@ -53,7 +53,7 @@ class ReactionPolicy
 	 */
 	public function update(User $user, Reaction $reaction)
 	{
-		return true;
+		return false;
 	}
 
 	/**
@@ -65,7 +65,7 @@ class ReactionPolicy
 	 */
 	public function delete(User $user, Reaction $reaction)
 	{
-		return true;
+		return false;
 	}
 
 	/**

@@ -15,12 +15,12 @@
 	recordPk="id"
 	:extraValues="[]"
 	:extraValuesColsNames="[]"
-	:dataRecord="[]"
+	:dataRecord="\Auth::user()->roleable->certificates()"
 	:otherRoutes="[]"
 	showRoute="certificate.show"
 	editRoute="certificate.edit"
 	deleteRoute="certificate.destroy"
-	:fieldsNames="['course_title','hours','start_date_formated','end_date_formated','organizer','category_text','file','show_text','note','freelancer_id' /**Relation*/, ]"
+	:fieldsNames="['course_title','hours','start_date_formated','end_date_formated','organizer','category_text','file','show_text','note' /**Relation*/, ]"
 	:colLabels="[
 			__('caption.cms.fields.certificate.course_title'),
 			__('caption.cms.fields.certificate.hours'),
@@ -31,7 +31,6 @@
 			__('caption.cms.fields.certificate.file'),
 			__('caption.cms.fields.certificate.show'),
 			__('caption.cms.fields.certificate.note'),
-			__('caption.cms.fields.certificate.freelancer_id') /**Relation*/,
 			]"
 	:filters="[]"
 	:filtersType="[]"

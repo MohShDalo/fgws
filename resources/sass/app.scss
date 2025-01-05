@@ -7,3 +7,13 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 @import "bootstrap-icons/font/bootstrap-icons.css";
+
+.max-full-height{
+    max-height: 75vh;
+}
+a.icon{
+    text-decoration: none;
+    color: black;
+    font-size: 24px;
+    padding: 10px;
+}

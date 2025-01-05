@@ -27,13 +27,13 @@ class StoreExperienceRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			"postion" => "required|nullable|string|min:0|max:255",
-			"company_name" => "required|nullable|string|min:0|max:255",
-			"company_address" => "required|nullable|string|min:0|max:255",
-			"start_date" => "required|nullable|date",
-			"end_date" => "required|nullable|date",
-			"category" => "required|nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.experience.category')))."",
-			"note" => "required|nullable|string|min:0|max:255",
+			"postion" => "required|string|min:0|max:255",
+			"company_name" => "required|string|min:0|max:255",
+			"company_address" => "required|string|min:0|max:255",
+			"start_date" => "required|date",
+            "end_date" => "nullable|date|after:start_date",
+			"category" => "required|string|min:0|max:255|in:".implode(',',array_keys(__('values.experience.category')))."",
+			"note" => "nullable|string|min:0|max:255",
 			// "freelancer_id" => "nullable|exists:freelancers,id",
 		];
 	}
@@ -47,7 +47,7 @@ class StoreExperienceRequest extends FormRequest
 		$temp['postion'] = htmlspecialchars($temp['postion']??null);
 		$temp['company_name'] = htmlspecialchars($temp['company_name']??null);
 		$temp['company_address'] = htmlspecialchars($temp['company_address']??null);
-		$temp['category'] = htmlspecialchars($temp['category']??null);
+		// $temp['category'] = htmlspecialchars($temp['category']??null);
 		$temp['note'] = htmlspecialchars($temp['note']??null);
         $temp['freelancer_id'] = \Auth::check()?\Auth::user()->roleable_id:null;
 		// some extra information

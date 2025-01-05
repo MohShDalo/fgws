@@ -53,7 +53,7 @@ class ChatPolicy
 	 */
 	public function update(User $user, Chat $chat)
 	{
-		return true;
+		return false;
 	}
 
 	/**

@@ -21,8 +21,9 @@ class PostFactory extends Factory
 	public function definition()
 	{
 		return [
-			'content'=>Str::random(15),
+			'content'=>$this->faker->text(1000),
 			'image'=>Str::random(15),
+			'owner_id'=>1,
 			// $post->owner_id = null,
 		];
 	}

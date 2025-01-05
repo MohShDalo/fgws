@@ -15,7 +15,7 @@ class UpdateReferenceRequest extends FormRequest
 	 */
 	public function authorize()
 	{
-		
+
 		return Gate::allows('update', $this->reference);
 	}
 
@@ -27,12 +27,12 @@ class UpdateReferenceRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			"full_name" => "required|nullable|string|min:0|max:255",
-			"contact_number" => "required|nullable|string|min:0|max:255",
-			"email" => "required|nullable|string|min:0|max:255",
-			"postion" => "required|nullable|string|min:0|max:255",
-			"note" => "required|nullable|string|min:0|max:255",
-			"freelancer_id" => "nullable|exists:freelancers,id",
+			"full_name" => "required|string|min:0|max:255",
+			"contact_number" => "nullable|string|min:0|max:255",
+			"email" => "nullable|string|min:0|max:255",
+			"postion" => "nullable|string|min:0|max:255",
+			"note" => "nullable|string|min:0|max:255",
+			// "freelancer_id" => "nullable|exists:freelancers,id",
 		];
 	}
 	public function attributes(): array
@@ -47,10 +47,10 @@ class UpdateReferenceRequest extends FormRequest
 		$temp['email'] = htmlspecialchars($temp['email']??null);
 		$temp['postion'] = htmlspecialchars($temp['postion']??null);
 		$temp['note'] = htmlspecialchars($temp['note']??null);
-		// some extra information
+        $temp['freelancer_id'] = \Auth::check()?\Auth::user()->roleable_id:null;
 		return $temp;
-	} 
-	
+	}
+
 	public function messages()
 	{
 		return [

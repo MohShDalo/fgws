@@ -15,7 +15,7 @@ class UpdateJobRequest extends FormRequest
 	 */
 	public function authorize()
 	{
-		
+
 		return Gate::allows('update', $this->job);
 	}
 
@@ -27,13 +27,13 @@ class UpdateJobRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			"content" => "required|nullable|string|min:0|max:1000",
-			"needed_postion" => "required|nullable|string|min:0|max:255",
-			"max_price" => "required|nullable|integer|min:0|max:100000",
-			"max_time" => "required|nullable|integer|min:0|max:100000",
-			"expected_start_date" => "required|nullable|date",
-			"worker_id" => "nullable|exists:freelancers,id",
-			"owner_id" => "nullable|exists:mangers,id",
+			"content" => "required|string|min:0|max:1000",
+			"needed_postion" => "required|string|min:0|max:255",
+			"max_price" => "nullable|integer|min:0|max:100000",
+			"max_time" => "nullable|integer|min:0|max:100000",
+			"expected_start_date" => "nullable|date",
+			// "worker_id" => "nullable|exists:freelancers,id",
+			// "owner_id" => "nullable|exists:mangers,id",
 		];
 	}
 	public function attributes(): array
@@ -45,10 +45,11 @@ class UpdateJobRequest extends FormRequest
 		$temp = parent::validated();
 		$temp['content'] = htmlspecialchars($temp['content']??null);
 		$temp['needed_postion'] = htmlspecialchars($temp['needed_postion']??null);
+        $temp['owner_id'] = \Auth::check()?\Auth::user()->roleable_id:null;
 		// some extra information
 		return $temp;
-	} 
-	
+	}
+
 	public function messages()
 	{
 		return [

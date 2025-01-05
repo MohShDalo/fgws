@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class User extends Authenticatable
 {
@@ -58,8 +59,8 @@ class User extends Authenticatable
 
 	protected $attributes = [
 		'name'=>null,
-		'image'=>null,
-		'cover'=>null,
+		'image'=>'/img/profile-no-image.jpg',
+		'cover'=>'/img/no-image.jpeg',
 		'email'=>null,
 		'contact_number'=>null,
 		'birth_date'=>null,

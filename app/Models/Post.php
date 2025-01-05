@@ -41,6 +41,14 @@ class Post extends Model
 		// });
 	}
 
+	public function getBreifContentAttribute()
+	{
+        if(strlen($this->content)>=50){
+            return substr($this->content, 0, 50).'...';
+        }else{
+            return $this->content;
+        }
+	}
 
 	public function comments()
 	{

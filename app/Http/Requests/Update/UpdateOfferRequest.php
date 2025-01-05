@@ -15,7 +15,7 @@ class UpdateOfferRequest extends FormRequest
 	 */
 	public function authorize()
 	{
-		
+
 		return Gate::allows('update', $this->offer);
 	}
 
@@ -27,12 +27,12 @@ class UpdateOfferRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			"content" => "required|nullable|string|min:0|max:1000",
-			"price" => "required|nullable|integer|min:0|max:100000",
-			"time" => "required|nullable|integer|min:0|max:100000",
-			"status" => "required|nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.offer.status')))."",
-			"status_reason" => "required|nullable|string|min:0|max:255",
-			"owner_id" => "nullable|exists:freelancers,id",
+			"content" => "required|string|min:0|max:1000",
+			"price" => "required|integer|min:0|max:100000",
+			"time" => "required|integer|min:0|max:100000",
+			// "status" => "required|nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.offer.status')))."",
+			// "status_reason" => "required|nullable|string|min:0|max:255",
+			// "owner_id" => "nullable|exists:freelancers,id",
 			"job_id" => "nullable|exists:jobs,id",
 		];
 	}
@@ -48,8 +48,8 @@ class UpdateOfferRequest extends FormRequest
 		$temp['status_reason'] = htmlspecialchars($temp['status_reason']??null);
 		// some extra information
 		return $temp;
-	} 
-	
+	}
+
 	public function messages()
 	{
 		return [

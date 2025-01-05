@@ -103,12 +103,11 @@
 	showRoute="skill.show"
 	editRoute="skill.edit"
 	deleteRoute="skill.destroy"
-	:fieldsNames="['title','category_text','show_text','freelancer_id',]"
+	:fieldsNames="['title','category_text','show_text',]"
 	:colLabels="[
 				__('caption.cms.fields.skill.title'),
 				__('caption.cms.fields.skill.category'),
 				__('caption.cms.fields.skill.show'),
-				__('caption.cms.fields.skill.freelancer_id'),
 		]"
 	:filters="[]"
 	:filtersType="[]"
@@ -141,7 +140,7 @@
 	showRoute="certificate.show"
 	editRoute="certificate.edit"
 	deleteRoute="certificate.destroy"
-	:fieldsNames="['course_title','hours','start_date_formated','end_date_formated','organizer','category_text','file','show_text','note','freelancer_id',]"
+	:fieldsNames="['course_title','hours','start_date_formated','end_date_formated','organizer','category_text','file','show_text','note',]"
 	:colLabels="[
 				__('caption.cms.fields.certificate.course_title'),
 				__('caption.cms.fields.certificate.hours'),
@@ -152,7 +151,6 @@
 				__('caption.cms.fields.certificate.file'),
 				__('caption.cms.fields.certificate.show'),
 				__('caption.cms.fields.certificate.note'),
-				__('caption.cms.fields.certificate.freelancer_id'),
 		]"
 	:filters="[]"
 	:filtersType="[]"
@@ -185,7 +183,7 @@
 	showRoute="education.show"
 	editRoute="education.edit"
 	deleteRoute="education.destroy"
-	:fieldsNames="['title','score','show_score_text','start_date_formated','end_date_formated','organizer','category_text','special_rank','note','freelancer_id',]"
+	:fieldsNames="['title','score','show_score_text','start_date_formated','end_date_formated','organizer','category_text','special_rank','note',]"
 	:colLabels="[
 				__('caption.cms.fields.education.title'),
 				__('caption.cms.fields.education.score'),
@@ -196,7 +194,6 @@
 				__('caption.cms.fields.education.category'),
 				__('caption.cms.fields.education.special_rank'),
 				__('caption.cms.fields.education.note'),
-				__('caption.cms.fields.education.freelancer_id'),
 		]"
 	:filters="[]"
 	:filtersType="[]"
@@ -229,7 +226,7 @@
 	showRoute="language.show"
 	editRoute="language.edit"
 	deleteRoute="language.destroy"
-	:fieldsNames="['language','category_text','general_score','speaking_score','writing_score','listening_score','show_details_text','note','freelancer_id',]"
+	:fieldsNames="['language','category_text','general_score','speaking_score','writing_score','listening_score','show_details_text','note',]"
 	:colLabels="[
 				__('caption.cms.fields.language.language'),
 				__('caption.cms.fields.language.category'),
@@ -239,7 +236,6 @@
 				__('caption.cms.fields.language.listening_score'),
 				__('caption.cms.fields.language.show_details'),
 				__('caption.cms.fields.language.note'),
-				__('caption.cms.fields.language.freelancer_id'),
 		]"
 	:filters="[]"
 	:filtersType="[]"
@@ -272,7 +268,7 @@
 	showRoute="experience.show"
 	editRoute="experience.edit"
 	deleteRoute="experience.destroy"
-	:fieldsNames="['postion','company_name','company_address','start_date_formated','end_date_formated','category_text','note','freelancer_id',]"
+	:fieldsNames="['postion','company_name','company_address','start_date_formated','end_date_formated','category_text','note',]"
 	:colLabels="[
 				__('caption.cms.fields.experience.postion'),
 				__('caption.cms.fields.experience.company_name'),
@@ -281,7 +277,6 @@
 				__('caption.cms.fields.experience.end_date'),
 				__('caption.cms.fields.experience.category'),
 				__('caption.cms.fields.experience.note'),
-				__('caption.cms.fields.experience.freelancer_id'),
 		]"
 	:filters="[]"
 	:filtersType="[]"
@@ -314,7 +309,7 @@
 	showRoute="portfolio.show"
 	editRoute="portfolio.edit"
 	deleteRoute="portfolio.destroy"
-	:fieldsNames="['title','release_date_formated','link','categry_text','mockup_image','file','note','freelancer_id',]"
+	:fieldsNames="['title','release_date_formated','link','categry_text','mockup_image','file','note',]"
 	:colLabels="[
 				__('caption.cms.fields.portfolio.title'),
 				__('caption.cms.fields.portfolio.release_date'),
@@ -323,7 +318,6 @@
 				__('caption.cms.fields.portfolio.mockup_image'),
 				__('caption.cms.fields.portfolio.file'),
 				__('caption.cms.fields.portfolio.note'),
-				__('caption.cms.fields.portfolio.freelancer_id'),
 		]"
 	:filters="[]"
 	:filtersType="[]"
@@ -356,14 +350,13 @@
 	showRoute="reference.show"
 	editRoute="reference.edit"
 	deleteRoute="reference.destroy"
-	:fieldsNames="['full_name','contact_number','email','postion','note','freelancer_id',]"
+	:fieldsNames="['full_name','contact_number','email','postion','note',]"
 	:colLabels="[
 				__('caption.cms.fields.reference.full_name'),
 				__('caption.cms.fields.reference.contact_number'),
 				__('caption.cms.fields.reference.email'),
 				__('caption.cms.fields.reference.postion'),
 				__('caption.cms.fields.reference.note'),
-				__('caption.cms.fields.reference.freelancer_id'),
 		]"
 	:filters="[]"
 	:filtersType="[]"
@@ -396,7 +389,7 @@
 	showRoute="post.show"
 	editRoute="post.edit"
 	deleteRoute="post.destroy"
-	:fieldsNames="['content','image','owner_id',]"
+	:fieldsNames="['breif_content','image','owner_id',]"
 	:colLabels="[
 				__('caption.cms.fields.post.content'),
 				__('caption.cms.fields.post.image'),

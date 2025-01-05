@@ -21,7 +21,7 @@ class CreatePortfolioTable extends Migration
 			$table->string("categry")->nullable();
 			$table->string("mockup_image")->nullable();
 			$table->string("file")->nullable();
-			$table->string("note")->nullable();
+			$table->string("note",1000)->nullable();
 			$table->softDeletes();
 			$table->timestamps();
 			$table->unsignedBigInteger("freelancer_id")->index();

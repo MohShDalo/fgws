@@ -43,7 +43,7 @@
 			type="text"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
 
 		<x-textfield
@@ -54,7 +54,7 @@
 			type="text"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
 
 		<x-textfield
@@ -65,32 +65,9 @@
 			type="date"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
 
-		<x-dropdown-list
-			idName="worker_id"
-			:initValue="old('worker_id')??null"
-			:caption="__('caption.cms.fields.job.worker_id')"
-			:values="$freelancers"
-			:xl="3"	:lg="4"	:md="4"	:sm="6"	parentClass="mb-3"
-			:placeholder="__('caption.labels.select-label')"
-			extraAttribute="required"
-		>
-		</x-dropdown-list>
-
-		<x-dropdown-list
-			idName="owner_id"
-			:initValue="old('owner_id')??null"
-			:caption="__('caption.cms.fields.job.owner_id')"
-			:values="$mangers"
-			:xl="3"	:lg="4"	:md="4"	:sm="6"	parentClass="mb-3"
-			:placeholder="__('caption.labels.select-label')"
-			extraAttribute="required"
-		>
-		</x-dropdown-list>
-
-		 
 	</div>
 	<div class="row justify-content-center">
 		<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mb-3">

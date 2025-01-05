@@ -22,7 +22,7 @@ class CreateJobTable extends Migration
 			$table->datetime("expected_start_date")->nullable();
 			$table->softDeletes();
 			$table->timestamps();
-			$table->unsignedBigInteger("worker_id")->index();
+			$table->unsignedBigInteger("worker_id")->nullable()->index();
 			$table->foreign('worker_id')->references('id')->on('freelancers')->onDelete('cascade');
 			$table->unsignedBigInteger("owner_id")->index();
 			$table->foreign('owner_id')->references('id')->on('mangers')->onDelete('cascade');

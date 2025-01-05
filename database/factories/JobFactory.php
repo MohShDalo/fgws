@@ -21,11 +21,12 @@ class JobFactory extends Factory
 	public function definition()
 	{
 		return [
-			'content'=>Str::random(15),
-			'needed_postion'=>Str::random(15),
+			'content'=>$this->faker->sentence(),
+			'needed_postion'=>$this->faker->word(),
 			'max_price'=>0,
 			'max_time'=>0,
 			'expected_start_date'=>now(),
+			'owner_id'=>1,
 			// $job->worker_id = null,
 			// $job->owner_id = null,
 		];

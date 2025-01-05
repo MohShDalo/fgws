@@ -27,13 +27,13 @@ class StorePortfolioRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			"title" => "required|nullable|string|min:0|max:255",
-			"release_date" => "required|nullable|date",
-			"link" => "required|nullable|string|min:0|max:255",
-			"categry" => "required|nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.portfolio.categry')))."",
-			"mockup_image" => "required|nullable|string|min:0|max:255",
-			"file" => "required|nullable|string|min:0|max:255",
-			"note" => "required|nullable|string|min:0|max:255",
+			"title" => "required|string|min:0|max:255",
+			"release_date" => "nullable|date",
+			"link" => "required_with:release_date|nullable|string|min:0|max:255",
+			"categry" => "required|string|min:0|max:255|in:".implode(',',array_keys(__('values.portfolio.categry')))."",
+			"mockup_image" => "nullable|file|min:0|max:4096",
+			"file" => "nullable|file|min:0|max:4096",
+			"note" => "nullable|string|min:0|max:1000",
 			// "freelancer_id" => "nullable|exists:freelancers,id",
 		];
 	}
@@ -47,8 +47,6 @@ class StorePortfolioRequest extends FormRequest
 		$temp['title'] = htmlspecialchars($temp['title']??null);
 		$temp['link'] = htmlspecialchars($temp['link']??null);
 		$temp['categry'] = htmlspecialchars($temp['categry']??null);
-		$temp['mockup_image'] = htmlspecialchars($temp['mockup_image']??null);
-		$temp['file'] = htmlspecialchars($temp['file']??null);
 		$temp['note'] = htmlspecialchars($temp['note']??null);
         $temp['freelancer_id'] = \Auth::check()?\Auth::user()->roleable_id:null;
 		// some extra information

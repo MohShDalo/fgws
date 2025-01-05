@@ -15,8 +15,8 @@ class UpdateCommentRequest extends FormRequest
 	 */
 	public function authorize()
 	{
-		
-		return Gate::allows('update', $this->comment);
+
+		return false;//Gate::allows('update', $this->comment);
 	}
 
 	/**
@@ -27,9 +27,9 @@ class UpdateCommentRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			"content" => "required|nullable|string|min:0|max:255",
-			"created_by_id" => "nullable|exists:users,id",
-			"post_id" => "nullable|exists:posts,id",
+			// "content" => "required|nullable|string|min:0|max:255",
+			// "created_by_id" => "nullable|exists:users,id",
+			// "post_id" => "nullable|exists:posts,id",
 		];
 	}
 	public function attributes(): array
@@ -42,8 +42,8 @@ class UpdateCommentRequest extends FormRequest
 		$temp['content'] = htmlspecialchars($temp['content']??null);
 		// some extra information
 		return $temp;
-	} 
-	
+	}
+
 	public function messages()
 	{
 		return [

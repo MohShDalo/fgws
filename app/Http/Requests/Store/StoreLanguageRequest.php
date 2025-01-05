@@ -27,14 +27,14 @@ class StoreLanguageRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			"language" => "required|nullable|string|min:0|max:255",
-			"category" => "required|nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.language.category')))."",
-			"general_score" => "required|nullable|integer|min:0|max:100000",
-			"speaking_score" => "required|nullable|integer|min:0|max:100000",
-			"writing_score" => "required|nullable|integer|min:0|max:100000",
-			"listening_score" => "required|nullable|integer|min:0|max:100000",
+			"language" => "required|string|min:0|max:255",
+			"category" => "required|string|min:0|max:255|in:".implode(',',array_keys(__('values.language.category')))."",
+			"general_score" => "required|integer|min:0|max:100",
+			"speaking_score" => "required_with:show_details|integer|min:0|max:100",
+			"writing_score" => "required_with:show_details|integer|min:0|max:100",
+			"listening_score" => "required_with:show_details|integer|min:0|max:100",
 			"show_details" => "nullable|string|min:0|max:255",
-			"note" => "required|nullable|string|min:0|max:255",
+			"note" => "nullable|string|min:0|max:255",
 			// "freelancer_id" => "nullable|exists:freelancers,id",
 		];
 	}
@@ -47,10 +47,9 @@ class StoreLanguageRequest extends FormRequest
 		$temp = parent::validated();
 		$temp['show_details'] = isset($temp['show_details']);
 		$temp['language'] = htmlspecialchars($temp['language']??null);
-		$temp['category'] = htmlspecialchars($temp['category']??null);
+		// $temp['category'] = htmlspecialchars($temp['category']??null);
 		$temp['note'] = htmlspecialchars($temp['note']??null);
         $temp['freelancer_id'] = \Auth::check()?\Auth::user()->roleable_id:null;
-		// some extra information
 		return $temp;
 	}
 

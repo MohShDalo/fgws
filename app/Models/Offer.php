@@ -12,6 +12,11 @@ class Offer extends Model
 	protected $table ='offers';
 	public $incrementing = true;
 	public $timestamps = true;
+
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_APPROVED = 'approved';
+    public const STATUS_REJECTED = 'rejected';
+
 	protected $fillable =[
 		'content',
 		'price',

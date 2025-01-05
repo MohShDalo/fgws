@@ -15,12 +15,12 @@
 	recordPk="id"
 	:extraValues="[]"
 	:extraValuesColsNames="[]"
-	:dataRecord="[]"
+	:dataRecord="\Auth::user()->roleable->educations()"
 	:otherRoutes="[]"
 	showRoute="education.show"
 	editRoute="education.edit"
 	deleteRoute="education.destroy"
-	:fieldsNames="['title','score','show_score_text','start_date_formated','end_date_formated','organizer','category_text','special_rank','note','freelancer_id' /**Relation*/, ]"
+	:fieldsNames="['title','score','show_score_text','start_date_formated','end_date_formated','organizer','category_text','special_rank','note', ]"
 	:colLabels="[
 			__('caption.cms.fields.education.title'),
 			__('caption.cms.fields.education.score'),
@@ -31,7 +31,6 @@
 			__('caption.cms.fields.education.category'),
 			__('caption.cms.fields.education.special_rank'),
 			__('caption.cms.fields.education.note'),
-			__('caption.cms.fields.education.freelancer_id') /**Relation*/,
 			]"
 	:filters="[]"
 	:filtersType="[]"

@@ -21,7 +21,7 @@ class SkillFactory extends Factory
 	public function definition()
 	{
 		return [
-			'title'=>Str::random(15),
+			'title'=>$this->faker->sentence(),
 			'category'=>Str::random(15),
 			'show'=>false,
 			// $skill->freelancer_id = null,

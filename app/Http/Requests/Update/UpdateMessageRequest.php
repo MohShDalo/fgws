@@ -15,7 +15,7 @@ class UpdateMessageRequest extends FormRequest
 	 */
 	public function authorize()
 	{
-		
+
 		return Gate::allows('update', $this->message);
 	}
 
@@ -27,9 +27,9 @@ class UpdateMessageRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			"content" => "required|nullable|string|min:0|max:1000",
-			"created_by_id" => "nullable|exists:users,id",
-			"chat_id" => "nullable|exists:chats,id",
+			"content" => "required|string|min:0|max:1000",
+			// "created_by_id" => "nullable|exists:users,id",
+			"chat_id" => "required|exists:chats,id",
 		];
 	}
 	public function attributes(): array
@@ -39,11 +39,12 @@ class UpdateMessageRequest extends FormRequest
 
 	public function validated($key=null, $default=null){
 		$temp = parent::validated();
+		$temp['created_by_id'] = \Auth::check()?\Auth::user()->id:null;
 		$temp['content'] = htmlspecialchars($temp['content']??null);
 		// some extra information
 		return $temp;
-	} 
-	
+	}
+
 	public function messages()
 	{
 		return [

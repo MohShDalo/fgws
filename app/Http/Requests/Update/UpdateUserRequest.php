@@ -15,7 +15,7 @@ class UpdateUserRequest extends FormRequest
 	 */
 	public function authorize()
 	{
-		
+
 		return Gate::allows('update', $this->user);
 	}
 
@@ -27,19 +27,19 @@ class UpdateUserRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			"name" => "required|nullable|string|min:0|max:255",
-			"image" => "required|nullable|string|min:0|max:255",
-			"cover" => "required|nullable|string|min:0|max:255",
-			"email" => "required|nullable|string|min:0|max:255",
-			"contact_number" => "required|nullable|string|min:0|max:255",
-			"birth_date" => "required|nullable|date",
-			"gender" => "required|nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.user.gender')))."",
-			"marital_status" => "required|nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.user.marital_status')))."",
-			"nationality" => "required|nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.user.nationality')))."",
-			"city" => "required|nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.user.city')))."",
-			"country" => "required|nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.user.country')))."",
-			"address_details" => "required|nullable|string|min:0|max:255",
-			"roleable_type" => "required|nullable|string|min:0|max:255",
+            "name" => "required|string|min:0|max:255",
+			"image" => "nullable|file|min:0|max:2048",
+			"cover" => "nullable|file|min:0|max:2048",
+			"email" => "required|email|min:0|max:255",
+			"contact_number" => "required|string|min:0|max:255",
+			"birth_date" => "required|date",
+			"gender" => "required|string|min:0|max:255|in:".implode(',',array_keys(__('values.user.gender')))."",
+			"marital_status" => "required|string|min:0|max:255|in:".implode(',',array_keys(__('values.user.marital_status')))."",
+			"nationality" => "required|string|min:0|max:255|in:".implode(',',array_keys(__('values.user.nationality')))."",
+			"city" => "nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.user.city')))."",
+			"country" => "nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.user.country')))."",
+			"address_details" => "nullable|string|min:0|max:255",
+			// "roleable_type" => "nullable|string|min:0|max:255",
 		];
 	}
 	public function attributes(): array
@@ -63,8 +63,8 @@ class UpdateUserRequest extends FormRequest
 		$temp['roleable_type'] = htmlspecialchars($temp['roleable_type']??null);
 		// some extra information
 		return $temp;
-	} 
-	
+	}
+
 	public function messages()
 	{
 		return [

@@ -15,7 +15,7 @@ class StorePostRequest extends FormRequest
 	 */
 	public function authorize()
 	{
-		
+
 		return Gate::allows('create', Post::class);
 	}
 
@@ -27,9 +27,9 @@ class StorePostRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			"content" => "required|nullable|string|min:0|max:1000",
-			"image" => "required|nullable|string|min:0|max:255",
-			"owner_id" => "nullable|exists:freelancers,id",
+			"content" => "required|string|min:0|max:1000",
+			"image" => "nullable|file|min:0|max:2048",
+			// "owner_id" => "nullable|exists:freelancers,id",
 		];
 	}
 	public function attributes(): array
@@ -40,11 +40,11 @@ class StorePostRequest extends FormRequest
 	public function validated($key=null, $default=null){
 		$temp = parent::validated();
 		$temp['content'] = htmlspecialchars($temp['content']??null);
-		$temp['image'] = htmlspecialchars($temp['image']??null);
+        $temp['owner_id'] = \Auth::check()?\Auth::user()->roleable_id:null;
 		// some extra information
 		return $temp;
-	} 
-	
+	}
+
 	public function messages()
 	{
 		return [

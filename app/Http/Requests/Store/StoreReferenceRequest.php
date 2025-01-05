@@ -27,11 +27,11 @@ class StoreReferenceRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			"full_name" => "required|nullable|string|min:0|max:255",
-			"contact_number" => "required|nullable|string|min:0|max:255",
-			"email" => "required|nullable|string|min:0|max:255",
-			"postion" => "required|nullable|string|min:0|max:255",
-			"note" => "required|nullable|string|min:0|max:255",
+			"full_name" => "required|string|min:0|max:255",
+			"contact_number" => "nullable|string|min:0|max:255",
+			"email" => "nullable|string|min:0|max:255",
+			"postion" => "nullable|string|min:0|max:255",
+			"note" => "nullable|string|min:0|max:255",
 			// "freelancer_id" => "nullable|exists:freelancers,id",
 		];
 	}
@@ -48,7 +48,6 @@ class StoreReferenceRequest extends FormRequest
 		$temp['postion'] = htmlspecialchars($temp['postion']??null);
 		$temp['note'] = htmlspecialchars($temp['note']??null);
         $temp['freelancer_id'] = \Auth::check()?\Auth::user()->roleable_id:null;
-		// some extra information
 		return $temp;
 	}
 

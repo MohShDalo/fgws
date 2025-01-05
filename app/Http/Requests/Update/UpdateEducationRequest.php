@@ -15,7 +15,7 @@ class UpdateEducationRequest extends FormRequest
 	 */
 	public function authorize()
 	{
-		
+
 		return Gate::allows('update', $this->education);
 	}
 
@@ -27,16 +27,16 @@ class UpdateEducationRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			"title" => "required|nullable|string|min:0|max:255",
-			"score" => "required|nullable|string|min:0|max:255",
+			"title" => "required|string|min:0|max:255",
+			"score" => "required|string|min:0|max:255",
 			"show_score" => "nullable|string|min:0|max:255",
-			"start_date" => "required|nullable|date",
-			"end_date" => "required|nullable|date",
-			"organizer" => "required|nullable|string|min:0|max:255",
-			"category" => "required|nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.education.category')))."",
-			"special_rank" => "required|nullable|string|min:0|max:255",
-			"note" => "required|nullable|string|min:0|max:255",
-			"freelancer_id" => "nullable|exists:freelancers,id",
+			"start_date" => "required|date",
+			"end_date" => "nullable|date",
+			"organizer" => "required|string|min:0|max:255",
+			"category" => "required|string|min:0|max:255|in:".implode(',',array_keys(__('values.education.category')))."",
+			"special_rank" => "nullable|string|min:0|max:255",
+			"note" => "nullable|string|min:0|max:255",
+			// "freelancer_id" => "nullable|exists:freelancers,id",
 		];
 	}
 	public function attributes(): array
@@ -50,13 +50,14 @@ class UpdateEducationRequest extends FormRequest
 		$temp['title'] = htmlspecialchars($temp['title']??null);
 		$temp['score'] = htmlspecialchars($temp['score']??null);
 		$temp['organizer'] = htmlspecialchars($temp['organizer']??null);
-		$temp['category'] = htmlspecialchars($temp['category']??null);
+		// $temp['category'] = htmlspecialchars($temp['category']??null);
 		$temp['special_rank'] = htmlspecialchars($temp['special_rank']??null);
 		$temp['note'] = htmlspecialchars($temp['note']??null);
+        $temp['freelancer_id'] = \Auth::check()?\Auth::user()->roleable_id:null;
 		// some extra information
 		return $temp;
-	} 
-	
+	}
+
 	public function messages()
 	{
 		return [

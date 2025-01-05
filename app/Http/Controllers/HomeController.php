@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Models\Job;
 
 class HomeController extends Controller
 {
@@ -12,7 +14,7 @@ class HomeController extends Controller
 	 */
 	public function __construct()
 	{
-		$this->middleware('auth');
+		$this->middleware('auth')->only('cms');
 	}
 
 	/**
@@ -22,7 +24,23 @@ class HomeController extends Controller
 	 */
 	public function index()
 	{
-		return view('cms.home');
+        $posts = Post::all();
+        $jobs = Job::all();
+
+		return view('home',['posts'=>$posts,'jobs'=>$jobs]);
+	}
+
+    public function showPost(Post $post)
+	{
+		return view('home.show-post',array('post'=>$post));
+	}
+    public function showJob(Job $job)
+	{
+		return view('home.show-job',array('job'=>$job));
+	}
+    public function showFreelancer(Job $freelancer)
+	{
+		return view('home.show-freelancer',array('freelancer'=>$freelancer));
 	}
 
 	/**

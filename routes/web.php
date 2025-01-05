@@ -13,15 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 Route::get('/password/change', [App\Http\Controllers\HomeController::class, 'index'])->name('user.password.change');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::get('/test', [App\Http\Controllers\HomeController::class, 'test'])->name('test');
+
+Route::get('/home/post/{post}', [App\Http\Controllers\HomeController::class, 'showPost'])->name('home.post.show');
+Route::get('/home/job/{job}', [App\Http\Controllers\HomeController::class, 'showJob'])->name('home.job.show');
+Route::get('/home/freelancer/{freelancer}', [App\Http\Controllers\HomeController::class, 'showFreelancer'])->name('home.freelancer.show');
+
+
 Route::prefix('cms')->group(function(){
 	Route::get('', [App\Http\Controllers\HomeController::class, 'cms'])->name('cms');
 
@@ -81,9 +87,10 @@ Route::prefix('cms')->group(function(){
     Route::get('/offer/export/excel', [App\Http\Controllers\Admin\OfferController::class, 'exportExcel'])->name('offer.export.excel');
     Route::get('/offer/report', [App\Http\Controllers\Admin\OfferController::class, 'reportPage'])->name('offer.report');
 
-    Route::resource('/reaction', App\Http\Controllers\Admin\ReactionController::class);
-    Route::get('/reaction/export/excel', [App\Http\Controllers\Admin\ReactionController::class, 'exportExcel'])->name('reaction.export.excel');
-    Route::get('/reaction/report', [App\Http\Controllers\Admin\ReactionController::class, 'reportPage'])->name('reaction.report');
+    Route::get('/reaction/store', [App\Http\Controllers\Admin\ReactionController::class, 'store'])->name('reaction.store');
+    // Route::resource('/reaction', App\Http\Controllers\Admin\ReactionController::class);
+    // Route::get('/reaction/export/excel', [App\Http\Controllers\Admin\ReactionController::class, 'exportExcel'])->name('reaction.export.excel');
+    // Route::get('/reaction/report', [App\Http\Controllers\Admin\ReactionController::class, 'reportPage'])->name('reaction.report');
 
     Route::resource('/chat', App\Http\Controllers\Admin\ChatController::class);
     Route::get('/chat/export/excel', [App\Http\Controllers\Admin\ChatController::class, 'exportExcel'])->name('chat.export.excel');

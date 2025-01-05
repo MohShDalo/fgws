@@ -32,7 +32,7 @@
 			type="text"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
 
 		<x-textfield
@@ -40,10 +40,10 @@
 			idName="email"
 			:caption="__('caption.cms.fields.reference.email')"
 			:initValue="old('email')"
-			type="text"
+			type="email"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
 
 		<x-textfield
@@ -54,19 +54,20 @@
 			type="text"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
 
-		<x-textfield
-			:xl="3" :lg="4" :md="4" :sm="6" parentClass="mb-3"
-			idName="note"
-			:caption="__('caption.cms.fields.reference.note')"
-			:initValue="old('note')"
-			type="text"
-			:hint="null"
-			placeholder=""
-			extraAttribute="required"
-		></x-textfield>
+
+		<x-textarea
+            :xl="12" :lg="12" :md="12" :sm="12" parentClass="mb-3"
+            idName="note"
+            :caption="__('caption.cms.fields.reference.note')"
+            :initValue="old('note')"
+            :rows="4"
+            :cols="10"
+            placeholder=""
+            extraAttribute=""
+        ></x-textarea>
 
 	</div>
 	<div class="row justify-content-center">

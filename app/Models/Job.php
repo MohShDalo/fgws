@@ -78,6 +78,10 @@ class Job extends Model
 	{
 		return $this->owner?->name??null;
 	}
+	public function getOwnerCompanyNameAttribute()
+	{
+		return $this->owner?->company_name??null;
+	}
 
 	public function delete(){
 		$this->offers()->delete();

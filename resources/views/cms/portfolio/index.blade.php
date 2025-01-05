@@ -15,12 +15,12 @@
 	recordPk="id"
 	:extraValues="[]"
 	:extraValuesColsNames="[]"
-	:dataRecord="[]"
+	:dataRecord="\Auth::user()->roleable->portfolios()"
 	:otherRoutes="[]"
 	showRoute="portfolio.show"
 	editRoute="portfolio.edit"
 	deleteRoute="portfolio.destroy"
-	:fieldsNames="['title','release_date_formated','link','categry_text','mockup_image','file','note','freelancer_id' /**Relation*/, ]"
+	:fieldsNames="['title','release_date_formated','link','categry_text','mockup_image','file','note', ]"
 	:colLabels="[
 			__('caption.cms.fields.portfolio.title'),
 			__('caption.cms.fields.portfolio.release_date'),
@@ -29,7 +29,6 @@
 			__('caption.cms.fields.portfolio.mockup_image'),
 			__('caption.cms.fields.portfolio.file'),
 			__('caption.cms.fields.portfolio.note'),
-			__('caption.cms.fields.portfolio.freelancer_id') /**Relation*/,
 			]"
 	:filters="[]"
 	:filtersType="[]"

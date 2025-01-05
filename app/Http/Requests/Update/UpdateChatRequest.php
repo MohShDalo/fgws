@@ -15,7 +15,7 @@ class UpdateChatRequest extends FormRequest
 	 */
 	public function authorize()
 	{
-		
+
 		return Gate::allows('update', $this->chat);
 	}
 
@@ -27,10 +27,10 @@ class UpdateChatRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			"title" => "required|nullable|string|min:0|max:255",
-			"first_member_id" => "nullable|exists:users,id",
-			"second_member_id" => "nullable|exists:users,id",
-			"created_by_id" => "nullable|exists:users,id",
+			// "title" => "required|nullable|string|min:0|max:255",
+			// "first_member_id" => "nullable|exists:users,id",
+			// "second_member_id" => "nullable|exists:users,id",
+			// "created_by_id" => "nullable|exists:users,id",
 		];
 	}
 	public function attributes(): array
@@ -43,8 +43,8 @@ class UpdateChatRequest extends FormRequest
 		$temp['title'] = htmlspecialchars($temp['title']??null);
 		// some extra information
 		return $temp;
-	} 
-	
+	}
+
 	public function messages()
 	{
 		return [

@@ -15,19 +15,18 @@
 	recordPk="id"
 	:extraValues="[]"
 	:extraValuesColsNames="[]"
-	:dataRecord="[]"
+	:dataRecord="\Auth::user()->roleable->references()"
 	:otherRoutes="[]"
 	showRoute="reference.show"
 	editRoute="reference.edit"
 	deleteRoute="reference.destroy"
-	:fieldsNames="['full_name','contact_number','email','postion','note','freelancer_id' /**Relation*/, ]"
+	:fieldsNames="['full_name','contact_number','email','postion','note', ]"
 	:colLabels="[
 			__('caption.cms.fields.reference.full_name'),
 			__('caption.cms.fields.reference.contact_number'),
 			__('caption.cms.fields.reference.email'),
 			__('caption.cms.fields.reference.postion'),
 			__('caption.cms.fields.reference.note'),
-			__('caption.cms.fields.reference.freelancer_id') /**Relation*/,
 			]"
 	:filters="[]"
 	:filtersType="[]"

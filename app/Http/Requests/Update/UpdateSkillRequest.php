@@ -15,7 +15,7 @@ class UpdateSkillRequest extends FormRequest
 	 */
 	public function authorize()
 	{
-		
+
 		return Gate::allows('update', $this->skill);
 	}
 
@@ -27,10 +27,10 @@ class UpdateSkillRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			"title" => "required|nullable|string|min:0|max:255",
-			"category" => "required|nullable|string|min:0|max:255|in:".implode(',',array_keys(__('values.skill.category')))."",
+			"title" => "required|string|min:0|max:255",
+			"category" => "required|string|min:0|max:255|in:".implode(',',array_keys(__('values.skill.category')))."",
 			"show" => "nullable|string|min:0|max:255",
-			"freelancer_id" => "nullable|exists:freelancers,id",
+			// "freelancer_id" => "nullable|exists:freelancers,id",
 		];
 	}
 	public function attributes(): array
@@ -42,11 +42,11 @@ class UpdateSkillRequest extends FormRequest
 		$temp = parent::validated();
 		$temp['show'] = isset($temp['show']);
 		$temp['title'] = htmlspecialchars($temp['title']??null);
-		$temp['category'] = htmlspecialchars($temp['category']??null);
-		// some extra information
+		// $temp['category'] = htmlspecialchars($temp['category']??null);
+        $temp['freelancer_id'] = \Auth::check()?\Auth::user()->roleable_id:null;
 		return $temp;
-	} 
-	
+	}
+
 	public function messages()
 	{
 		return [
