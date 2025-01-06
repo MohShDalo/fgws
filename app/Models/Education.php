@@ -61,7 +61,11 @@ class Education extends Model
 
 	public function getHtmlTextAttribute ()
 	{
-        return "$this->title";
+        return "$this->title$this->score_text<br>From $this->start_date_formated - $this->end_date_formated<br>In $this->organizer<br>$this->special_rank<br>$this->note";
+	}
+	public function getScoreTextAttribute ()
+	{
+		return $this->show_score?" (Got $this->score%)":'';
 	}
 	public function getShowScoreTextAttribute ()
 	{
@@ -73,7 +77,7 @@ class Education extends Model
 	}
 	public function getEndDateFormatedAttribute ()
 	{
-		return $this->end_date?->format('Y-m-d')??'-';
+		return $this->end_date?->format('Y-m-d')??'Until now';
 	}
 	public function getCategoryTextAttribute ()
 	{

@@ -22,10 +22,10 @@ class ReferenceFactory extends Factory
 	public function definition()
 	{
 		return [
-			'full_name'=>$this->faker->sentence(),
+			'full_name'=>$this->faker->name(),
 			'contact_number'=>$this->faker->numberBetween(591000000, 599999999),
 			'email'=>$this->faker->unique()->safeEmail,
-			'postion'=>$this->faker->sentence(),
+			'postion'=>$this->faker->word(),
 			'note'=>$this->faker->sentence(),
 			// $reference->freelancer_id = null,
 			'freelancer_id'=>Freelancer::factory(),

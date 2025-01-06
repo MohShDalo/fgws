@@ -50,7 +50,7 @@ class Reference extends Model
 
 	public function getHtmlTextAttribute ()
 	{
-        return "$this->full_name";
+        return "<b>$this->full_name</b><br>$this->postion<br>$this->contact_number<br>$this->email<br>$this->note<br>";
 	}
 	public function freelancer()
 	{

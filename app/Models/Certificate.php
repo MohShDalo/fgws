@@ -63,7 +63,7 @@ class Certificate extends Model
 
 	public function getHtmlTextAttribute ()
 	{
-        return "$this->course_title";
+        return "<b>$this->course_title</b><br>$this->hours Hours (From $this->start_date_formated - $this->end_date_formated)<br>In $this->organizer<br>$this->note";
 	}
 	public function getStartDateFormatedAttribute ()
 	{
@@ -71,7 +71,7 @@ class Certificate extends Model
 	}
 	public function getEndDateFormatedAttribute ()
 	{
-		return $this->end_date?->format('Y-m-d')??'-';
+		return $this->end_date?->format('Y-m-d')??'Until now';
 	}
     public function getCategoryTextAttribute ()
 	{

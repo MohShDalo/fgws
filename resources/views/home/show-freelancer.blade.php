@@ -89,29 +89,6 @@
                 </ul>
             </div>
         @endforeach
-
-
-        <?php
-            $relation= 'education';
-            $listOfData = $freelancer->{$relation.'s'};
-        ?>
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mt-3" style="border-right: 1px solid black;">
-            <h3>{{__("caption.cms.menu-item.$relation-menu.index")}}</h3>
-        </div>
-        <div class="col-xl-9 col-lg-8 col-md-6 col-sm-12 mt-3">
-            <ul>
-            @foreach ($listOfData as $record)
-                @if(isset($record->show)&& !$record->show)
-                @continue
-                @endif
-                <li>
-
-                </li>
-            @endforeach
-            </ul>
-        </div>
-
-
     </div>
 </div>
 

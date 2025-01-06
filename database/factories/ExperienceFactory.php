@@ -24,7 +24,7 @@ class ExperienceFactory extends Factory
 		return [
 			'postion'=>$this->faker->word(),
 			'company_name'=>$this->faker->sentence(),
-			'company_address'=>$this->faker->sentence(),
+			'company_address'=>$this->faker->address(),
 			'start_date'=>now()->sub('P4M'),
 			'end_date'=>now(),
 			'category'=>Experience::CATEGORY_TECHNICAL,

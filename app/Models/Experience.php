@@ -57,7 +57,9 @@ class Experience extends Model
 
 	public function getHtmlTextAttribute ()
 	{
-        return "$this->postion";
+
+
+        return "<h4>$this->postion</h4>In <b>$this->company_name</b>, $this->company_address<br>From $this->start_date_formated - $this->end_date_formated<br>$this->note";
 	}
 	public function getCategoryTextAttribute ()
 	{
@@ -69,7 +71,7 @@ class Experience extends Model
 	}
 	public function getEndDateFormatedAttribute ()
 	{
-		return $this->end_date?->format('Y-m-d')??'-';
+		return $this->end_date?->format('Y-m-d')??'Until now';
 	}
 
 	public function freelancer()

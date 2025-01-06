@@ -56,7 +56,11 @@ class Portfolio extends Model
 
 	public function getHtmlTextAttribute ()
 	{
-        return "$this->title";
+        if($this->release_date){
+            return "<a href='$this->link'>$this->title (Published at $this->release_date_formated)</a><br>$this->note";
+        }else{
+            return "<b>$this->title</b><br>$this->note";
+        }
 	}
 	public function getReleaseDateFormatedAttribute ()
 	{

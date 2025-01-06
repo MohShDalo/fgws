@@ -57,7 +57,15 @@ class Language extends Model
 
 	public function getHtmlTextAttribute ()
 	{
-        return "$this->language";
+        return "$this->language ($this->general_score%)<br>$this->details_text";
+	}
+	public function getDetailsTextAttribute ()
+	{
+        if($this->show_details){
+            return "Speaking: $this->speaking_score%<br>Writing: $this->writing_score%<br>Listening: $this->listening_score%<br>";
+        }else{
+            return '';
+        }
 	}
 	public function getCategoryTextAttribute ()
 	{

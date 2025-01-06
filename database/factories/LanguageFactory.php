@@ -22,13 +22,13 @@ class LanguageFactory extends Factory
 	public function definition()
 	{
 		return [
-			'language'=>$this->faker->word(),
+			'language'=>["Arabic","English","Franch","Turkish",][$this->faker->numberBetween(0, 3)],
 			'category'=>Language::CATEGORY_TECHNICAL,
 			'general_score'=>$this->faker->numberBetween(70, 100),
 			'speaking_score'=>$this->faker->numberBetween(70, 100),
 			'writing_score'=>$this->faker->numberBetween(70, 100),
 			'listening_score'=>$this->faker->numberBetween(70, 100),
-			'show_details'=>false,
+			'show_details'=>true,
 			'note'=>null,
 			// $language->freelancer_id = null,
 			'freelancer_id'=>Freelancer::factory(),
