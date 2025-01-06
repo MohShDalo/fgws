@@ -224,7 +224,7 @@ return [
 				'title'=>'Title',
 				'release_date'=>'Release Date',
 				'link'=>'Link',
-				'categry'=>'Categry',
+				'category'=>'category',
 				'mockup_image'=>'Mockup Image',
 				'file'=>'File',
 				'note'=>'Note',
@@ -294,7 +294,7 @@ return [
 		'pages'=>[
 			'login'=>[
 				'password'=>'Password',
-				'password_confirm'=>'Password confirm',
+				'password_confirmation'=>'Password confirm',
 				'login'=>'Login',
 				'remember_me'=>'Remember me',
 				'forgot_password'=>'Do you forget password?',

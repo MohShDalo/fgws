@@ -18,7 +18,7 @@ class CreatePortfolioTable extends Migration
 			$table->string("title")->nullable();
 			$table->datetime("release_date")->nullable();
 			$table->string("link")->nullable();
-			$table->string("categry")->nullable();
+			$table->string("category")->nullable();
 			$table->string("mockup_image")->nullable();
 			$table->string("file")->nullable();
 			$table->string("note",1000)->nullable();

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 use App\Models\Language;
+use App\Models\Freelancer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -21,15 +22,16 @@ class LanguageFactory extends Factory
 	public function definition()
 	{
 		return [
-			'language'=>Str::random(15),
-			'category'=>Str::random(15),
-			'general_score'=>0,
-			'speaking_score'=>0,
-			'writing_score'=>0,
-			'listening_score'=>0,
+			'language'=>$this->faker->word(),
+			'category'=>Language::CATEGORY_TECHNICAL,
+			'general_score'=>$this->faker->numberBetween(70, 100),
+			'speaking_score'=>$this->faker->numberBetween(70, 100),
+			'writing_score'=>$this->faker->numberBetween(70, 100),
+			'listening_score'=>$this->faker->numberBetween(70, 100),
 			'show_details'=>false,
-			'note'=>Str::random(15),
+			'note'=>null,
 			// $language->freelancer_id = null,
+			'freelancer_id'=>Freelancer::factory(),
 		];
 	}
 }

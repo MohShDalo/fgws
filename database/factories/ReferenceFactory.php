@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 use App\Models\Reference;
+use App\Models\Freelancer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -21,12 +22,13 @@ class ReferenceFactory extends Factory
 	public function definition()
 	{
 		return [
-			'full_name'=>Str::random(15),
-			'contact_number'=>Str::random(15),
-			'email'=>Str::random(15),
-			'postion'=>Str::random(15),
-			'note'=>Str::random(15),
+			'full_name'=>$this->faker->sentence(),
+			'contact_number'=>$this->faker->numberBetween(591000000, 599999999),
+			'email'=>$this->faker->unique()->safeEmail,
+			'postion'=>$this->faker->sentence(),
+			'note'=>$this->faker->sentence(),
 			// $reference->freelancer_id = null,
+			'freelancer_id'=>Freelancer::factory(),
 		];
 	}
 }

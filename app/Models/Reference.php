@@ -48,6 +48,10 @@ class Reference extends Model
 	}
 
 
+	public function getHtmlTextAttribute ()
+	{
+        return "$this->full_name";
+	}
 	public function freelancer()
 	{
 		return $this->belongsTo(Freelancer::class,'freelancer_id','id');

@@ -50,10 +50,10 @@
 		></x-textfield>
 
 		<x-dropdown-list
-			idName="categry"
-			:initValue="(old('categry')??$portfolio->categry)??null"
-			:caption="__('caption.cms.fields.portfolio.categry')"
-			:values="__('values.portfolio.categry')"
+			idName="category"
+			:initValue="(old('category')??$portfolio->category)??null"
+			:caption="__('caption.cms.fields.portfolio.category')"
+			:values="__('values.portfolio.category')"
 			:xl="3"	:lg="4"	:md="4"	:sm="6"	parentClass="mb-3"
 			:placeholder="__('caption.labels.select-label')"
 			extraAttribute="required"

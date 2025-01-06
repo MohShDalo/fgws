@@ -21,11 +21,11 @@ class OfferFactory extends Factory
 	public function definition()
 	{
 		return [
-			'content'=>Str::random(15),
-			'price'=>0,
-			'time'=>0,
-			'status'=>Str::random(15),
-			'status_reason'=>Str::random(15),
+			'content'=>$this->faker->sentence(),
+			'price'=>$this->faker->numberBetween(500, 1000),
+			'time'=>$this->faker->numberBetween(10, 40),
+			'status'=>Offer::STATUS_PENDING,
+			'status_reason'=>$this->faker->sentence(),
 			// $offer->owner_id = null,
 			// $offer->job_id = null,
 		];

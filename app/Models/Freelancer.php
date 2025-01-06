@@ -48,7 +48,7 @@ class Freelancer extends Model
 		return $this->user?->name??null;
 	}
 
-	public function skills()
+    public function skills()
 	{
 		return $this->hasMany(Skill::class,'freelancer_id','id');
 	}

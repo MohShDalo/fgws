@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 use App\Models\Experience;
+use App\Models\Freelancer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -21,14 +22,15 @@ class ExperienceFactory extends Factory
 	public function definition()
 	{
 		return [
-			'postion'=>Str::random(15),
-			'company_name'=>Str::random(15),
-			'company_address'=>Str::random(15),
-			'start_date'=>now(),
+			'postion'=>$this->faker->word(),
+			'company_name'=>$this->faker->sentence(),
+			'company_address'=>$this->faker->sentence(),
+			'start_date'=>now()->sub('P4M'),
 			'end_date'=>now(),
-			'category'=>Str::random(15),
-			'note'=>Str::random(15),
+			'category'=>Experience::CATEGORY_TECHNICAL,
+			'note'=>$this->faker->sentence(),
 			// $experience->freelancer_id = null,
+			'freelancer_id'=>Freelancer::factory(),
 		];
 	}
 }

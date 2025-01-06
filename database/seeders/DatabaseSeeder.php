@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'admin@fgws.ps',
         // ]);
         $this->call([
-            UserSeeder::class,
+            FreelancerSeeder::class,
+            MangerSeeder::class,
             PostSeeder::class,
             JobSeeder::class,
         ]);

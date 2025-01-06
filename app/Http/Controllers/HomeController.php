@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Job;
+use App\Models\Freelancer;
 
 class HomeController extends Controller
 {
@@ -38,7 +39,7 @@ class HomeController extends Controller
 	{
 		return view('home.show-job',array('job'=>$job));
 	}
-    public function showFreelancer(Job $freelancer)
+    public function showFreelancer(Freelancer $freelancer)
 	{
 		return view('home.show-freelancer',array('freelancer'=>$freelancer));
 	}

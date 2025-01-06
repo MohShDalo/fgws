@@ -22,7 +22,7 @@ class PostFactory extends Factory
 	{
 		return [
 			'content'=>$this->faker->text(1000),
-			'image'=>Str::random(15),
+			'image'=>$this->faker->sentence(),
 			'owner_id'=>1,
 			// $post->owner_id = null,
 		];

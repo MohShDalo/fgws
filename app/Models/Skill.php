@@ -47,6 +47,10 @@ class Skill extends Model
 		// });
 	}
 
+	public function getHtmlTextAttribute ()
+	{
+        return "($this->category) $this->title";
+	}
 	public function getCategoryTextAttribute ()
 	{
 		return __('values.skill.category')[$this->category]??'-';

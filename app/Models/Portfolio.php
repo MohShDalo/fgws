@@ -12,11 +12,13 @@ class Portfolio extends Model
 	protected $table ='portfolios';
 	public $incrementing = true;
 	public $timestamps = true;
+    public const CATEGORY_LIFESTYLE = 'life-style';
+    public const CATEGORY_TECHNICAL = 'technical';
 	protected $fillable =[
 		'title',
 		'release_date',
 		'link',
-		'categry',
+		'category',
 		'mockup_image',
 		'file',
 		'note',
@@ -26,7 +28,7 @@ class Portfolio extends Model
 		'title'=>null,
 		'release_date'=>null,
 		'link'=>null,
-		'categry'=>null,
+		'category'=>null,
 		'mockup_image'=>null,
 		'file'=>null,
 		'note'=>null,
@@ -52,13 +54,17 @@ class Portfolio extends Model
 		// });
 	}
 
+	public function getHtmlTextAttribute ()
+	{
+        return "$this->title";
+	}
 	public function getReleaseDateFormatedAttribute ()
 	{
-		return $this->release_date->format('Y-m-d')??'-';
+		return $this->release_date?->format('Y-m-d')??'-';
 	}
-	public function getCategryTextAttribute ()
+	public function getcategoryTextAttribute ()
 	{
-		return __('values.portfolio.categry')[$this->categry]??'-';
+		return __('values.portfolio.category')[$this->category]??'-';
 	}
 
 	public function freelancer()

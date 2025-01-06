@@ -12,6 +12,8 @@ class Experience extends Model
 	protected $table ='experiences';
 	public $incrementing = true;
 	public $timestamps = true;
+    public const CATEGORY_LIFESTYLE = 'life-style';
+    public const CATEGORY_TECHNICAL = 'technical';
 	protected $fillable =[
 		'postion',
 		'company_name',
@@ -53,6 +55,10 @@ class Experience extends Model
 		// });
 	}
 
+	public function getHtmlTextAttribute ()
+	{
+        return "$this->postion";
+	}
 	public function getCategoryTextAttribute ()
 	{
 		return __('values.experience.category')[$this->category]??'-';
@@ -63,7 +69,7 @@ class Experience extends Model
 	}
 	public function getEndDateFormatedAttribute ()
 	{
-		return $this->end_date->format('Y-m-d')??'-';
+		return $this->end_date?->format('Y-m-d')??'-';
 	}
 
 	public function freelancer()

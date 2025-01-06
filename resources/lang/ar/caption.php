@@ -222,7 +222,7 @@ return [
 				'title'=>'Title',
 				'release_date'=>'Release Date',
 				'link'=>'Link',
-				'categry'=>'Categry',
+				'category'=>'category',
 				'mockup_image'=>'Mockup Image',
 				'file'=>'File',
 				'note'=>'Note',

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 use App\Models\Chat;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -21,7 +22,10 @@ class ChatFactory extends Factory
 	public function definition()
 	{
 		return [
-			'title'=>Str::random(15),
+			'title'=>$this->faker->sentence(),
+			'first_member_id'=>User::factory(),
+			'second_member_id'=>User::factory(),
+			'created_by_id'=>User::factory(),
 			// $chat->first_member_id = null,
 			// $chat->second_member_id = null,
 			// $chat->created_by_id = null,

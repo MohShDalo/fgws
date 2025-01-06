@@ -21,9 +21,9 @@ class MangerFactory extends Factory
 	public function definition()
 	{
 		return [
-			'company_name'=>Str::random(15),
-			'company_objectives'=>Str::random(15),
-			'company_employees'=>Str::random(15),
+			'company_name'=>$this->faker->sentence(),
+			'company_objectives'=>$this->faker->text(500),
+			'company_employees'=>$this->faker->text(100),
 		];
 	}
 }

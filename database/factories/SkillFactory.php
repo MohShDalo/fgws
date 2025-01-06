@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 use App\Models\Skill;
+use App\Models\Freelancer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -22,9 +23,10 @@ class SkillFactory extends Factory
 	{
 		return [
 			'title'=>$this->faker->sentence(),
-			'category'=>Str::random(15),
-			'show'=>false,
+			'category'=>Skill::CATEGORY_TECHNICAL,
+			'show'=>true,
 			// $skill->freelancer_id = null,
+			'freelancer_id'=>Freelancer::factory(),
 		];
 	}
 }

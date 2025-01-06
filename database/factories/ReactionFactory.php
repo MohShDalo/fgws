@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 use App\Models\Reaction;
+use App\Models\Chat;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -21,7 +23,9 @@ class ReactionFactory extends Factory
 	public function definition()
 	{
 		return [
-			'type'=>Str::random(15),
+			'type'=>Reaction::TYPE_LIKE,
+			'post_id'=>Post::factory(),
+			'created_by_id'=>User::factory(),
 			// $reaction->created_by_id = null,
 			// $reaction->post_id = null,
 		];

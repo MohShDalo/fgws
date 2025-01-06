@@ -12,6 +12,8 @@ class Education extends Model
 	protected $table ='educations';
 	public $incrementing = true;
 	public $timestamps = true;
+    public const CATEGORY_LIFESTYLE = 'life-style';
+    public const CATEGORY_TECHNICAL = 'technical';
 	protected $fillable =[
 		'title',
 		'score',
@@ -57,6 +59,10 @@ class Education extends Model
 		// });
 	}
 
+	public function getHtmlTextAttribute ()
+	{
+        return "$this->title";
+	}
 	public function getShowScoreTextAttribute ()
 	{
 		return __('values.education.show_score')[$this->show_score]??'-';
@@ -67,7 +73,7 @@ class Education extends Model
 	}
 	public function getEndDateFormatedAttribute ()
 	{
-		return $this->end_date->format('Y-m-d')??'-';
+		return $this->end_date?->format('Y-m-d')??'-';
 	}
 	public function getCategoryTextAttribute ()
 	{

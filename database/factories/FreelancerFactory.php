@@ -21,8 +21,8 @@ class FreelancerFactory extends Factory
 	public function definition()
 	{
 		return [
-			'main_career'=>Str::random(15),
-			'place_of_birth'=>Str::random(15),
+			'main_career'=>$this->faker->sentence(),
+			'place_of_birth'=>$this->faker->word(),
 		];
 	}
 }

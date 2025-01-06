@@ -1,7 +1,7 @@
 <?php
 
 return [
-	
+
 	'user'=>[
 		'gender'=> array(
 					/*values here*/
@@ -75,7 +75,7 @@ return [
 				),
 	],
 	'portfolio'=>[
-		'categry'=> array(
+		'category'=> array(
 					/*values here*/
 					''=>'',
 				),

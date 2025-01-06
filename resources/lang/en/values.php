@@ -28,6 +28,10 @@ return [
             'ps-rf'=>'Rafah',
             'other'=>'Other',
         ),
+        'roleable_type'=>array(
+            \App\Models\Manger::class => 'Manager',
+            \App\Models\Freelancer::class => 'Freelancer',
+        )
 	],
 	'freelancer'=>[
 	],
@@ -39,51 +43,51 @@ return [
             \App\Models\Skill::CATEGORY_TECHNICAL => 'Technical',
         ),
 		'show'=> array(
-					0=>'No',
-					1=>'Yes'
-				),
+            0=>'No',
+            1=>'Yes'
+        ),
 	],
 	'certificate'=>[
 		'category'=> array(
-					/*values here*/
-					''=>'',
-				),
+            \App\Models\Certificate::CATEGORY_LIFESTYLE => 'Life Style',
+            \App\Models\Certificate::CATEGORY_TECHNICAL => 'Technical',
+        ),
 		'show'=> array(
-					0=>'No',
-					1=>'Yes'
-				),
+            0=>'No',
+            1=>'Yes'
+        ),
 	],
 	'education'=>[
 		'category'=> array(
-					/*values here*/
-					''=>'',
-				),
+            \App\Models\Education::CATEGORY_LIFESTYLE => 'Life Style',
+            \App\Models\Education::CATEGORY_TECHNICAL => 'Technical',
+        ),
 		'show_score'=> array(
-					0=>'No',
-					1=>'Yes'
-				),
+            0=>'No',
+            1=>'Yes'
+        ),
 	],
 	'language'=>[
 		'category'=> array(
-					/*values here*/
-					''=>'',
-				),
+            \App\Models\Language::CATEGORY_LIFESTYLE => 'Life Style',
+            \App\Models\Language::CATEGORY_TECHNICAL => 'Technical',
+        ),
 		'show_details'=> array(
-					0=>'No',
-					1=>'Yes'
-				),
+            0=>'No',
+            1=>'Yes'
+        ),
 	],
 	'experience'=>[
 		'category'=> array(
-					/*values here*/
-					''=>'',
-				),
+            \App\Models\Experience::CATEGORY_LIFESTYLE => 'Life Style',
+            \App\Models\Experience::CATEGORY_TECHNICAL => 'Technical',
+        ),
 	],
 	'portfolio'=>[
-		'categry'=> array(
-					/*values here*/
-					''=>'',
-				),
+		'category'=> array(
+            \App\Models\Portfolio::CATEGORY_LIFESTYLE => 'Life Style',
+            \App\Models\Portfolio::CATEGORY_TECHNICAL => 'Technical',
+        ),
 	],
 	'reference'=>[
 	],
@@ -95,15 +99,11 @@ return [
 	],
 	'offer'=>[
 		'status'=> array(
-					/*values here*/
-					''=>'',
-				),
+        ),
 	],
 	'reaction'=>[
 		'type'=> array(
-					/*values here*/
-					''=>'',
-				),
+        ),
 	],
 	'chat'=>[
 	],

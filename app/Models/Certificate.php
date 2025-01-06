@@ -12,6 +12,10 @@ class Certificate extends Model
 	protected $table ='certificates';
 	public $incrementing = true;
 	public $timestamps = true;
+
+    public const CATEGORY_LIFESTYLE = 'life-style';
+    public const CATEGORY_TECHNICAL = 'technical';
+
 	protected $fillable =[
 		'course_title',
 		'hours',
@@ -57,15 +61,19 @@ class Certificate extends Model
 		// });
 	}
 
+	public function getHtmlTextAttribute ()
+	{
+        return "$this->course_title";
+	}
 	public function getStartDateFormatedAttribute ()
 	{
 		return $this->start_date->format('Y-m-d')??'-';
 	}
 	public function getEndDateFormatedAttribute ()
 	{
-		return $this->end_date->format('Y-m-d')??'-';
+		return $this->end_date?->format('Y-m-d')??'-';
 	}
-	public function getCategoryTextAttribute ()
+    public function getCategoryTextAttribute ()
 	{
 		return __('values.certificate.category')[$this->category]??'-';
 	}

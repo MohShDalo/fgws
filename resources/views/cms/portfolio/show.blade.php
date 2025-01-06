@@ -26,8 +26,8 @@
 						<div class="form-control">{!!$portfolio->link??'-'!!}</div>
 					</div>
 					<div class="mb-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-						<label for="">{{__('caption.cms.fields.portfolio.categry')}}</label>
-						<div class="form-control">{!!$portfolio->categry_text??'-'!!}</div>
+						<label for="">{{__('caption.cms.fields.portfolio.category')}}</label>
+						<div class="form-control">{!!$portfolio->category_text??'-'!!}</div>
 					</div>
 					<div class="mb-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
 						<label for="">{{__('caption.cms.fields.portfolio.mockup_image')}}</label>
@@ -61,7 +61,7 @@
 				<form action="{{route('portfolio.destroy',$portfolio->id)}}" method="POST">
 					@csrf
 					@method('DELETE')
-					<input type="submit" class="form-control btn btn-outline-{{$portfolio->deleted_at?'success':'danger'}}" value="{{__('caption.labels.'.($portfolio->deleted_at?'restore':'delete'))}}"> 
+					<input type="submit" class="form-control btn btn-outline-{{$portfolio->deleted_at?'success':'danger'}}" value="{{__('caption.labels.'.($portfolio->deleted_at?'restore':'delete'))}}">
 				</form>
 			</div>
 		</div>

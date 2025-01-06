@@ -12,6 +12,8 @@ class Language extends Model
 	protected $table ='languages';
 	public $incrementing = true;
 	public $timestamps = true;
+    public const CATEGORY_LIFESTYLE = 'life-style';
+    public const CATEGORY_TECHNICAL = 'technical';
 	protected $fillable =[
 		'language',
 		'category',
@@ -53,6 +55,10 @@ class Language extends Model
 		// });
 	}
 
+	public function getHtmlTextAttribute ()
+	{
+        return "$this->language";
+	}
 	public function getCategoryTextAttribute ()
 	{
 		return __('values.language.category')[$this->category]??'-';

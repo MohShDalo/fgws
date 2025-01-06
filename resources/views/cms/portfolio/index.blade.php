@@ -20,12 +20,12 @@
 	showRoute="portfolio.show"
 	editRoute="portfolio.edit"
 	deleteRoute="portfolio.destroy"
-	:fieldsNames="['title','release_date_formated','link','categry_text','mockup_image','file','note', ]"
+	:fieldsNames="['title','release_date_formated','link','category_text','mockup_image','file','note', ]"
 	:colLabels="[
 			__('caption.cms.fields.portfolio.title'),
 			__('caption.cms.fields.portfolio.release_date'),
 			__('caption.cms.fields.portfolio.link'),
-			__('caption.cms.fields.portfolio.categry'),
+			__('caption.cms.fields.portfolio.category'),
 			__('caption.cms.fields.portfolio.mockup_image'),
 			__('caption.cms.fields.portfolio.file'),
 			__('caption.cms.fields.portfolio.note'),

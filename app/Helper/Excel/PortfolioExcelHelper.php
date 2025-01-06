@@ -14,7 +14,7 @@ class PortfolioExcelHelper extends ExcelHelper
 				'title'=>'title',
 				'release_date'=>'release_date',
 				'link'=>'link',
-				'categry'=>'categry',
+				'category'=>'category',
 				'mockup_image'=>'mockup_image',
 				'file'=>'file',
 				'note'=>'note',
@@ -23,7 +23,7 @@ class PortfolioExcelHelper extends ExcelHelper
 				__('caption.cms.fields.portfolio.title')=>'title',
 				__('caption.cms.fields.portfolio.release_date')=>'release_date',
 				__('caption.cms.fields.portfolio.link')=>'link',
-				__('caption.cms.fields.portfolio.categry')=>'categry',
+				__('caption.cms.fields.portfolio.category')=>'category',
 				__('caption.cms.fields.portfolio.mockup_image')=>'mockup_image',
 				__('caption.cms.fields.portfolio.file')=>'file',
 				__('caption.cms.fields.portfolio.note')=>'note',
@@ -32,7 +32,7 @@ class PortfolioExcelHelper extends ExcelHelper
 				'title'=>'required',
 				'release_date'=>'required',
 				'link'=>'required',
-				'categry'=>'required',
+				'category'=>'required',
 				'mockup_image'=>'required',
 				'file'=>'required',
 				'note'=>'required',
@@ -46,7 +46,7 @@ class PortfolioExcelHelper extends ExcelHelper
 'title'	=>__('caption.cms.fields.portfolio.title')
 'release_date'	=>__('caption.cms.fields.portfolio.release_date')
 'link'	=>__('caption.cms.fields.portfolio.link')
-'categry'	=>__('caption.cms.fields.portfolio.categry')
+'category'	=>__('caption.cms.fields.portfolio.category')
 'mockup_image'	=>__('caption.cms.fields.portfolio.mockup_image')
 'file'	=>__('caption.cms.fields.portfolio.file')
 'note'	=>__('caption.cms.fields.portfolio.note')
