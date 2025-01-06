@@ -35,7 +35,7 @@
 			type="date"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
 
 		<x-textfield
@@ -46,7 +46,7 @@
 			type="text"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
 
 		<x-dropdown-list
@@ -65,10 +65,10 @@
 			idName="mockup_image"
 			:caption="__('caption.cms.fields.portfolio.mockup_image')"
 			:initValue="(old('mockup_image')??$portfolio->mockup_image)??null"
-			type="text"
+			type="file"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
 
 		<x-textfield
@@ -76,10 +76,10 @@
 			idName="file"
 			:caption="__('caption.cms.fields.portfolio.file')"
 			:initValue="(old('file')??$portfolio->file)??null"
-			type="text"
+			type="file"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
 
 		<x-textfield
@@ -90,7 +90,7 @@
 			type="text"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
 
 	</div>

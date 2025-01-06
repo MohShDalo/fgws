@@ -14,8 +14,8 @@
 <form action="{{route('job.update',$job->id)}}" method="POST">
 	@csrf
 	@method("PUT")
-	<div class="row">  
-		
+	<div class="row">
+
 		<x-textarea
 			:xl="12" :lg="12" :md="12" :sm="12" parentClass="mb-3"
 			idName="content"
@@ -46,7 +46,7 @@
 			type="text"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
 
 		<x-textfield
@@ -57,7 +57,7 @@
 			type="text"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
 
 		<x-textfield
@@ -68,30 +68,8 @@
 			type="date"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
-
-		<x-dropdown-list
-			idName="worker_id"
-			:initValue="(old('worker_id')??$job->worker_id)??null"
-			:caption="__('caption.cms.fields.job.worker_id')"
-			:values="$freelancers"
-			:xl="3"	:lg="4"	:md="4"	:sm="6"	parentClass="mb-3"
-			:placeholder="__('caption.labels.select-label')"
-			extraAttribute="required"
-		>
-		</x-dropdown-list>
-
-		<x-dropdown-list
-			idName="owner_id"
-			:initValue="(old('owner_id')??$job->owner_id)??null"
-			:caption="__('caption.cms.fields.job.owner_id')"
-			:values="$mangers"
-			:xl="3"	:lg="4"	:md="4"	:sm="6"	parentClass="mb-3"
-			:placeholder="__('caption.labels.select-label')"
-			extraAttribute="required"
-		>
-		</x-dropdown-list>
 
 	</div>
 	<div class="row justify-content-center">

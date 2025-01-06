@@ -57,7 +57,7 @@
 			type="text"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
 
 		<x-textfield
@@ -68,7 +68,7 @@
 			type="text"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
 
 		<x-textfield
@@ -79,7 +79,7 @@
 			type="text"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
 
 		<x-switch-input
@@ -101,7 +101,7 @@
 			type="text"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
 
     </div>

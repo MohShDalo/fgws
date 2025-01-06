@@ -14,8 +14,8 @@
 <form action="{{route('post.update',$post->id)}}" method="POST">
 	@csrf
 	@method("PUT")
-	<div class="row">  
-		
+	<div class="row">
+
 		<x-textarea
 			:xl="12" :lg="12" :md="12" :sm="12" parentClass="mb-3"
 			idName="content"
@@ -35,19 +35,8 @@
 			type="text"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
-
-		<x-dropdown-list
-			idName="owner_id"
-			:initValue="(old('owner_id')??$post->owner_id)??null"
-			:caption="__('caption.cms.fields.post.owner_id')"
-			:values="$freelancers"
-			:xl="3"	:lg="4"	:md="4"	:sm="6"	parentClass="mb-3"
-			:placeholder="__('caption.labels.select-label')"
-			extraAttribute="required"
-		>
-		</x-dropdown-list>
 
 	</div>
 	<div class="row justify-content-center">

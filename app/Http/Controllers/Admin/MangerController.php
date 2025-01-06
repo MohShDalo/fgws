@@ -92,6 +92,7 @@ class MangerController extends Controller
 	{
 		$data = $request->validated();
 		$manger->update($data);
+		$manger->user->update($data);
 		session()->put('type',"success");
 		session()->put('message',__('messages.manger.success.update',['name'=>$manger->id??'']));
 		return redirect(route('manger.index'));

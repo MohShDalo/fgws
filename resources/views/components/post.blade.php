@@ -9,15 +9,15 @@
             $user = \Auth::user();
             $isSelected = $user->reactions()->where('post_id',$post->id)->where('type',\App\Models\Reaction::TYPE_LIKE)->first();
             ?>
-            <a href="{{route('reaction.store')}}?type={{\App\Models\Reaction::TYPE_LIKE}}" class="icon">
+            <a href="{{route('reaction.store')}}?post_id={{$post->id}}&type={{\App\Models\Reaction::TYPE_LIKE}}" class="icon">
                 <i class="bi bi-hand-thumbs-up{{$isSelected?'-fill':''}}"></i>
             </a>
             <?php $isSelected = $user->reactions()->where('post_id',$post->id)->where('type',\App\Models\Reaction::TYPE_HEART)->first();?>
-            <a href="{{route('reaction.store')}}?type={{\App\Models\Reaction::TYPE_HEART}}" class="icon">
+            <a href="{{route('reaction.store')}}?post_id={{$post->id}}&type={{\App\Models\Reaction::TYPE_HEART}}" class="icon">
                 <i class="bi bi-heart{{$isSelected?'-fill':''}}"></i>
             </a>
             <?php $isSelected = $user->reactions()->where('post_id',$post->id)->where('type',\App\Models\Reaction::TYPE_LOVE)->first();?>
-            <a href="{{route('reaction.store')}}?type={{\App\Models\Reaction::TYPE_LOVE}}" class="icon">
+            <a href="{{route('reaction.store')}}?post_id={{$post->id}}&type={{\App\Models\Reaction::TYPE_LOVE}}" class="icon">
                 <i class="bi bi-emoji-heart-eyes{{$isSelected?'-fill':''}}"></i>
             </a>
         </div>

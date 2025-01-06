@@ -103,6 +103,9 @@ return [
 	],
 	'reaction'=>[
 		'type'=> array(
+            \App\Models\Reaction::TYPE_LIKE => 'like',
+            \App\Models\Reaction::TYPE_HEART => 'hert',
+            \App\Models\Reaction::TYPE_LOVE => 'love',
         ),
 	],
 	'chat'=>[

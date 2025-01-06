@@ -53,7 +53,7 @@
 			:xl="3" :lg="4" :md="4" :sm="6" parentClass="mb-3"
 			idName="start_date"
 			:caption="__('caption.cms.fields.experience.start_date')"
-			:initValue="(old('start_date')??$experience->start_date)??null"
+			:initValue="(old('start_date')??$experience->start_date_formated)??null"
 			type="date"
 			:hint="null"
 			placeholder=""
@@ -64,11 +64,11 @@
 			:xl="3" :lg="4" :md="4" :sm="6" parentClass="mb-3"
 			idName="end_date"
 			:caption="__('caption.cms.fields.experience.end_date')"
-			:initValue="(old('end_date')??$experience->end_date)??null"
+			:initValue="(old('end_date')??$experience->end_date_formated)??null"
 			type="date"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
 
 		<x-dropdown-list
@@ -90,7 +90,7 @@
 			type="text"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
 
 	</div>

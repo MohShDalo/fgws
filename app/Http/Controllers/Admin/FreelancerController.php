@@ -95,6 +95,7 @@ class FreelancerController extends Controller
 	{
 		$data = $request->validated();
 		$freelancer->update($data);
+		$freelancer->user->update($data);
 		session()->put('type',"success");
 		session()->put('message',__('messages.freelancer.success.update',['name'=>$freelancer->id??'']));
 		return redirect(route('freelancer.index'));

@@ -10,8 +10,7 @@
 		<h1>{{__('caption.cms.menu-item.certificate-menu.edit',['name'=>$certificate->id??''] )}}</h1>
 	</div>
 </div>
-{{-- enctype="multipart/form-data" --}}
-<form action="{{route('certificate.update',$certificate->id)}}" method="POST">
+<form action="{{route('certificate.update',$certificate->id)}}" method="POST" enctype="multipart/form-data">
 	@csrf
 	@method("PUT")
 	<div class="row">
@@ -42,7 +41,7 @@
 			:xl="3" :lg="4" :md="4" :sm="6" parentClass="mb-3"
 			idName="start_date"
 			:caption="__('caption.cms.fields.certificate.start_date')"
-			:initValue="(old('start_date')??$certificate->start_date)??null"
+			:initValue="(old('start_date')??$certificate->start_date_formated)??null"
 			type="date"
 			:hint="null"
 			placeholder=""
@@ -53,11 +52,11 @@
 			:xl="3" :lg="4" :md="4" :sm="6" parentClass="mb-3"
 			idName="end_date"
 			:caption="__('caption.cms.fields.certificate.end_date')"
-			:initValue="(old('end_date')??$certificate->end_date)??null"
+			:initValue="(old('end_date')??$certificate->end_date_formated)??null"
 			type="date"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
 
 		<x-textfield
@@ -87,10 +86,10 @@
 			idName="file"
 			:caption="__('caption.cms.fields.certificate.file')"
 			:initValue="(old('file')??$certificate->file)??null"
-			type="text"
+			type="file"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
 
 		<x-switch-input
@@ -112,7 +111,7 @@
 			type="text"
 			:hint="null"
 			placeholder=""
-			extraAttribute="required"
+			extraAttribute=""
 		></x-textfield>
 
 	</div>
