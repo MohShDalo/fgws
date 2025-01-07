@@ -20,7 +20,7 @@
 	showRoute="portfolio.show"
 	editRoute="portfolio.edit"
 	deleteRoute="portfolio.destroy"
-	:fieldsNames="['title','release_date_formated','link','category_text','mockup_image','file','note', ]"
+	:fieldsNames="['title','release_date_formated','link_html_link','category_text','mockup_image_html_link','file_html_link','note', ]"
 	:colLabels="[
 			__('caption.cms.fields.portfolio.title'),
 			__('caption.cms.fields.portfolio.release_date'),

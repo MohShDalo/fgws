@@ -44,7 +44,7 @@
 			:caption="__('caption.cms.fields.portfolio.link')"
 			:initValue="(old('link')??$portfolio->link)??null"
 			type="text"
-			:hint="null"
+			:hint="$this->link_html_link"
 			placeholder=""
 			extraAttribute=""
 		></x-textfield>
@@ -66,7 +66,7 @@
 			:caption="__('caption.cms.fields.portfolio.mockup_image')"
 			:initValue="(old('mockup_image')??$portfolio->mockup_image)??null"
 			type="file"
-			:hint="null"
+			:hint="$this->mockup_image_html_link"
 			placeholder=""
 			extraAttribute=""
 		></x-textfield>
@@ -77,7 +77,7 @@
 			:caption="__('caption.cms.fields.portfolio.file')"
 			:initValue="(old('file')??$portfolio->file)??null"
 			type="file"
-			:hint="null"
+			:hint="$this->file_html_link"
 			placeholder=""
 			extraAttribute=""
 		></x-textfield>

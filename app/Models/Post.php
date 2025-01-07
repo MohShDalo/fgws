@@ -41,6 +41,11 @@ class Post extends Model
 		// });
 	}
 
+	public function getImageHtmlAttribute ()
+    {
+        $path = "'".asset('img/no-image.jpeg')."'";
+        return $this->image? "<img style='height: 100px;' src='$this->image' alt='' loading='lazy' onerror=this.onerror=null;this.src=$path; > ":'--';
+    }
 	public function getBreifContentAttribute()
 	{
         if(strlen($this->content)>=50){

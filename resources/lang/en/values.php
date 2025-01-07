@@ -99,6 +99,9 @@ return [
 	],
 	'offer'=>[
 		'status'=> array(
+            \App\Models\Offer::STATUS_PENDING => 'Pending',
+            \App\Models\Offer::STATUS_APPROVED => 'Approved',
+            \App\Models\Offer::STATUS_REJECTED => 'Rejected',
         ),
 	],
 	'reaction'=>[

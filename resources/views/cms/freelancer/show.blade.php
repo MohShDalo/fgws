@@ -309,7 +309,7 @@
 	showRoute="portfolio.show"
 	editRoute="portfolio.edit"
 	deleteRoute="portfolio.destroy"
-	:fieldsNames="['title','release_date_formated','link','category_text','mockup_image','file','note',]"
+	:fieldsNames="['title','release_date_formated','link_html_link','category_text','mockup_image_html_link','file_html_link','note',]"
 	:colLabels="[
 				__('caption.cms.fields.portfolio.title'),
 				__('caption.cms.fields.portfolio.release_date'),
@@ -389,11 +389,10 @@
 	showRoute="post.show"
 	editRoute="post.edit"
 	deleteRoute="post.destroy"
-	:fieldsNames="['breif_content','image','owner_id',]"
+	:fieldsNames="['breif_content','image', ]"
 	:colLabels="[
 				__('caption.cms.fields.post.content'),
 				__('caption.cms.fields.post.image'),
-				__('caption.cms.fields.post.owner_id'),
 		]"
 	:filters="[]"
 	:filtersType="[]"
@@ -426,7 +425,7 @@
 	showRoute="job.show"
 	editRoute="job.edit"
 	deleteRoute="job.destroy"
-	:fieldsNames="['content','needed_postion','max_price','max_time','expected_start_date_formated','worker_id','owner_id',]"
+	:fieldsNames="['content','needed_postion','max_price','max_time','expected_start_date_formated','worker_id', ]"
 	:colLabels="[
 				__('caption.cms.fields.job.content'),
 				__('caption.cms.fields.job.needed_postion'),
@@ -434,7 +433,6 @@
 				__('caption.cms.fields.job.max_time'),
 				__('caption.cms.fields.job.expected_start_date'),
 				__('caption.cms.fields.job.worker_id'),
-				__('caption.cms.fields.job.owner_id'),
 		]"
 	:filters="[]"
 	:filtersType="[]"

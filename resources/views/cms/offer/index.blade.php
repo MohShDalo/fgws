@@ -15,12 +15,12 @@
 	recordPk="id"
 	:extraValues="[]"
 	:extraValuesColsNames="[]"
-	:dataRecord="[]"
+	:dataRecord="\App\Models\Offer::owned()"
 	:otherRoutes="[]"
 	showRoute="offer.show"
 	editRoute="offer.edit"
 	deleteRoute="offer.destroy"
-	:fieldsNames="['content','price','time','status_text','status_reason','owner_id' /**Relation*/, 'job_content' /**Relation*/, ]"
+	:fieldsNames="['content','price','time','status_text','status_reason','owner_name' /**Relation*/, 'job_content' /**Relation*/, ]"
 	:colLabels="[
 			__('caption.cms.fields.offer.content'),
 			__('caption.cms.fields.offer.price'),

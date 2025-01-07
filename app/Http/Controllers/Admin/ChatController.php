@@ -30,7 +30,7 @@ class ChatController extends Controller
 	 */
 	public function index()
 	{
-		return view('cms.chat.index');
+		return view('cms.chat.index',['chats'=>Chat::all()]);
 	}
 
 	/**

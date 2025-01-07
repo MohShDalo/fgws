@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\Offer;
 use App\Models\User;
+use App\Models\Manger;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class OfferPolicy
@@ -53,7 +54,12 @@ class OfferPolicy
 	 */
 	public function update(User $user, Offer $offer)
 	{
-		return true;
+		return $offer->owner_id == $user->roleable_id;
+	}
+
+    public function approve(User $user, Offer $offer)
+	{
+		return $offer->job->owner_id == $user->roleable_id && $user->roleable_type == Manger::class;
 	}
 
 	/**

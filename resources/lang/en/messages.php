@@ -227,6 +227,8 @@ return [
 			'create'=>"Offer \":name\" created successfuly",
 			'update'=>"Offer \":name\" updated successfuly",
 			'delete'=>"Offer \":name\" deleted successfuly",
+            'approve'=>'Offer of :name was approved successfuly',
+            'reject'=>'Offer of :name was Rejected successfuly',
 			//'other-message'=>"Offer \":name\" other-message successfuly",
 		],
 		'warning'=>[
@@ -293,6 +295,7 @@ return [
 	'other'=>[
 		'confirm_delete'=>'Do you want to delete?',
 		'no-data'=>'No Data to view',
+		'no-offers'=>'No offers to view',
 		'success'=>[
 			''=>'',
 		],

@@ -22,6 +22,7 @@ class OfferController extends Controller
 		$this->middleware('can:view,offer')->only('show');
 		$this->middleware('can:update,offer')->only(['edit','update']);
 		$this->middleware('can:delete,offer')->only('destroy');
+		$this->middleware('can:approve,offer')->only('approve');
 		// $this->middleware('can:action,patameter')->only('method');
 	}
 	/**
@@ -138,5 +139,25 @@ class OfferController extends Controller
 	public function reportPage()
 	{
 		return ['message'=>'Not accepted'];//view('cms.offer.report');
+	}
+	public function approve(Offer $offer)
+	{
+        if($offer->isPending()){
+            $offer->status = Offer::STATUS_APPROVED;
+            $offer->save();
+            session()->put('type',"success");
+			session()->put('message',__('messages.offer.success.approve',['name'=>"$offer->owner_name"]));
+        }else if($offer->isApproved()){
+            session()->put('type',"success");
+			session()->put('message',__('messages.offer.success.reject',['name'=>"$offer->owner_name"]));
+            $offer->status = Offer::STATUS_REJECTED;
+            $offer->save();
+        }else if($offer->isRejected()){
+            session()->put('type',"success");
+			session()->put('message',__('messages.offer.success.approve',['name'=>"$offer->owner_name"]));
+            $offer->status = Offer::STATUS_APPROVED;
+            $offer->save();
+        }
+        return redirect()->back();
 	}
 }

@@ -15,7 +15,9 @@
 	@csrf
 	@method("PUT")
 	<div class="row">
-		<?php $user $manger->user?>
+    <?php
+        $user = $manger->user;
+    ?>
 		<x-textfield
             :xl="3" :lg="4" :md="4" :sm="6" parentClass="mb-3"
             idName="name"

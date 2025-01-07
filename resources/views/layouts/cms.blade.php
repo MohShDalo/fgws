@@ -165,21 +165,23 @@
 						</li>
 						@endcan
 
-						@can('viewAny', \App\Models\Job::class)
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
 								aria-expanded="false">
 								{{__('caption.cms.menu-item.job-menu.title')}}
 							</a>
 							<ul class="dropdown-menu dropdown-menu-{{$isDarkMode?'white':'dark'}}">
-								<li><a class="dropdown-item" href="{{route('job.index')}}">{{__('caption.cms.menu-item.job-menu.index')}}</a></li>
-								@can('create', \App\Models\Job::class)
-								<li><a class="dropdown-item" href="{{route('job.create')}}">{{__('caption.cms.menu-item.job-menu.add')}}</a></li>
+								@can('viewAny', \App\Models\Offer::class)
+									<li><a class="dropdown-item" href="{{route('offer.index')}}">{{__('caption.cms.menu-item.offer-menu.index')}}</a></li>
+								@endcan
+								@can('viewAny', \App\Models\Job::class)
+									<li><a class="dropdown-item" href="{{route('job.index')}}">{{__('caption.cms.menu-item.job-menu.index')}}</a></li>
+									@can('create', \App\Models\Job::class)
+									<li><a class="dropdown-item" href="{{route('job.create')}}">{{__('caption.cms.menu-item.job-menu.add')}}</a></li>
+									@endcan
 								@endcan
 							</ul>
 						</li>
-						@endcan
-
 						@if(\Auth::check())
 						<li class="nav-item dropdown">
 							<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

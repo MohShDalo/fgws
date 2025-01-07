@@ -54,6 +54,18 @@ class Portfolio extends Model
 		// });
 	}
 
+	public function getLinkHtmlLinkAttribute ()
+    {
+        return $this->link? "<a href='$this->link' target='_blank'>Go to link</a>":'--';
+    }
+	public function getMockupImageHtmlLinkAttribute ()
+    {
+        return $this->mockup_image? "<a href='$this->mockup_image' target='_blank'>Open Image</a>":'--';
+    }
+	public function getFileHtmlLinkAttribute ()
+    {
+        return $this->file? "<a href='$this->file' target='_blank'>Download file</a>":'--';
+    }
 	public function getHtmlTextAttribute ()
 	{
         if($this->release_date){
@@ -64,7 +76,7 @@ class Portfolio extends Model
 	}
 	public function getReleaseDateFormatedAttribute ()
 	{
-		return $this->release_date?->format('Y-m-d')??'-';
+		return $this->release_date?->format('Y-m-d')??'Not published';
 	}
 	public function getcategoryTextAttribute ()
 	{

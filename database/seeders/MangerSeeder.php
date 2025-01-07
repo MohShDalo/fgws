@@ -42,7 +42,7 @@ class MangerSeeder extends Seeder
             'country'           =>'ps-rf',
             'address_details'   =>"MORE DETAILS",
             'roleable_type'     =>Manger::class,
-            'roleable_id'       =>2,
+            'roleable_id'       =>1,
         ]);
 
 	}

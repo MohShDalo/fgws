@@ -15,12 +15,12 @@
 	recordPk="id"
 	:extraValues="[]"
 	:extraValuesColsNames="[]"
-	:dataRecord="[]"
+	:dataRecord="\App\Models\Job::owned()"
 	:otherRoutes="[]"
 	showRoute="job.show"
 	editRoute="job.edit"
 	deleteRoute="job.destroy"
-	:fieldsNames="['content','needed_postion','max_price','max_time','expected_start_date_formated','worker_id' /**Relation*/, 'owner_id' /**Relation*/, ]"
+	:fieldsNames="['content','needed_postion','max_price','max_time','expected_start_date_formated','worker_name' /**Relation*/, 'owner_name' /**Relation*/, ]"
 	:colLabels="[
 			__('caption.cms.fields.job.content'),
 			__('caption.cms.fields.job.needed_postion'),

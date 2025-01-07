@@ -23,7 +23,7 @@
 					</div>
 					<div class="mb-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
 						<label for="">{{__('caption.cms.fields.portfolio.link')}}</label>
-						<div class="form-control">{!!$portfolio->link??'-'!!}</div>
+						<div class="form-control">{!!$portfolio->link_html_link??'-'!!}</div>
 					</div>
 					<div class="mb-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
 						<label for="">{{__('caption.cms.fields.portfolio.category')}}</label>
@@ -31,11 +31,11 @@
 					</div>
 					<div class="mb-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
 						<label for="">{{__('caption.cms.fields.portfolio.mockup_image')}}</label>
-						<div class="form-control">{!!$portfolio->mockup_image??'-'!!}</div>
+						<div class="form-control">{!!$portfolio->mockup_image_html_link??'-'!!}</div>
 					</div>
 					<div class="mb-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
 						<label for="">{{__('caption.cms.fields.portfolio.file')}}</label>
-						<div class="form-control">{!!$portfolio->file??'-'!!}</div>
+						<div class="form-control">{!!$portfolio->file_html_link??'-'!!}</div>
 					</div>
 					<div class="mb-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
 						<label for="">{{__('caption.cms.fields.portfolio.note')}}</label>

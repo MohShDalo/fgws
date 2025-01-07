@@ -399,6 +399,9 @@ return [
 		],
 		'hint'=>[
 			'comment'=>'Write your comment here ...',
+			'offer'=>'Write your offer details here ...',
+			'price'=>'Write your expected price in $ ...',
+			'time'=>'Write your expected time in days ...',
 			''=>'',
 		],
 		''=>'',

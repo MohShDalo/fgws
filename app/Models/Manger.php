@@ -46,6 +46,12 @@ class Manger extends Model
     {
         return $this->morphOne(User::class, 'roleable');
     }
+
+	public function getNameAttribute()
+	{
+		return $this->user?->name??null;
+	}
+
 	public function jobs()
 	{
 		return $this->hasMany(Job::class,'owner_id','id');

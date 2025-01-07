@@ -27,7 +27,7 @@ class CertificateFactory extends Factory
 			'start_date'=>now()->sub('P4M'),
 			'end_date'=>now(),
 			'organizer'=>$this->faker->sentence(),
-			'category'=>$this->faker->sentence(),
+			'category'=>Certificate::CATEGORY_TECHNICAL,
 			'file'=>NULL,
 			'show'=>true,
 			'note'=>$this->faker->sentence(),

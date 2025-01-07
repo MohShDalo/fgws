@@ -20,11 +20,10 @@
 	showRoute="post.show"
 	editRoute="post.edit"
 	deleteRoute="post.destroy"
-	:fieldsNames="['content','image','owner_id' /**Relation*/, ]"
+	:fieldsNames="['content','image_html', ]"
 	:colLabels="[
 			__('caption.cms.fields.post.content'),
 			__('caption.cms.fields.post.image'),
-			__('caption.cms.fields.post.owner_id') /**Relation*/,
 			]"
 	:filters="[]"
 	:filtersType="[]"

@@ -86,6 +86,7 @@ Route::prefix('cms')->group(function(){
     Route::resource('/offer', App\Http\Controllers\Admin\OfferController::class);
     Route::get('/offer/export/excel', [App\Http\Controllers\Admin\OfferController::class, 'exportExcel'])->name('offer.export.excel');
     Route::get('/offer/report', [App\Http\Controllers\Admin\OfferController::class, 'reportPage'])->name('offer.report');
+    Route::get('/offer/approve/{offer}', [App\Http\Controllers\Admin\OfferController::class, 'approve'])->name('offer.approve');
 
     Route::get('/reaction/store', [App\Http\Controllers\Admin\ReactionController::class, 'store'])->name('reaction.store');
     // Route::resource('/reaction', App\Http\Controllers\Admin\ReactionController::class);

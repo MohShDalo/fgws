@@ -77,10 +77,37 @@ class Offer extends Model
 		return $this->job?->content??null;
 	}
 
+
+	public function isPending()
+	{
+		return $this->status == Offer::STATUS_PENDING;
+	}
+    public function isApproved()
+	{
+		return $this->status == Offer::STATUS_APPROVED;
+	}
+    public function isRejected()
+	{
+		return $this->status == Offer::STATUS_REJECTED;
+	}
 	public function delete(){
 		parent::delete();
 	}
 
+    public function scopeOwned($query)
+    {
+        $user = \Auth::user();
+        if(!$user){
+            return $query;
+        }else if($user->isFreelancer()){
+            return $query->where('owner_id',$user->roleable_id);
+        }else if($user->isManger()){
+            return $query->whereIn('job_id',$user->roleable->jobs()->pluck('id')->toArray());
+        }else {
+            return $query;
+        }
+        return $query->where('id',null);
+	}
 	public static function filterModelsData($data, $attribute, $value){
 		if(str_contains($attribute,'name')||str_contains($attribute,'title')){
 			return $data->where($attribute,'LIKE',"%$value%");

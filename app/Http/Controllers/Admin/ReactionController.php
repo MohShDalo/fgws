@@ -56,9 +56,20 @@ class ReactionController extends Controller
 	public function store(StoreReactionRequest $request)
 	{
 		$temp = $request->validated();
-		$data = Reaction::create($temp);
-		session()->put('type',"success");
-		session()->put('message',__('messages.reaction.success.create',['name'=>$data->id??'']));
+        Reaction::where('created_by_id',$temp['created_by_id'])
+        ->where('post_id',$temp['post_id'])
+        ->where('type','<>',$temp['type'])
+        ->delete();
+        $tempReaction = Reaction::where('created_by_id',$temp['created_by_id'])
+            ->where('post_id',$temp['post_id'])
+            ->where('type',$temp['type'])->first();
+        if($tempReaction){
+            $tempReaction->delete();
+        }else{
+            $data = Reaction::create($temp);
+        }
+		// session()->put('type',"success");
+		// session()->put('message',__('messages.reaction.success.create',['name'=>$data->id??'']));
 		return back();
 	}
 

@@ -52,7 +52,16 @@ class Job extends Model
 
 	public function getExpectedStartDateFormatedAttribute ()
 	{
-		return $this->expected_start_date->format('Y-m-d')??'-';
+		return $this->expected_start_date->format('Y-m-d')??'No expected date';
+	}
+
+	public function getMaxPriceTextAttribute ()
+	{
+        return $this->max_price?"Max $this->max_price$":'No price limit';
+	}
+	public function getMaxTimeTextAttribute ()
+	{
+        return $this->max_time?"Max $this->max_time Days":'No time limit';
 	}
 
 	public function offers()
@@ -87,7 +96,20 @@ class Job extends Model
 		$this->offers()->delete();
 		parent::delete();
 	}
-
+    public function scopeOwned($query)
+    {
+        $user = \Auth::user();
+        if(!$user){
+            return $query;
+        }else if($user->isFreelancer()){
+            return $query->where('worker_id',$user->roleable_id);
+        }else if($user->isManger()){
+            return $query->where('owner_id',$user->roleable_id);
+        }else {
+            return $query;
+        }
+        return $query->where('id',null);
+	}
 	public static function filterModelsData($data, $attribute, $value){
 		if(str_contains($attribute,'name')||str_contains($attribute,'title')){
 			return $data->where($attribute,'LIKE',"%$value%");
