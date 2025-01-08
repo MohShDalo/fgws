@@ -25,8 +25,10 @@ class CommentFactory extends Factory
 	{
 		return [
 			'content'=>$this->faker->paragraph(),
-			'post_id'=>Post::factory(),
-			'created_by_id'=>User::factory(),
+			'post_id'=>$this->faker->numberBetween(1, 4),
+			'created_by_id'=>$this->faker->numberBetween(1, 4),
+			// 'post_id'=>Post::factory(),
+			// 'created_by_id'=>User::factory(),
 			// $comment->created_by_id = null,
 			// $comment->post_id = null,
 		];

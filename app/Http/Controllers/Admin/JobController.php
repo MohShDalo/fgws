@@ -41,10 +41,8 @@ class JobController extends Controller
 	 */
 	public function create()
 	{
-
-		$freelancers = Freelancer::pluck('id','id')->toArray();
 		$mangers = Manger::pluck('id','id')->toArray();
-		return view('cms.job.create',array('freelancers'=>$freelancers,'mangers'=>$mangers,));
+		return view('cms.job.create',array('mangers'=>$mangers,));
 	}
 
 	/**
@@ -81,10 +79,8 @@ class JobController extends Controller
 	 */
 	public function edit(Job $job)
 	{
-
-		$freelancers = Freelancer::pluck('id','id')->toArray();
 		$mangers = Manger::pluck('id','id')->toArray();
-		return view('cms.job.edit',array('freelancers'=>$freelancers,'mangers'=>$mangers,'job'=>$job));
+		return view('cms.job.edit',array('mangers'=>$mangers,'job'=>$job));
 	}
 
 	/**
@@ -111,7 +107,7 @@ class JobController extends Controller
 	 */
 	public function destroy(Job $job)
 	{
-		if(true){		/*validate deletion, check relations "'freelancers'=>$freelancers,'mangers'=>$mangers,"*/
+		if(true){		/*validate deletion, check relations "'mangers'=>$mangers,"*/
 			$job->delete();
 			session()->put('type',"success");
 			session()->put('message',__('messages.job.success.delete',['name'=>"$job->content"]));

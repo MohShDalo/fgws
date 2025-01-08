@@ -40,9 +40,7 @@ class LanguageController extends Controller
 	 */
 	public function create()
 	{
-
-		$freelancers = Freelancer::pluck('id','id')->toArray();
-		return view('cms.language.create',array('freelancers'=>$freelancers,));
+		return view('cms.language.create');
 	}
 
 	/**
@@ -79,9 +77,7 @@ class LanguageController extends Controller
 	 */
 	public function edit(Language $language)
 	{
-
-		$freelancers = Freelancer::pluck('id','id')->toArray();
-		return view('cms.language.edit',array('freelancers'=>$freelancers,'language'=>$language));
+		return view('cms.language.edit',array('language'=>$language));
 	}
 
 	/**
@@ -108,7 +104,7 @@ class LanguageController extends Controller
 	 */
 	public function destroy(Language $language)
 	{
-		if(true){		/*validate deletion, check relations "'freelancers'=>$freelancers,"*/
+		if(true){		/*validate deletion, check relations ""*/
 			$language->delete();
 			session()->put('type',"success");
 			session()->put('message',__('messages.language.success.delete',['name'=>"$language->id"]));

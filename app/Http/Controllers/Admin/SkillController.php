@@ -40,9 +40,7 @@ class SkillController extends Controller
 	 */
 	public function create()
 	{
-
-		$freelancers = Freelancer::pluck('id','id')->toArray();
-		return view('cms.skill.create',array('freelancers'=>$freelancers,));
+		return view('cms.skill.create');
 	}
 
 	/**
@@ -79,9 +77,7 @@ class SkillController extends Controller
 	 */
 	public function edit(Skill $skill)
 	{
-
-		$freelancers = Freelancer::pluck('id','id')->toArray();
-		return view('cms.skill.edit',array('freelancers'=>$freelancers,'skill'=>$skill));
+		return view('cms.skill.edit',array('skill'=>$skill));
 	}
 
 	/**
@@ -108,7 +104,7 @@ class SkillController extends Controller
 	 */
 	public function destroy(Skill $skill)
 	{
-		if(true){		/*validate deletion, check relations "'freelancers'=>$freelancers,"*/
+		if(true){		/*validate deletion, check relations ""*/
 			$skill->delete();
 			session()->put('type',"success");
 			session()->put('message',__('messages.skill.success.delete',['name'=>"$skill->title"]));

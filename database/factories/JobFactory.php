@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 use App\Models\Job;
+use App\Models\Manger;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -26,7 +27,7 @@ class JobFactory extends Factory
 			'max_price'=>0,
 			'max_time'=>0,
 			'expected_start_date'=>now(),
-			'owner_id'=>1,
+			'owner_id'=>Manger::factory(),
 			// $job->worker_id = null,
 			// $job->owner_id = null,
 		];

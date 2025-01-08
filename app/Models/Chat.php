@@ -82,6 +82,22 @@ class Chat extends Model
 		parent::delete();
 	}
 
+    public function scopeOwned($query)
+    {
+        $user = \Auth::user();
+        if(!$user){
+            return $query;
+        }else if($user->isFreelancer()||$user->isManger()){
+            return $query->where(function ($query2) use ($user){
+                $query2->orWhere('first_member_id',$user->id)
+                      ->orWhere('second_member_id',$user->id);
+            });
+        }else {
+            return $query;
+        }
+        return $query->where('id',null);
+	}
+
 	public static function filterModelsData($data, $attribute, $value){
 		if(str_contains($attribute,'name')||str_contains($attribute,'title')){
 			return $data->where($attribute,'LIKE',"%$value%");

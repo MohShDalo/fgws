@@ -10,8 +10,8 @@
 		<h1>{{__('caption.cms.menu-item.post-menu.edit',['name'=>$post->content??''] )}}</h1>
 	</div>
 </div>
-{{-- enctype="multipart/form-data" --}}
-<form action="{{route('post.update',$post->id)}}" method="POST">
+
+<form action="{{route('post.update',$post->id)}}" method="POST" enctype="multipart/form-data" >
 	@csrf
 	@method("PUT")
 	<div class="row">
@@ -32,7 +32,7 @@
 			idName="image"
 			:caption="__('caption.cms.fields.post.image')"
 			:initValue="(old('image')??$post->image)??null"
-			type="text"
+			type="file"
 			:hint="null"
 			placeholder=""
 			extraAttribute=""

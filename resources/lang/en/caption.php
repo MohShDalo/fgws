@@ -278,7 +278,7 @@ return [
 				'created_by_id'=>'Created By',
 			],
 			'message'=>[
-				'content'=>'Content',
+				'content'=>'Message',
 				'created_by_id'=>'Created By',
 				'chat_id'=>'Chat',
 			],
@@ -404,6 +404,10 @@ return [
 			'time'=>'Write your expected time in days ...',
 			''=>'',
 		],
+		'send'=>'Send',
+		''=>'',
+		''=>'',
+		''=>'',
 		''=>'',
 	]
 ];

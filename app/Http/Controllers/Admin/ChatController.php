@@ -30,7 +30,7 @@ class ChatController extends Controller
 	 */
 	public function index()
 	{
-		return view('cms.chat.index',['chats'=>Chat::all()]);
+		return view('cms.chat.index',['chats'=>Chat::owned()->get()]);
 	}
 
 	/**
@@ -57,8 +57,8 @@ class ChatController extends Controller
 	{
 		$temp = $request->validated();
 		$data = Chat::create($temp);
-		session()->put('type',"success");
-		session()->put('message',__('messages.chat.success.create',['name'=>$data->title??'']));
+		// session()->put('type',"success");
+		// session()->put('message',__('messages.chat.success.create',['name'=>$data->title??'']));
 		return back();
 	}
 

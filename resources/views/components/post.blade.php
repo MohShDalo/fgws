@@ -33,7 +33,7 @@
                 <input type="hidden" name="post_id" value="{{$post->id}}">
                 <dl>
                     @foreach ($post->comments as $comment)
-                        <dt>{{$comment->created_by_name}}</dt>
+                        <dt><a {{$comment->created_by->isFreelancer()?'href='.route('home.freelancer.show',$comment->created_by->roleable_id):'' }}>{{$comment->created_by_name}}</a> </dt>
                         <dd>{{$comment->content}}</dd>
                     @endforeach
                 </dl>

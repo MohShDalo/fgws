@@ -190,10 +190,10 @@
 							</a>
 
 							<ul class="dropdown-menu bg-main-color-orange">
-								<li><a class="dropdown-item" href="{{route('user.password.change')}}">{{__('caption.cms.pages.login.change_password')}}</a></li>
+								{{-- <li><a class="dropdown-item" href="{{route('user.password.change')}}">{{__('caption.cms.pages.login.change_password')}}</a></li>
 								<li>
 									<hr class="dropdown-divider">
-								</li>
+								</li> --}}
 
                                 @can('viewAny', \App\Models\Chat::class)
                                     <li><a class="dropdown-item" href="{{route('chat.index')}}">{{__('caption.cms.menu-item.chat-menu.index')}}</a></li>

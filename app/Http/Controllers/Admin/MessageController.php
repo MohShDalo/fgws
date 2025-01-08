@@ -57,8 +57,8 @@ class MessageController extends Controller
 	{
 		$temp = $request->validated();
 		$data = Message::create($temp);
-		session()->put('type',"success");
-		session()->put('message',__('messages.message.success.create',['name'=>$data->content??'']));
+		// session()->put('type',"success");
+		// session()->put('message',__('messages.message.success.create',['name'=>$data->content??'']));
 		return back();
 	}
 

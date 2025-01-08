@@ -40,7 +40,7 @@
                 <dl>
                     @forelse ($job->offers as $offer)
                         <dt>
-                            {{$offer->owner_name}}
+                            <a href="{{route('home.freelancer.show',$offer->owner_id)}}">{{$offer->owner_name}}</a>
                             <sub>({{$offer->time.'-Days, '.$offer->price.'-$'}})</sub>
                             {{-- {{route('reaction.store')}}?post_id={{$post->id}}&type={{\App\Models\Reaction::TYPE_LIKE}} --}}
                             @can('approve', $offer)

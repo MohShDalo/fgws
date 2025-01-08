@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 use App\Models\Offer;
+use App\Models\Job;
+use App\Models\Freelancer;
+use App\Models\Manger;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -26,8 +29,9 @@ class OfferFactory extends Factory
 			'time'=>$this->faker->numberBetween(10, 40),
 			'status'=>Offer::STATUS_PENDING,
 			'status_reason'=>$this->faker->sentence(),
-			// $offer->owner_id = null,
-			// $offer->job_id = null,
+            'job_id'=> $this->faker->numberBetween(1, 2),
+            'owner_id'=>Freelancer::factory(),
+            // 'job_id'=>Job::factory(),
 		];
 	}
 }

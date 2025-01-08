@@ -9,8 +9,7 @@
 		<h1>{{__('caption.cms.menu-item.post-menu.add' )}}</h1>
 	</div>
 </div>
-{{-- enctype="multipart/form-data" --}}
-<form action="{{route('post.store')}}" method="POST">
+<form action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
 	@csrf
 	<div class="row">
 		<x-textarea
@@ -29,7 +28,7 @@
 			idName="image"
 			:caption="__('caption.cms.fields.post.image')"
 			:initValue="old('image')"
-			type="text"
+			type="file"
 			:hint="null"
 			placeholder=""
 			extraAttribute=""

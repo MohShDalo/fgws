@@ -40,9 +40,7 @@ class PostController extends Controller
 	 */
 	public function create()
 	{
-
-		$freelancers = Freelancer::pluck('id','id')->toArray();
-		return view('cms.post.create',array('freelancers'=>$freelancers,));
+		return view('cms.post.create');
 	}
 
 	/**
@@ -79,9 +77,7 @@ class PostController extends Controller
 	 */
 	public function edit(Post $post)
 	{
-
-		$freelancers = Freelancer::pluck('id','id')->toArray();
-		return view('cms.post.edit',array('freelancers'=>$freelancers,'post'=>$post));
+		return view('cms.post.edit',array('post'=>$post));
 	}
 
 	/**
@@ -108,7 +104,7 @@ class PostController extends Controller
 	 */
 	public function destroy(Post $post)
 	{
-		if(true){		/*validate deletion, check relations "'freelancers'=>$freelancers,"*/
+		if(true){		/*validate deletion, check relations ""*/
 			$post->delete();
 			session()->put('type',"success");
 			session()->put('message',__('messages.post.success.delete',['name'=>"$post->content"]));

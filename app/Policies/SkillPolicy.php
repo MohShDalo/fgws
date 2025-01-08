@@ -41,7 +41,7 @@ class SkillPolicy
 	 */
 	public function create(User $user)
 	{
-		return true;
+		return $user->isFreelancer();
 	}
 
 	/**

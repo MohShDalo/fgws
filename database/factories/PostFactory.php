@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 use App\Models\Post;
+use App\Models\Freelancer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -22,8 +23,9 @@ class PostFactory extends Factory
 	{
 		return [
 			'content'=>$this->faker->text(1000),
-			'image'=>$this->faker->sentence(),
-			'owner_id'=>1,
+			'image'=>null,
+            // 'owner_id'=> $this->faker->numberBetween(1, 2),
+            'owner_id'=>Freelancer::factory(),
 			// $post->owner_id = null,
 		];
 	}

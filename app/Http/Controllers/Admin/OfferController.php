@@ -11,6 +11,7 @@ use App\Http\Requests\Update\UpdateOfferRequest;
 use App\Models\Offer;
 use App\Models\Freelancer;
 use App\Models\Job;
+use App\Models\Chat;
 class OfferController extends Controller
 {
 
@@ -42,10 +43,8 @@ class OfferController extends Controller
 	 */
 	public function create()
 	{
-
-		$freelancers = Freelancer::pluck('id','id')->toArray();
 		$jobs = Job::pluck('content','id')->toArray();
-		return view('cms.offer.create',array('freelancers'=>$freelancers,'jobs'=>$jobs,));
+		return view('cms.offer.create',array('jobs'=>$jobs,));
 	}
 
 	/**
@@ -82,10 +81,8 @@ class OfferController extends Controller
 	 */
 	public function edit(Offer $offer)
 	{
-
-		$freelancers = Freelancer::pluck('id','id')->toArray();
 		$jobs = Job::pluck('content','id')->toArray();
-		return view('cms.offer.edit',array('freelancers'=>$freelancers,'jobs'=>$jobs,'offer'=>$offer));
+		return view('cms.offer.edit',array('jobs'=>$jobs,'offer'=>$offer));
 	}
 
 	/**
@@ -112,7 +109,7 @@ class OfferController extends Controller
 	 */
 	public function destroy(Offer $offer)
 	{
-		if(true){		/*validate deletion, check relations "'freelancers'=>$freelancers,'jobs'=>$jobs,"*/
+		if(true){		/*validate deletion, check relations "'jobs'=>$jobs,"*/
 			$offer->delete();
 			session()->put('type',"success");
 			session()->put('message',__('messages.offer.success.delete',['name'=>"$offer->content"]));
@@ -142,9 +139,11 @@ class OfferController extends Controller
 	}
 	public function approve(Offer $offer)
 	{
+        $isApproved = false;
         if($offer->isPending()){
             $offer->status = Offer::STATUS_APPROVED;
             $offer->save();
+            $isApproved = true;
             session()->put('type',"success");
 			session()->put('message',__('messages.offer.success.approve',['name'=>"$offer->owner_name"]));
         }else if($offer->isApproved()){
@@ -153,10 +152,21 @@ class OfferController extends Controller
             $offer->status = Offer::STATUS_REJECTED;
             $offer->save();
         }else if($offer->isRejected()){
+            $isApproved = true;
             session()->put('type',"success");
 			session()->put('message',__('messages.offer.success.approve',['name'=>"$offer->owner_name"]));
             $offer->status = Offer::STATUS_APPROVED;
             $offer->save();
+        }
+        if($isApproved &&
+            !Chat::where('title',"Job ".$offer->job->needed_postion." Chat")->first()
+        ){
+            Chat::create([
+                'title'             =>"Job ".$offer->job->needed_postion." Chat",
+                'first_member_id'   =>\Auth::user()->id,
+                'second_member_id'  =>$offer->owner->user->id,
+                'created_by_id'     =>\Auth::user()->id,
+            ]);
         }
         return redirect()->back();
 	}

@@ -40,9 +40,7 @@ class EducationController extends Controller
 	 */
 	public function create()
 	{
-
-		$freelancers = Freelancer::pluck('id','id')->toArray();
-		return view('cms.education.create',array('freelancers'=>$freelancers,));
+		return view('cms.education.create');
 	}
 
 	/**
@@ -79,9 +77,7 @@ class EducationController extends Controller
 	 */
 	public function edit(Education $education)
 	{
-
-		$freelancers = Freelancer::pluck('id','id')->toArray();
-		return view('cms.education.edit',array('freelancers'=>$freelancers,'education'=>$education));
+		return view('cms.education.edit',array('education'=>$education));
 	}
 
 	/**
@@ -108,7 +104,7 @@ class EducationController extends Controller
 	 */
 	public function destroy(Education $education)
 	{
-		if(true){		/*validate deletion, check relations "'freelancers'=>$freelancers,"*/
+		if(true){		/*validate deletion, check relations ""*/
 			$education->delete();
 			session()->put('type',"success");
 			session()->put('message',__('messages.education.success.delete',['name'=>"$education->title"]));

@@ -40,9 +40,7 @@ class PortfolioController extends Controller
 	 */
 	public function create()
 	{
-
-		$freelancers = Freelancer::pluck('id','id')->toArray();
-		return view('cms.portfolio.create',array('freelancers'=>$freelancers,));
+		return view('cms.portfolio.create');
 	}
 
 	/**
@@ -79,9 +77,7 @@ class PortfolioController extends Controller
 	 */
 	public function edit(Portfolio $portfolio)
 	{
-
-		$freelancers = Freelancer::pluck('id','id')->toArray();
-		return view('cms.portfolio.edit',array('freelancers'=>$freelancers,'portfolio'=>$portfolio));
+		return view('cms.portfolio.edit',array('portfolio'=>$portfolio));
 	}
 
 	/**
@@ -108,7 +104,7 @@ class PortfolioController extends Controller
 	 */
 	public function destroy(Portfolio $portfolio)
 	{
-		if(true){		/*validate deletion, check relations "'freelancers'=>$freelancers,"*/
+		if(true){		/*validate deletion, check relations ""*/
 			$portfolio->delete();
 			session()->put('type',"success");
 			session()->put('message',__('messages.portfolio.success.delete',['name'=>"$portfolio->title"]));

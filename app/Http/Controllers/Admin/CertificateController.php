@@ -40,9 +40,7 @@ class CertificateController extends Controller
 	 */
 	public function create()
 	{
-
-		$freelancers = Freelancer::pluck('id','id')->toArray();
-		return view('cms.certificate.create',array('freelancers'=>$freelancers,));
+        return view('cms.certificate.create');
 	}
 
 	/**
@@ -79,9 +77,7 @@ class CertificateController extends Controller
 	 */
 	public function edit(Certificate $certificate)
 	{
-
-		$freelancers = Freelancer::pluck('id','id')->toArray();
-		return view('cms.certificate.edit',array('freelancers'=>$freelancers,'certificate'=>$certificate));
+		return view('cms.certificate.edit',array('certificate'=>$certificate));
 	}
 
 	/**
@@ -108,7 +104,7 @@ class CertificateController extends Controller
 	 */
 	public function destroy(Certificate $certificate)
 	{
-		if(true){		/*validate deletion, check relations "'freelancers'=>$freelancers,"*/
+		if(true){		/*validate deletion, check relations ""*/
 			$certificate->delete();
 			session()->put('type',"success");
 			session()->put('message',__('messages.certificate.success.delete',['name'=>"$certificate->id"]));

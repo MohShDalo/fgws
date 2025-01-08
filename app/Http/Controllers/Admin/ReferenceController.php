@@ -40,9 +40,7 @@ class ReferenceController extends Controller
 	 */
 	public function create()
 	{
-
-		$freelancers = Freelancer::pluck('id','id')->toArray();
-		return view('cms.reference.create',array('freelancers'=>$freelancers,));
+		return view('cms.reference.create');
 	}
 
 	/**
@@ -79,9 +77,7 @@ class ReferenceController extends Controller
 	 */
 	public function edit(Reference $reference)
 	{
-
-		$freelancers = Freelancer::pluck('id','id')->toArray();
-		return view('cms.reference.edit',array('freelancers'=>$freelancers,'reference'=>$reference));
+		return view('cms.reference.edit',array('reference'=>$reference));
 	}
 
 	/**
@@ -108,7 +104,7 @@ class ReferenceController extends Controller
 	 */
 	public function destroy(Reference $reference)
 	{
-		if(true){		/*validate deletion, check relations "'freelancers'=>$freelancers,"*/
+		if(true){		/*validate deletion, check relations ""*/
 			$reference->delete();
 			session()->put('type',"success");
 			session()->put('message',__('messages.reference.success.delete',['name'=>"$reference->full_name"]));

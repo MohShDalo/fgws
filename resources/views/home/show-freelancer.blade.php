@@ -90,6 +90,13 @@
             </div>
         @endforeach
     </div>
+    <div class="row">
+        <div class="col-2">
+            <button class="btn btn-outline-info"
+                onclick="document.getElementsByTagName('nav')[0].classList.add('d-none');this.classList.add('d-none');window.print();this.classList.remove('d-none');document.getElementsByTagName('nav')[0].classList.remove('d-none')"
+            >Print PDF</button>
+        </div>
+    </div>
 </div>
 
 

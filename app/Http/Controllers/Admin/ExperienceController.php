@@ -40,9 +40,7 @@ class ExperienceController extends Controller
 	 */
 	public function create()
 	{
-
-		$freelancers = Freelancer::pluck('id','id')->toArray();
-		return view('cms.experience.create',array('freelancers'=>$freelancers,));
+		return view('cms.experience.create');
 	}
 
 	/**
@@ -79,9 +77,7 @@ class ExperienceController extends Controller
 	 */
 	public function edit(Experience $experience)
 	{
-
-		$freelancers = Freelancer::pluck('id','id')->toArray();
-		return view('cms.experience.edit',array('freelancers'=>$freelancers,'experience'=>$experience));
+		return view('cms.experience.edit',array('experience'=>$experience));
 	}
 
 	/**
@@ -108,7 +104,7 @@ class ExperienceController extends Controller
 	 */
 	public function destroy(Experience $experience)
 	{
-		if(true){		/*validate deletion, check relations "'freelancers'=>$freelancers,"*/
+		if(true){		/*validate deletion, check relations ""*/
 			$experience->delete();
 			session()->put('type',"success");
 			session()->put('message',__('messages.experience.success.delete',['name'=>"$experience->id"]));

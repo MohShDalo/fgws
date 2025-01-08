@@ -2,7 +2,7 @@
 
 @section('content')
 <?php
-$username = app()->environment('local')?'freelancer@fgws.ps':'';
+$username = app()->environment('local')?'aya-a@fgws.ps':'';
 $password = $username?'password':'';
 ?>
 <div class="container">
@@ -69,6 +69,13 @@ $password = $username?'password':'';
                             </div>
                         </div>
                     </form>
+                </div>
+                <div class="card-footer">
+                    <ul>
+                        @foreach (\App\Models\User::all() as $user)
+                            <li>{{($user->isFreelancer()?'Freelancer: ':'Manager: ').$user->email}}</li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
